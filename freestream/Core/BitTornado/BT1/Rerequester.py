@@ -12,7 +12,6 @@ from freestream.Core.BitTornado.bencode import bdecode
 from threading import Thread, Lock, currentThread
 from cStringIO import StringIO
 from traceback import print_exc, print_stack
-from freestream.Core.Utilities.TSCrypto import sha
 from freestream.Core.Utilities.utilities import test_network_connection
 from time import time
 from freestream.Core.simpledefs import *

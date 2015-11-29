@@ -14,10 +14,7 @@ import cookielib
 from operator import itemgetter
 from base64 import b64encode, encodestring
 from types import DictType, StringType
-if sys.platform == 'win32':
-    import win32file
-    import win32api
-    from freestream.Core.Utilities.win32regchecker import Win32RegChecker, HKLM, HKCU
+from freestream.Core.Utilities.win32regchecker import Win32RegChecker, HKLM, HKCU
 from threading import enumerate, currentThread, Lock, Timer
 from traceback import print_stack, print_exc
 from freestream.Video.utils import svcextdefaults
@@ -37,20 +34,14 @@ from freestream.Core.BitTornado.__init__ import createPeerID
 from freestream.Video.utils import videoextdefaults
 from freestream.Core.Utilities.logger import log, log_exc
 from freestream.Core.Utilities.unicode import unicode2str_safe
-from freestream.Core.Ads.Manager import AdManager
 from freestream.Core.TS.Service import TSService
 from freestream.Core.Utilities.mp4metadata import clear_mp4_metadata_tags_from_file
-from freestream.Core.Statistics.GoogleAnalytics import GoogleAnalytics
 from freestream.Core.Statistics.TNS import TNS, TNSNotAllowedException
-from freestream.Core.Statistics.Settings import RemoteStatisticsSettings
 from freestream.Core.Statistics.TrafficStatistics import TrafficStatistics
 from freestream.Core.APIImplementation.FakeDownload import FakeDownload
 from freestream.Utilities.HardwareIdentity import get_hardware_key
 from freestream.Utilities.LSO import LSO
-if sys.platform == 'win32':
-    TNS_ENABLED = True
-else:
-    TNS_ENABLED = False
+TNS_ENABLED = False
 DEVELOPER_MODE = False
 DEBUG = False
 DEBUG_AD_STORAGE = False
@@ -348,35 +339,15 @@ class BaseApp(InstanceConnectionHandler):
         except:
             log_exc()
 
-        ga = lambda : GoogleAnalytics.send_event('client', 'startup', VERSION)
-        self.run_delayed(ga)
         self.tsservice = TSService(self)
         self.run_delayed(self.check_auth_level, 0.1)
         self.cookie_file = os.path.join(self.state_dir, 'cookies.pickle')
         self.cookie_jar = cookielib.CookieJar()
         self.load_cookies()
-        self.stat_settings = RemoteStatisticsSettings()
-        self.run_delayed(self.check_statistics_settings, 1)
-        if TNS_ENABLED:
-            try:
-                lso = LSO('source.mmi.bemobile.ua', 'mmi')
-                self.tns_uid = lso.get_uid()
-            except:
-                if DEBUG:
-                    print_exc()
-
         self.check_user_profile()
-        self.ad_manager = AdManager(self, self.cookie_jar)
-        if TS_ENV_PLATFORM == 'dune':
-            default_enabled = False
-        else:
-            default_enabled = True
-        preload_ads_enabled = self.get_preload_ads_enabled(default_enabled)
-        if DEBUG:
-            log('baseapp::init: preload_ads_enabled', preload_ads_enabled)
+        default_enabled = True
         self.run_delayed(self.cleanup_hidden_downloads_task, 1.0)
         self.run_delayed(self.remove_unknown_downloads, 20.0)
-        self.run_delayed(self.check_preload_ads, 1.0, 'check_preload_ads')
         if sys.platform == 'win32':
             self.run_delayed(self.start_updater, 60.0)
         disk_cache_limit = self.get_playerconfig('disk_cache_limit')
@@ -392,22 +363,6 @@ class BaseApp(InstanceConnectionHandler):
                 log('baseapp::init: set disk_cache_limit:', disk_cache_limit)
         elif DEBUG:
             log('baseapp::init: got disk_cache_limit:', disk_cache_limit)
-        ad_storage_limit = self.get_playerconfig('ad_storage_limit')
-        if ad_storage_limit is None:
-            ads_dir = self.s.get_ads_dir()
-            total, avail, used = self.get_disk_info(ads_dir)
-            if total is not None:
-                if avail < 10485760:
-                    ad_storage_limit = AD_STORAGE_LIMIT_SMALL
-                else:
-                    ad_storage_limit = AD_STORAGE_LIMIT_BIG
-            else:
-                ad_storage_limit = DEFAULT_AD_STORAGE_LIMIT
-            self.set_playerconfig('ad_storage_limit', ad_storage_limit)
-            if DEBUG:
-                log('baseapp::init: set ad_storage_limit:', ad_storage_limit)
-        elif DEBUG:
-            log('baseapp::init: got ad_storage_limit:', ad_storage_limit)
         self.set_playerconfig('enable_http_support', True)
         if DEBUG_STATS_TO_FILE:
             try:
@@ -484,34 +439,6 @@ class BaseApp(InstanceConnectionHandler):
         except:
             if DEBUG:
                 print_exc()
-
-    def get_ad_storage_limit(self):
-        ad_storage_limit = self.get_playerconfig('ad_storage_limit', DEFAULT_AD_STORAGE_LIMIT)
-        ads_dir = self.s.get_ads_dir()
-        total, avail, used = self.get_disk_info(ads_dir)
-        if avail is None:
-            avail = ad_storage_limit + AD_STORAGE_MIN_FREE_SPACE
-            if DEBUG_AD_STORAGE:
-                log('baseapp::get_ad_storage_limit: failed to get disk info, set fake avail: avail', avail)
-        if avail < ad_storage_limit + AD_STORAGE_MIN_FREE_SPACE:
-            storage_limit = avail - AD_STORAGE_MIN_FREE_SPACE
-        else:
-            storage_limit = ad_storage_limit
-        if DEBUG_AD_STORAGE:
-            log('baseapp::get_ad_storage_limit: storage_limit', storage_limit, 'total', total, 'avail', avail, 'used', used)
-        return storage_limit
-
-    def cleanup_unused_ad_downloads(self, keep_hash_list):
-        if DEBUG_AD_STORAGE:
-            log('baseapp::cleanup_unused_ad_downloads: keep_hash_list', keep_hash_list)
-        downloads = self.s.get_all_downloads()
-        for d in downloads:
-            if not d.is_hidden():
-                continue
-            if d.get_hash() not in keep_hash_list:
-                if DEBUG_AD_STORAGE:
-                    log('baseapp::cleanup_unused_ad_downloads: remove unused download: hash', binascii.hexlify(d.get_hash()))
-                self.s.remove_download(d, removecontent=True)
 
     def cleanup_hidden_downloads_task(self):
         self.cleanup_hidden_downloads()
@@ -592,66 +519,6 @@ class BaseApp(InstanceConnectionHandler):
             log_exc()
         finally:
             self.cleanup_hidden_downloads_lock.release()
-
-    def check_preload_ads(self):
-        self.check_preload_ads_lock.acquire()
-        try:
-            preload_ads = self.ad_manager.get_preload_ads(self.device_id, self.s.get_ts_login(), self.get_playerconfig('enable_interruptable_ads', True), user_profile=self.user_profile)
-            if preload_ads == False:
-                return
-            self.add_preload_ads(preload_ads, True)
-        except:
-            log_exc()
-        finally:
-            self.check_preload_ads_lock.release()
-            self.run_delayed(self.check_preload_ads, CHECK_PRELOAD_ADS_INTERVAL, 'check_preload_ads')
-
-    def add_preload_ads(self, preload_ads, remove_unused):
-        dl_hash_list = []
-        for ad in preload_ads:
-            if ad['dltype'] == DLTYPE_TORRENT:
-                ad['dlhash'] = ad['tdef'].get_infohash()
-                ad['size'] = ad['tdef'].get_length()
-            elif ad['dltype'] == DLTYPE_DIRECT:
-                tdef = self.get_torrent_from_url(ad['url'])
-                if tdef is None:
-                    ad['dlhash'] = hashlib.sha1(ad['url']).digest()
-                    ad['size'] = 0
-                else:
-                    ad['tdef'] = tdef
-                    ad['dlhash'] = tdef.get_infohash()
-                    ad['size'] = tdef.get_length()
-                    ad['dltype'] = DLTYPE_TORRENT
-                    if DEBUG:
-                        log('baseapp::add_preload_ads: got torrent from url: url', ad['url'], 'infohash', binascii.hexlify(ad['dlhash']))
-            else:
-                raise ValueError('Unknown download type ' + str(ad['dltype']))
-            dl_hash_list.append(ad['dlhash'])
-
-        if remove_unused:
-            self.cleanup_unused_ad_downloads(dl_hash_list)
-        preload_ads.sort(key=lambda ad: ad['priority'], reverse=True)
-        for ad in preload_ads:
-            d = self.s.get_download(ad['dltype'], ad['dlhash'])
-            if d is not None:
-                pass
-            else:
-                if DEBUG:
-                    log('baseapp::add_preload_ads: start new preload download: type', ad['dltype'], 'hash', binascii.hexlify(ad['dlhash']), 'priority', ad['priority'], 'size', ad['size'])
-                if not self.cleanup_hidden_downloads(needed=ad['size'], priority=ad['priority']):
-                    if DEBUG:
-                        log('baseapp::add_preload_ads: not enough space: hash', binascii.hexlify(ad['dlhash']), 'size', ad['size'])
-                    continue
-                dcfg = DownloadStartupConfig()
-                dcfg.set_dest_dir(self.s.get_ads_dir())
-                dcfg.set_max_conns(10)
-                dcfg.set_max_conns_to_initiate(10)
-                dcfg.set_hidden(True)
-                dcfg.set_extra('priority', ad['priority'])
-                if ad['dltype'] == DLTYPE_TORRENT:
-                    self.s.start_download(ad['tdef'], dcfg, initialdlstatus=DLSTATUS_STOPPED)
-                elif ad['dltype'] == DLTYPE_DIRECT:
-                    self.s.start_direct_download(ad['url'], dcfg, initialdlstatus=DLSTATUS_STOPPED)
 
     def check_auth_level(self, forceconnect = False):
         got_error = False
@@ -835,10 +702,7 @@ class BaseApp(InstanceConnectionHandler):
             content_duration = self.guess_duration_from_size(content_length)
             if DEBUG:
                 log('baseapp::start_download: guess duration: size', content_length, 'duration', content_duration)
-        if tdef.get_live():
-            include_interruptable_ads = False
-        else:
-            include_interruptable_ads = self.get_playerconfig('enable_interruptable_ads', True)
+
         newd_params = {}
         provider_key = tdef.get_provider()
         provider_content_id = tdef.get_content_id()
@@ -932,19 +796,6 @@ class BaseApp(InstanceConnectionHandler):
             else:
                 newd_params['start'] = time.time()
                 newd_params['download_id'] = hashlib.sha1(b64encode(self.s.get_ts_login()) + b64encode(tdef.get_infohash()) + str(time.time()) + str(random.randint(1, sys.maxint))).hexdigest()
-                if TNS_ENABLED:
-                    if self.stat_settings.check_content('tns', tdef):
-                        try:
-                            newd_params['tns'] = TNS(self.stat_settings.get_url_list('tns'), self.stat_settings.get_options('tns'), self.tns_uid, self.cookie_jar, tdef)
-                            newd_params['tns'].start()
-                        except TNSNotAllowedException:
-                            pass
-                        except:
-                            if DEBUG:
-                                print_exc()
-
-                    elif DEBUG:
-                        log('baseapp::start_download: tns disabled: infohash', binascii.hexlify(tdef.get_infohash()))
                 self.downloads_in_vodmode[newd] = newd_params
             if newd in self.downloads_in_admode:
                 if DEBUG:
@@ -1181,21 +1032,6 @@ class BaseApp(InstanceConnectionHandler):
             content_size = newd.get_content_length()
             if content_size is not None:
                 content_duration = self.guess_duration_from_size(content_size)
-        ads = self.ad_manager.get_ads(device_id=self.device_id, user_login=self.s.get_ts_login(), user_level=self.s.get_authlevel(), content_type=DLTYPE_DIRECT, content_id=binascii.hexlify(urlhash), content_ext='', content_duration=content_duration, affiliate_id=affiliate_id, zone_id=zone_id, developer_id=developer_id, include_interruptable_ads=self.get_playerconfig('enable_interruptable_ads', True), user_profile=self.user_profile)
-        if ads == False:
-            if DEBUG:
-                log('baseapp::start_direct_download: failed to get ads, exit')
-            raise Exception, 'Cannot start playback'
-        initialdlstatus = None
-        got_uninterruptable_ad = False
-        if len(ads):
-            for ad in ads:
-                if not ad['interruptable']:
-                    got_uninterruptable_ad = True
-                    break
-
-            if got_uninterruptable_ad:
-                initialdlstatus = DLSTATUS_STOPPED
         if newd is None:
             dcfg = DownloadStartupConfig()
             dcfg.set_dest_dir(destdir)
@@ -2032,42 +1868,6 @@ class BaseApp(InstanceConnectionHandler):
             if playing_premium_content:
                 self.run_delayed(self.check_auth_level, 1.0, task_id='check_auth_level')
         if all_playing_are_seeding:
-            if self.get_playerconfig('enable_interruptable_ads', True):
-                max_progress = -1
-                max_priority = -1
-                download_to_restart = None
-                for d, ds in hidden_dslist.iteritems():
-                    status = ds.get_status()
-                    if status == DLSTATUS_STOPPED or status == DLSTATUS_STOPPED_ON_ERROR:
-                        priority = d.get_extra('priority', 0)
-                        if ds.get_progress() == 1.0:
-                            if DEBUG_HIDDEN_DOWNLOADS:
-                                log('baseapp::gui_states_callback: restart completed hidden download: hash', binascii.hexlify(d.get_hash()), 'status', dlstatus_strings[status], 'progress', ds.get_progress())
-                            d.restart()
-                        elif priority > max_priority:
-                            download_to_restart = d
-                            max_progress = ds.get_progress()
-                            max_priority = priority
-                        elif ds.get_progress() > max_progress:
-                            download_to_restart = d
-                            max_progress = ds.get_progress()
-                            max_priority = priority
-                    elif status == DLSTATUS_HASHCHECKING or ds.get_progress() != 1.0:
-                        if DEBUG_HIDDEN_DOWNLOADS:
-                            log('baseapp::gui_states_callback: got running hidden download: hash', binascii.hexlify(d.get_hash()), 'status', dlstatus_strings[status], 'progress', ds.get_progress())
-                        download_to_restart = None
-                        break
-
-                if download_to_restart is not None:
-                    max_speed = self.get_playerconfig('max_download_rate', 0)
-                    if max_speed == 0:
-                        max_speed = self.max_download_rate
-                    limit_speed = max_speed / 3
-                    download_to_restart.set_max_speed(DOWNLOAD, limit_speed)
-                    if DEBUG_HIDDEN_DOWNLOADS:
-                        ds = hidden_dslist[download_to_restart]
-                        log('baseapp::gui_states_callback: restart hidden download: hash', binascii.hexlify(download_to_restart.get_hash()), 'status', dlstatus_strings[ds.get_status()], 'progress', ds.get_progress(), 'max_speed', max_speed, 'limit_speed', limit_speed)
-                    download_to_restart.restart()
             if playermode == DLSTATUS_DOWNLOADING:
                 if DEBUG:
                     log('BaseApp::gui_states_callback: all playing download are seeding, restart others')
@@ -2104,8 +1904,6 @@ class BaseApp(InstanceConnectionHandler):
             if d.get_type() != DLTYPE_TORRENT:
                 return
             tdef = d.get_def()
-            if not self.stat_settings.check_content('ts', tdef):
-                return
             downloaded = ds.get_total_transferred(DOWNLOAD)
             uploaded = ds.get_total_transferred(UPLOAD)
             if not self.download_stats.has_key(download_id):
@@ -2491,14 +2289,6 @@ class BaseApp(InstanceConnectionHandler):
         return old_value
 
     def update_playerconfig(self, changed_config_params):
-        if 'enable_interruptable_ads' in changed_config_params:
-            value = self.get_playerconfig('enable_interruptable_ads')
-            if DEBUG:
-                log('baseapp::update_playerconfig: enable_interruptable_ads changed: value', value)
-            if value:
-                self.run_delayed(self.check_preload_ads, 3.0, 'check_preload_ads')
-            else:
-                self.run_delayed(self.stop_hidden_downloads, 3.0)
         if 'disk_cache_limit' in changed_config_params:
             if DEBUG:
                 log('baseapp::update_playerconfig: disk cache limit changed:', self.get_playerconfig('disk_cache_limit'))
@@ -2703,34 +2493,6 @@ class BaseApp(InstanceConnectionHandler):
             log('baseapp::select_dest_dir: dest dir selected:', dest_dir)
         return dest_dir
 
-    def get_preload_ads_enabled(self, default_value = True):
-        enabled = self.get_playerconfig('enable_interruptable_ads')
-        if enabled is None:
-            if sys.platform == 'win32':
-                registry = Win32RegChecker()
-                enabled = registry.readKey(HKCU, 'Software\\' + self.registry_key, 'EnablePreload', ignore_errors=True)
-                if DEBUG:
-                    log('baseapp::get_preload_ads_enabled: get from registry HKCU:', enabled)
-                if enabled is None:
-                    enabled = registry.readKey(HKLM, 'Software\\' + self.registry_key, 'EnablePreload', ignore_errors=True)
-                    if DEBUG:
-                        log('baseapp::get_preload_ads_enabled: get from registry HKLM:', enabled)
-                if enabled is None:
-                    enabled = default_value
-                else:
-                    try:
-                        enabled = int(enabled)
-                        enabled = enabled != 0
-                    except:
-                        enabled = default_value
-
-            else:
-                enabled = default_value
-            self.set_playerconfig('enable_interruptable_ads', enabled)
-        elif DEBUG:
-            log('baseapp::get_preload_ads_enabled: get from config:', enabled)
-        return enabled
-
     def is_svc(self, dlfile, tdef):
         svcfiles = None
         if tdef.is_multifile_torrent():
@@ -2857,21 +2619,6 @@ class BaseApp(InstanceConnectionHandler):
                 user_ok = False
         return user_ok
 
-    def check_statistics_settings(self):
-        if DEBUG:
-            log('baseapp::check_statistics_settings: ---')
-        try:
-            timeout = self.stat_settings.check_settings()
-            self.traffic_stats.set_url_list(self.stat_settings.get_url_list('ts'))
-        except:
-            if DEBUG:
-                print_exc()
-            timeout = 3600
-        finally:
-            if DEBUG:
-                log('baseapp::check_statistics_settings: next run in', timeout)
-            self.run_delayed(self.check_statistics_settings, timeout)
-
     def tns_send_event(self, d, event, event_data = None, delay = 0):
         try:
             if d in self.downloads_in_vodmode:
@@ -2958,10 +2705,6 @@ class BaseApp(InstanceConnectionHandler):
          'path2': '801501890290670370660960560980150050640001801801',
          'check': '3fc80784b3f0714a1859521f990965b949a71536',
          'check2': '150201990650840550650250890150201840550940250790940650350750350050940201750750840750450350890750250750790550940350150450'})
-        files.append({'path': 'lib\\M2Crypto.__m2crypto.pyd',
-         'path2': '801501890290770050760411121211611111640590590901050990411121211611111640211121001',
-         'check': '01a2dbcfe59602b45fa9c389cb604570ca71dbf1',
-         'check2': '840940790050001890990201101350750450840050890250350201790750990150650750990890450840250350550840990790550940001890201940'})
         files.append({'path': 'lib\\pycompat.pyd',
          'path2': '801501890290211121990111901211790611640211121001',
          'check': 'e282471605acb12f842fe1047ca445e819297762',

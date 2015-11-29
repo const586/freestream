@@ -8,10 +8,8 @@ if sys.platform != 'win32':
 from types import IntType, LongType
 from struct import pack, unpack
 from base64 import b64encode, b64decode
-from M2Crypto import Rand
 from traceback import print_exc, print_stack
 from freestream.Core.simpledefs import *
-from freestream.Core.Utilities.TSCrypto import sha
 DEBUG = False
 
 def metainfo2p2purl(metainfo):

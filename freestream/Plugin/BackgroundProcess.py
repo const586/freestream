@@ -44,7 +44,6 @@ from freestream.Core.debug import *
 from freestream.WebUI.WebUI import WebIFPathMapper
 from freestream.Core.ClosedSwarm.ClosedSwarm import InvalidPOAException
 from freestream.Core.Utilities.logger import log, log_exc
-from freestream.Core.Ads.Manager import AdManager
 from freestream.GlobalConfig import globalConfig
 from freestream.Core.CacheDB.SqliteCacheDBHandler import UserProfile
 DEBUG = True
@@ -62,7 +61,6 @@ CONTENT_ID_PLAYER = 3
 CONTENT_ID_RAW = 4
 CONTENT_ID_ENCRYPTED_FILE = 5
 MSG_DOWNLOAD_CANNOT_START = 1
-MSG_STARTED_ADS = 2
 MSG_STARTED_MAIN_CONTENT = 3
 
 def get_default_api_version(apptype, exec_dir):
@@ -754,10 +752,7 @@ class BackgroundApp(BaseApp):
 
                             def notify_content_type(duser = duser):
                                 try:
-                                    if duser['playing_ad']:
-                                        duser['uic'].info('Advertising video', MSG_STARTED_ADS, force=True)
-                                    else:
-                                        duser['uic'].info('Main content', MSG_STARTED_MAIN_CONTENT, force=True)
+                                    duser['uic'].info('Main content', MSG_STARTED_MAIN_CONTENT, force=True)
                                 except:
                                     pass
 
@@ -853,10 +848,7 @@ class BackgroundApp(BaseApp):
                                         tracking_list.extend(adinfo['ad']['tracking'][event_name])
 
                                 if len(tracking_list):
-                                    if adinfo['ad']['adsystem'] == self.ad_manager.TS_ADSYSTEM:
-                                        add_sign = True
-                                    else:
-                                        add_sign = False
+                                    add_sign = False
                                     lambda_send_event = lambda : self.ad_manager.send_event(tracking_list, add_sign)
                                     self.run_delayed(lambda_send_event)
                                 elif DEBUG:
@@ -1397,35 +1389,6 @@ class BackgroundApp(BaseApp):
                      'is_live': vs.playback_pos_is_live,
                      'have': have_ranges}
         return status
-
-    def get_ad_downloads(self, d, main = None):
-        main_download = None
-        ad_downloads = None
-        is_ad = False
-        if d in self.downloads_in_admode:
-            main_download = d
-            ad_downloads = self.downloads_in_admode[d]
-        elif d in self.downloads_in_vodmode:
-            main_download = d
-        else:
-            if main is None:
-                return (None, False, None)
-            for main_d, ads in self.downloads_in_admode.iteritems():
-                if d in ads.keys() and main_d == main:
-                    main_download = main_d
-                    ad_downloads = ads
-                    is_ad = True
-                    break
-
-            if main_download is None:
-                return (None, False, None)
-        if DEBUG2:
-            log('bg::get_ad_downloads: main', binascii.hexlify(main_download.get_hash()), 'this', binascii.hexlify(d.get_hash()), 'is_ad', is_ad)
-            if ad_downloads is not None:
-                for ad, info in ad_downloads.iteritems():
-                    log('bg::get_ad_downloads: ad', binascii.hexlify(ad.get_hash()), 'info', info)
-
-        return (main_download, is_ad, ad_downloads)
 
     def download_failed_callback(self, failed_download, error):
         self.dlinfo_lock.acquire()

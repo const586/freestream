@@ -26,7 +26,6 @@ from freestream.Core.BitTornado.iprangeparse import IP_List as IP_Range_List
 from freestream.Core.BitTornado.torrentlistparse import parsetorrentlist
 from freestream.Core.BitTornado.bencode import bencode, bdecode, Bencached
 from freestream.Core.BitTornado.zurllib import urlopen
-from freestream.Core.Utilities.TSCrypto import sha
 from freestream.Core.BitTornado.clock import clock
 from freestream.Core.BitTornado.__init__ import version_short, createPeerID
 from freestream.Core.simpledefs import TRIBLER_TORRENT_EXT

@@ -5,9 +5,6 @@ from cStringIO import StringIO
 import struct
 import time
 import array
-from freestream.Core.Utilities.TSCrypto import sha, RSA_pub_key_from_der
-from freestream.Core.osutils import *
-from M2Crypto import EC
 from freestream.Core.osutils import *
 from types import StringType
 DEBUG = False

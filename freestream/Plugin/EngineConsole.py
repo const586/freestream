@@ -32,6 +32,7 @@ class AppWrapper:
 
 def start(apptype, exec_dir):
     globalConfig.set_value('apptype', apptype)
+    appname = "freestream"
     globalConfig.set_mode('client_console')
     wrapper = AppWrapper()
     bgapp = run_bgapp(wrapper, appname, VERSION)

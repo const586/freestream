@@ -15,7 +15,6 @@ except ImportError:
 
 from freestream.Core.BitTornado.piecebuffer import BufferPool
 from freestream.Core.Utilities.logger import log, log_exc
-from freestream.Core.Utilities.TSCrypto import m2_AES_encrypt, m2_AES_decrypt
 from freestream.GlobalConfig import globalConfig
 try:
     True

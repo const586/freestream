@@ -6,7 +6,6 @@ from freestream.Core.CacheDB.Notifier import Notifier
 from freestream.Core.Subtitles.SubtitleHandler.SimpleTokenBucket import SimpleTokenBucket
 from freestream.Core.Subtitles.SubtitleHandler.SubsMessageHandler import SubsMessageHandler
 from freestream.Core.Utilities import utilities
-from freestream.Core.Utilities.TSCrypto import sha
 from freestream.Core.Utilities.utilities import bin2str, show_permid_short
 from freestream.Core.simpledefs import NTFY_ACT_DISK_FULL, NTFY_SUBTITLE_CONTENTS, NTFY_UPDATE
 import os

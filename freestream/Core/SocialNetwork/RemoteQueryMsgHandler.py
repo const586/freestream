@@ -7,7 +7,6 @@ from sets import Set
 from traceback import print_stack, print_exc
 import datetime
 import time as T
-from M2Crypto import Rand
 from freestream.Core.simpledefs import *
 from freestream.Core.BitTornado.bencode import bencode, bdecode
 from freestream.Core.CacheDB.sqlitecachedb import bin2str, str2bin

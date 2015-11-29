@@ -30,7 +30,6 @@ from freestream.Core.CacheDB.SqliteCacheDBHandler import MyDBHandler, TorrentDBH
 from freestream.Category.Category import Category
 from freestream.Core.NATFirewall.DialbackMsgHandler import DialbackMsgHandler
 from freestream.Core.BitTornado.BT1.Encrypter import incompletecounter
-from freestream.Core.Utilities.TSCrypto import m2_AES_encrypt, m2_AES_decrypt
 if sys.platform == 'win32':
     SOCKET_BLOCK_ERRORCODE = 10035
 else:

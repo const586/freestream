@@ -2,7 +2,6 @@
 import socket
 from time import time, strftime, gmtime
 from base64 import encodestring, decodestring
-from freestream.Core.Utilities.TSCrypto import sha
 import sys
 import os
 import copy

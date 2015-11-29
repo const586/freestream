@@ -10,7 +10,6 @@ from copy import deepcopy
 from threading import Lock, RLock, currentThread
 from bisect import insort
 from freestream.Core.Merkle.merkle import MerkleTree
-from freestream.Core.Utilities.TSCrypto import sha
 from freestream.Core.BitTornado.bitfield import Bitfield
 from freestream.Core.BitTornado.clock import clock
 from freestream.Core.BitTornado.bencode import bencode

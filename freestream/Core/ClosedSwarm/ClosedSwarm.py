@@ -2,7 +2,6 @@
 import time
 import os.path
 from base64 import encodestring, decodestring
-from M2Crypto.EC import pub_key_from_der
 from freestream.Core.Overlay import permid
 from freestream.Core.BitTornado.bencode import bencode, bdecode
 from freestream.Core.BitTornado.BT1.MessageID import *

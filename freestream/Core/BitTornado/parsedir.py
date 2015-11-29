@@ -6,7 +6,6 @@ from bencode import bencode, bdecode
 from BT1.btformats import check_info
 from freestream.Core.simpledefs import TRIBLER_TORRENT_EXT
 from freestream.Core.TorrentDef import TorrentDef
-from freestream.Core.Utilities.TSCrypto import sha
 try:
     True
 except:

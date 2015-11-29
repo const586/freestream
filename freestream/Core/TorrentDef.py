@@ -21,7 +21,6 @@ from freestream.Core.Utilities.utilities import validTorrentFile, isValidURL
 from freestream.Core.Utilities.unicode import dunno2unicode
 from freestream.Core.Utilities.timeouturlopen import urlOpenTimeout
 from freestream.Core.osutils import *
-from freestream.Core.Utilities.TSCrypto import sha, m2_AES_encrypt, m2_AES_decrypt
 from freestream.Core.Utilities.logger import log, log_exc
 from freestream.Core.ClosedSwarm import ClosedSwarm
 from freestream.Core.DecentralizedTracking.MagnetLink.MagnetLink import MagnetLink

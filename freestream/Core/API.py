@@ -14,7 +14,6 @@ except ImportError:
 
 from freestream.Core.TorrentDef import *
 try:
-    import M2Crypto
     from freestream.Core.LiveSourceAuthConfig import *
 except ImportError:
     pass

@@ -11,7 +11,6 @@ from freestream.Core.BitTornado.BT1.convert import toint, tobinary
 from freestream.Core.BitTornado.RawServer import RawServer
 from freestream.Core.BitTornado.SocketHandler import SocketHandler
 from freestream.Core.BitTornado.bencode import bencode, bdecode
-from freestream.Core.Utilities.TSCrypto import sha
 UT_EXTEND_HANDSHAKE = chr(0)
 UT_PEX_ID = chr(1)
 UT_METADATA_ID = chr(2)

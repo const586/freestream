@@ -8,7 +8,6 @@ from freestream.GlobalConfig import globalConfig
 from freestream.Core.BitTornado.BT1.PiecePicker import PiecePicker
 from freestream.Core.simpledefs import *
 from freestream.Core.Video.LiveSourceAuth import NullAuthenticator, ECDSAAuthenticator, RSAAuthenticator
-from freestream.Core.Utilities.TSCrypto import sha
 from freestream.Core.Utilities.logger import log, log_exc
 from freestream.Core.BitTornado.CurrentRateMeasure import Measure
 DEBUG = False

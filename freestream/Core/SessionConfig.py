@@ -8,7 +8,6 @@ from freestream.Core.defaults import sessdefaults
 from freestream.Core.Base import *
 from freestream.Core.BitTornado.RawServer import autodetect_socket_style
 from freestream.Core.Utilities.utilities import find_prog_in_PATH
-from freestream.Core.Utilities.TSCrypto import AES_encrypt, AES_decrypt, m2_AES_encrypt, m2_AES_decrypt
 
 class SessionConfigInterface():
 

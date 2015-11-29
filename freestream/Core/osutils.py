@@ -239,58 +239,6 @@ def get_readable_torrent_name(infohash, raw_filename):
     save_name = ' ' + fix_filebasename(raw_filename, maxlen=254 - len(suffix)) + suffix
     return save_name
 
-
-if sys.platform == 'win32':
-    import win32pdh
-
-    def getcpuload():
-        cpupath = win32pdh.MakeCounterPath((None, 'Processor', '_Total', None, -1, '% Processor Time'))
-        query = win32pdh.OpenQuery(None, 0)
-        counter = win32pdh.AddCounter(query, cpupath, 0)
-        win32pdh.CollectQueryData(query)
-        time.sleep(0.1)
-        win32pdh.CollectQueryData(query)
-        status, value = win32pdh.GetFormattedCounterValue(counter, win32pdh.PDH_FMT_LONG)
-        return float(value) / 100.0
-
-
-elif sys.platform == 'linux2':
-
-    def read_proc_stat():
-        f = open('/proc/stat', 'rb')
-        try:
-            while True:
-                line = f.readline()
-                if len(line) == 0:
-                    break
-                if line.startswith('cpu '):
-                    words = line.split()
-                    total = 0
-                    for i in range(1, 5):
-                        total += int(words[i])
-
-                    idle = int(words[4])
-                    return (total, idle)
-
-        finally:
-            f.close()
-
-
-    def getcpuload():
-        total1, idle1 = read_proc_stat()
-        time.sleep(0.1)
-        total2, idle2 = read_proc_stat()
-        total = total2 - total1
-        idle = idle2 - idle1
-        return 1.0 - float(idle) / float(total)
-
-
-else:
-
-    def getupload():
-        raise ValueError('Not yet implemented')
-
-
 def startfile(filepath):
     if sys.platform == 'darwin':
         subprocess.call(('open', filepath))

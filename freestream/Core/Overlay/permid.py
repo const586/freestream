@@ -1,14 +1,11 @@
 ﻿#Embedded file name: freestream\Core\Overlay\permid.pyo
 import sys
-from freestream.Core.Utilities.TSCrypto import sha
 from base64 import encodestring
 from copy import deepcopy
 import traceback, os
-from M2Crypto import Rand, EC
 from freestream.Core.BitTornado.bencode import bencode, bdecode
 from freestream.Core.BitTornado.BT1.MessageID import *
 DEBUG = False
-keypair_ecc_curve = EC.NID_sect233k1
 num_random_bits = 8192
 STATE_INITIAL = 0
 STATE_AWAIT_R1 = 1
@@ -22,21 +19,6 @@ def init():
 
 def exit():
     pass
-
-
-def generate_keypair():
-    ec_keypair = EC.gen_params(keypair_ecc_curve)
-    ec_keypair.gen_key()
-    return ec_keypair
-
-
-def read_keypair(keypairfilename):
-    return EC.load_key(keypairfilename)
-
-
-def read_pub_key(pubfilename):
-    return EC.load_pub_key(pubfilename)
-
 
 def save_keypair(keypair, keypairfilename):
     keypair.save_key(keypairfilename, None)
@@ -53,12 +35,6 @@ def permid_for_user(permid):
 def sign_data(plaintext, ec_keypair):
     digest = sha(plaintext).digest()
     return ec_keypair.sign_dsa_asn1(digest)
-
-
-def verify_data(plaintext, permid, blob):
-    pubkey = EC.pub_key_from_der(permid)
-    digest = sha(plaintext).digest()
-    return pubkey.verify_dsa_asn1(digest, blob)
 
 
 def verify_data_pubkeyobj(plaintext, pubkey, blob):

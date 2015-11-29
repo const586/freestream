@@ -29,7 +29,6 @@ from CurrentRateMeasure import Measure
 from BT1.PiecePicker import PiecePicker
 from BT1.Statistics import Statistics
 from bencode import bencode, bdecode
-from freestream.Core.Utilities.TSCrypto import block_encrypt, block_decrypt
 from freestream.Core.Utilities.utilities import get_ip
 from os import path, makedirs, listdir
 from parseargs import parseargs, formatDefinitions, defaultargs

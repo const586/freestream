@@ -3,7 +3,6 @@ import sys
 import os
 from hashlib import md5
 import zlib
-from freestream.Core.Utilities.TSCrypto import sha
 from copy import copy
 from time import time
 from types import LongType

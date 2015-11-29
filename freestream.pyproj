@@ -202,7 +202,6 @@
     <Compile Include="freestream\Core\Statistics\Crawler.py" />
     <Compile Include="freestream\Core\Statistics\DatabaseCrawler.py" />
     <Compile Include="freestream\Core\Statistics\FriendshipCrawler.py" />
-    <Compile Include="freestream\Core\Statistics\GoogleAnalytics.py" />
     <Compile Include="freestream\Core\Statistics\Logger.py" />
     <Compile Include="freestream\Core\Statistics\PunctureCrawler.py" />
     <Compile Include="freestream\Core\Statistics\RepexCrawler.py" />
@@ -235,7 +234,6 @@
     <Compile Include="freestream\Core\Utilities\mp4metadata.py" />
     <Compile Include="freestream\Core\Utilities\odict.py" />
     <Compile Include="freestream\Core\Utilities\timeouturlopen.py" />
-    <Compile Include="freestream\Core\Utilities\TSCrypto.py" />
     <Compile Include="freestream\Core\Utilities\unicode.py" />
     <Compile Include="freestream\Core\Utilities\utilities.py" />
     <Compile Include="freestream\Core\Utilities\win32regchecker.py" />

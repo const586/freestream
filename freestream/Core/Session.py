@@ -20,13 +20,6 @@ from freestream.Core.APIImplementation.UserCallbackHandler import UserCallbackHa
 from freestream.Core.osutils import get_appstate_dir
 from freestream.Core.Utilities.logger import log, log_exc
 from freestream.Core.NATFirewall.ConnectionCheck import ConnectionCheck
-GOTM2CRYPTO = False
-try:
-    import M2Crypto
-    import freestream.Core.Overlay.permid as permidmod
-    GOTM2CRYPTO = True
-except ImportError:
-    pass
 
 DEBUG = False
 
@@ -103,20 +96,8 @@ class Session(SessionRuntimeConfig):
             self.sessconfig['max_socket_connects'] = sessdefaults['max_socket_connects']
         if not self.sessconfig['peer_icon_path']:
             self.sessconfig['peer_icon_path'] = os.path.join(self.sessconfig['state_dir'], STATEDIR_PEERICON_DIR)
-        if GOTM2CRYPTO:
-            permidmod.init()
-            pairfilename = os.path.join(self.sessconfig['state_dir'], 'ec.pem')
-            if self.sessconfig['eckeypairfilename'] is None:
-                self.sessconfig['eckeypairfilename'] = pairfilename
-            if os.access(self.sessconfig['eckeypairfilename'], os.F_OK):
-                self.keypair = permidmod.read_keypair(self.sessconfig['eckeypairfilename'])
-            else:
-                self.keypair = permidmod.generate_keypair()
-                pubfilename = os.path.join(self.sessconfig['state_dir'], 'ecpub.pem')
-                permidmod.save_keypair(self.keypair, pairfilename)
-                permidmod.save_pub_key(self.keypair, pubfilename)
-        else:
-            self.keypair = None
+
+        self.keypair = None
         dlpstatedir = os.path.join(self.sessconfig['state_dir'], STATEDIR_DLPSTATE_DIR)
         if not os.path.isdir(dlpstatedir):
             os.mkdir(dlpstatedir)
