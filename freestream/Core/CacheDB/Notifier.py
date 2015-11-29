@@ -1,8 +1,8 @@
-#Embedded file name: ACEStream\Core\CacheDB\Notifier.pyo
+﻿#Embedded file name: freestream\Core\CacheDB\Notifier.pyo
 import sys
 import threading
 from traceback import print_exc, print_stack
-from ACEStream.Core.simpledefs import *
+from freestream.Core.simpledefs import *
 
 class Notifier:
     SUBJECTS = [NTFY_PEERS,

@@ -1,12 +1,12 @@
-#Embedded file name: ACEStream\Core\CacheDB\MetadataDBHandler.pyo
-from ACEStream.Core.Subtitles.MetadataDomainObjects.SubtitleInfo import SubtitleInfo
-from ACEStream.Core.Subtitles.MetadataDomainObjects.MetadataDTO import MetadataDTO
-from ACEStream.Core.CacheDB.SqliteCacheDBHandler import BasicDBHandler
+﻿#Embedded file name: freestream\Core\CacheDB\MetadataDBHandler.pyo
+from freestream.Core.Subtitles.MetadataDomainObjects.SubtitleInfo import SubtitleInfo
+from freestream.Core.Subtitles.MetadataDomainObjects.MetadataDTO import MetadataDTO
+from freestream.Core.CacheDB.SqliteCacheDBHandler import BasicDBHandler
 import threading
-from ACEStream.Core.CacheDB.sqlitecachedb import SQLiteCacheDB
+from freestream.Core.CacheDB.sqlitecachedb import SQLiteCacheDB
 import sys
-from ACEStream.Core.Subtitles.MetadataDomainObjects.MetadataExceptions import SignatureException, MetadataDBException
-from ACEStream.Core.Utilities.utilities import bin2str, str2bin
+from freestream.Core.Subtitles.MetadataDomainObjects.MetadataExceptions import SignatureException, MetadataDBException
+from freestream.Core.Utilities.utilities import bin2str, str2bin
 import sqlite3
 import time
 SUBTITLE_LANGUAGE_CODE = 'lang'

@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\BitTornado\BT1\Encrypter.pyo
+﻿#Embedded file name: freestream\Core\BitTornado\BT1\Encrypter.pyo
 import sys
 from base64 import b64encode
 from cStringIO import StringIO
@@ -8,11 +8,11 @@ from urllib import quote
 from struct import unpack
 from time import time
 from traceback import print_stack
-from ACEStream.Core.BitTornado.BT1.MessageID import protocol_name, option_pattern
-from ACEStream.Core.BitTornado.BT1.convert import toint
-from ACEStream.Core.ProxyService.ProxyServiceUtil import *
-from ACEStream.Core.Utilities.logger import log, log_exc
-from ACEStream.GlobalConfig import globalConfig
+from freestream.Core.BitTornado.BT1.MessageID import protocol_name, option_pattern
+from freestream.Core.BitTornado.BT1.convert import toint
+from freestream.Core.ProxyService.ProxyServiceUtil import *
+from freestream.Core.Utilities.logger import log, log_exc
+from freestream.GlobalConfig import globalConfig
 try:
     True
 except:

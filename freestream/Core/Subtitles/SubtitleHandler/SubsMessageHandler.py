@@ -1,11 +1,11 @@
-#Embedded file name: ACEStream\Core\Subtitles\SubtitleHandler\SubsMessageHandler.pyo
-from ACEStream.Core.BitTornado.BT1.MessageID import SUBS, GET_SUBS
-from ACEStream.Core.BitTornado.bencode import bencode, bdecode
-from ACEStream.Core.Subtitles.MetadataDomainObjects.Languages import LanguagesProvider
-from ACEStream.Core.Subtitles.MetadataDomainObjects.MetadataExceptions import SubtitleMsgHandlerException
-from ACEStream.Core.Overlay.SecureOverlay import OLPROTO_VER_FOURTEENTH
-from ACEStream.Core.Utilities import utilities
-from ACEStream.Core.Utilities.utilities import show_permid_short, validInfohash, validPermid, bin2str
+﻿#Embedded file name: freestream\Core\Subtitles\SubtitleHandler\SubsMessageHandler.pyo
+from freestream.Core.BitTornado.BT1.MessageID import SUBS, GET_SUBS
+from freestream.Core.BitTornado.bencode import bencode, bdecode
+from freestream.Core.Subtitles.MetadataDomainObjects.Languages import LanguagesProvider
+from freestream.Core.Subtitles.MetadataDomainObjects.MetadataExceptions import SubtitleMsgHandlerException
+from freestream.Core.Overlay.SecureOverlay import OLPROTO_VER_FOURTEENTH
+from freestream.Core.Utilities import utilities
+from freestream.Core.Utilities.utilities import show_permid_short, validInfohash, validPermid, bin2str
 from time import time
 from traceback import print_exc
 from struct import pack, unpack

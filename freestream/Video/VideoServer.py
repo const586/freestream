@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Video\VideoServer.pyo
+﻿#Embedded file name: freestream\Video\VideoServer.pyo
 import sys
 import time
 import socket
@@ -9,9 +9,9 @@ from traceback import print_stack, print_exc
 import string
 from cStringIO import StringIO
 import os
-from ACEStream.GlobalConfig import globalConfig
-import ACEStream.Core.osutils
-from ACEStream.Core.Utilities.logger import log, log_exc
+from freestream.GlobalConfig import globalConfig
+import freestream.Core.osutils
+from freestream.Core.Utilities.logger import log, log_exc
 DEBUG = False
 DEBUGCONTENT = False
 DEBUGWEBUI = False

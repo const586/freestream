@@ -1,2 +1,2 @@
-#Embedded file name: ACEStream\Core\Statistics\__init__.pyo
+﻿#Embedded file name: freestream\Core\Statistics\__init__.pyo
 pass

@@ -1,7 +1,7 @@
-#Embedded file name: ACEStream\Core\LiveSourceAuthConfig.pyo
-from ACEStream.Core.simpledefs import *
-import ACEStream.Core.Overlay.permid as permidmod
-from ACEStream.Core.Utilities.TSCrypto import RSA_keypair_to_pub_key_in_der
+﻿#Embedded file name: freestream\Core\LiveSourceAuthConfig.pyo
+from freestream.Core.simpledefs import *
+import freestream.Core.Overlay.permid as permidmod
+from freestream.Core.Utilities.TSCrypto import RSA_keypair_to_pub_key_in_der
 from M2Crypto import RSA
 
 class LiveSourceAuthConfig:

@@ -1,10 +1,10 @@
-#Embedded file name: ACEStream\Utilities\configreader.pyo
+﻿#Embedded file name: freestream\Utilities\configreader.pyo
 import sys
 import os
 from cStringIO import StringIO
 from ConfigParser import ConfigParser, MissingSectionHeaderError, NoSectionError, ParsingError, DEFAULTSECT
-from ACEStream.Core.BitTornado.bencode import bencode, bdecode
-from ACEStream.Core.defaults import dldefaults, DEFAULTPORT
+from freestream.Core.BitTornado.bencode import bencode, bdecode
+from freestream.Core.defaults import dldefaults, DEFAULTPORT
 bt1_defaults = []
 for k, v in dldefaults.iteritems():
     bt1_defaults.append((k, v, 'See triblerAPI'))

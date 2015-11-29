@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\BitTornado\ServerPortHandler.pyo
+﻿#Embedded file name: freestream\Core\BitTornado\ServerPortHandler.pyo
 import sys
 from cStringIO import StringIO
 from binascii import b2a_hex
@@ -9,7 +9,7 @@ except:
     False = 0
 
 from BT1.Encrypter import protocol_name
-from ACEStream.Core.Utilities.logger import log, log_exc
+from freestream.Core.Utilities.logger import log, log_exc
 
 def toint(s):
     return long(b2a_hex(s), 16)

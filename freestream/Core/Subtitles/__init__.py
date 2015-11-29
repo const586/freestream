@@ -1,2 +1,2 @@
-#Embedded file name: ACEStream\Core\Subtitles\__init__.pyo
+﻿#Embedded file name: freestream\Core\Subtitles\__init__.pyo
 pass

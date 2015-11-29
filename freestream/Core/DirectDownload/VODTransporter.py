@@ -1,12 +1,12 @@
-#Embedded file name: ACEStream\Core\DirectDownload\VODTransporter.pyo
+﻿#Embedded file name: freestream\Core\DirectDownload\VODTransporter.pyo
 import os
 import time
 import binascii
 from traceback import print_exc
 from threading import Condition
-from ACEStream.Core.Video.MovieTransport import MovieTransport, MovieTransportStreamWrapper
-from ACEStream.Core.simpledefs import *
-from ACEStream.Core.Utilities.logger import log, log_exc
+from freestream.Core.Video.MovieTransport import MovieTransport, MovieTransportStreamWrapper
+from freestream.Core.simpledefs import *
+from freestream.Core.Utilities.logger import log, log_exc
 DEBUG = False
 DEFAULT_READ_SIZE = 1048576
 REFILL_BUFFER_INTERVAL = 0.1

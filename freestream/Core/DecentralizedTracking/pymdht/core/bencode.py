@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\DecentralizedTracking\pymdht\core\bencode.pyo
+﻿#Embedded file name: freestream\Core\DecentralizedTracking\pymdht\core\bencode.pyo
 import cStringIO
 import logging
 logger = logging.getLogger('dht')

@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\BitTornado\piecebuffer.pyo
+﻿#Embedded file name: freestream\Core\BitTornado\piecebuffer.pyo
 from array import array
 from threading import Lock
 try:

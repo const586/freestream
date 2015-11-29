@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\BitTornado\BT1\Connecter.pyo
+﻿#Embedded file name: freestream\Core\BitTornado\BT1\Connecter.pyo
 import time
 import sys
 from types import DictType, IntType, LongType, ListType, StringType
@@ -7,20 +7,20 @@ from traceback import print_stack
 from math import ceil
 import socket
 import urlparse
-from ACEStream.Core.simpledefs import *
-from ACEStream.GlobalConfig import globalConfig
-from ACEStream.Core.BitTornado.bitfield import Bitfield
-from ACEStream.Core.BitTornado.clock import clock
-from ACEStream.Core.BitTornado.bencode import bencode, bdecode
-from ACEStream.Core.BitTornado.__init__ import version_short, decodePeerID, TRIBLER_PEERID_LETTER
-from ACEStream.Core.BitTornado.BT1.convert import tobinary, toint
-from ACEStream.Core.BitTornado.BT1.MessageID import *
-from ACEStream.Core.DecentralizedTracking.MagnetLink.__init__ import *
-from ACEStream.Core.DecentralizedTracking.ut_pex import *
-from ACEStream.Core.BitTornado.BT1.track import compact_ip, decompact_ip
-from ACEStream.Core.BitTornado.CurrentRateMeasure import Measure
-from ACEStream.Core.ClosedSwarm import ClosedSwarm
-from ACEStream.Core.Utilities.logger import log, log_exc
+from freestream.Core.simpledefs import *
+from freestream.GlobalConfig import globalConfig
+from freestream.Core.BitTornado.bitfield import Bitfield
+from freestream.Core.BitTornado.clock import clock
+from freestream.Core.BitTornado.bencode import bencode, bdecode
+from freestream.Core.BitTornado.__init__ import version_short, decodePeerID, TRIBLER_PEERID_LETTER
+from freestream.Core.BitTornado.BT1.convert import tobinary, toint
+from freestream.Core.BitTornado.BT1.MessageID import *
+from freestream.Core.DecentralizedTracking.MagnetLink.__init__ import *
+from freestream.Core.DecentralizedTracking.ut_pex import *
+from freestream.Core.BitTornado.BT1.track import compact_ip, decompact_ip
+from freestream.Core.BitTornado.CurrentRateMeasure import Measure
+from freestream.Core.ClosedSwarm import ClosedSwarm
+from freestream.Core.Utilities.logger import log, log_exc
 DEBUG = False
 DEBUG_NORMAL_MSGS = False
 DEBUG_UT_PEX = False
@@ -355,7 +355,7 @@ class Connection():
             try:
                 yourip = decompact_ip(d['yourip'])
                 try:
-                    from ACEStream.Core.NATFirewall.DialbackMsgHandler import DialbackMsgHandler
+                    from freestream.Core.NATFirewall.DialbackMsgHandler import DialbackMsgHandler
                     dmh = DialbackMsgHandler.getInstance()
                     dmh.network_btengine_extend_yourip(yourip)
                 except:
@@ -401,7 +401,7 @@ class Connection():
         ipv4 = None
         if self.connecter.config.get('same_nat_try_internal', 0):
             is_tribler_peer = self.is_tribler_peer()
-            print >> sys.stderr, 'connecter: send_extend_hs: Peer is ACEStream client', is_tribler_peer
+            print >> sys.stderr, 'connecter: send_extend_hs: Peer is freestream client', is_tribler_peer
             if is_tribler_peer:
                 ipv4 = self.get_ip(real=True)
         d = {}
@@ -613,7 +613,7 @@ class Connection():
         if DEBUG:
             print >> sys.stderr, 'connecter: Initiating overlay connection'
         if not self.initiated_overlay:
-            from ACEStream.Core.Overlay.SecureOverlay import SecureOverlay
+            from freestream.Core.Overlay.SecureOverlay import SecureOverlay
             self.initiated_overlay = True
             so = SecureOverlay.getInstance()
             so.connect_dns(self.connection.dns, self.network_connect_dns_callback)
@@ -790,7 +790,7 @@ class Connecter():
         if DEBUG:
             print >> sys.stderr, 'Connecter: EXTEND: my dict', self.EXTEND_HANDSHAKE_M_DICT
         if config['overlay']:
-            from ACEStream.Core.Overlay.OverlayThreadingBridge import OverlayThreadingBridge
+            from freestream.Core.Overlay.OverlayThreadingBridge import OverlayThreadingBridge
             self.overlay_bridge = OverlayThreadingBridge.getInstance()
         else:
             self.overlay_bridge = None
@@ -834,7 +834,7 @@ class Connecter():
                 print >> sys.stderr, 'connecter: Peer is client', client, 'version', version, c.get_ip(), c.get_port()
             if self.overlay_enabled and client == TRIBLER_PEERID_LETTER and version <= '3.5.0' and connection.locally_initiated:
                 if DEBUG:
-                    print >> sys.stderr, 'connecter: Peer is previous ACEStream version, attempt overlay connection'
+                    print >> sys.stderr, 'connecter: Peer is previous freestream version, attempt overlay connection'
                 c.connect_overlay()
             elif self.ut_pex_enabled:
                 c.send_extend_handshake()
@@ -1305,7 +1305,7 @@ class Connecter():
 
 
 def olthread_bartercast_conn_lost(ip, port, down_kb, up_kb):
-    from ACEStream.Core.CacheDB.CacheDBHandler import PeerDBHandler, BarterCastDBHandler
+    from freestream.Core.CacheDB.CacheDBHandler import PeerDBHandler, BarterCastDBHandler
     peerdb = PeerDBHandler.getInstance()
     bartercastdb = BarterCastDBHandler.getInstance()
     if bartercastdb:

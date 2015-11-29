@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\APIImplementation\ThreadPool.pyo
+﻿#Embedded file name: freestream\Core\APIImplementation\ThreadPool.pyo
 import sys
 import time
 from traceback import print_exc

@@ -1,11 +1,11 @@
-#Embedded file name: ACEStream\Core\BitTornado\HTTPHandler.pyo
+﻿#Embedded file name: freestream\Core\BitTornado\HTTPHandler.pyo
 import sys
 import time
 from cStringIO import StringIO
 from clock import clock
 from gzip import GzipFile
 from traceback import print_exc
-from ACEStream.Core.Utilities.logger import log, log_exc
+from freestream.Core.Utilities.logger import log, log_exc
 try:
     True
 except:
@@ -259,7 +259,7 @@ class DummyHTTPHandler:
     def external_connection_made(self, connection):
         if DEBUG:
             print >> sys.stderr, 'DummyHTTPHandler: ext_conn_made'
-        reply = 'HTTP/1.1 404 Not Found\r\nContent-Type: text/plain\r\n\r\nACEStream Internal Tracker not activated.\r\n'
+        reply = 'HTTP/1.1 404 Not Found\r\nContent-Type: text/plain\r\n\r\nfreestream Internal Tracker not activated.\r\n'
         connection.write(reply)
         connection.close()
 

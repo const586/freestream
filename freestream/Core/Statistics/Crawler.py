@@ -1,13 +1,13 @@
-#Embedded file name: ACEStream\Core\Statistics\Crawler.pyo
+﻿#Embedded file name: freestream\Core\Statistics\Crawler.pyo
 import sys
 import time
 import random
 from traceback import print_exc, print_stack
-from ACEStream.Core.BitTornado.BT1.MessageID import CRAWLER_REQUEST, CRAWLER_REPLY, getMessageName
-from ACEStream.Core.CacheDB.SqliteCacheDBHandler import CrawlerDBHandler
-from ACEStream.Core.Overlay.OverlayThreadingBridge import OverlayThreadingBridge
-from ACEStream.Core.Overlay.SecureOverlay import OLPROTO_VER_SEVENTH
-from ACEStream.Core.Utilities.utilities import show_permid_short
+from freestream.Core.BitTornado.BT1.MessageID import CRAWLER_REQUEST, CRAWLER_REPLY, getMessageName
+from freestream.Core.CacheDB.SqliteCacheDBHandler import CrawlerDBHandler
+from freestream.Core.Overlay.OverlayThreadingBridge import OverlayThreadingBridge
+from freestream.Core.Overlay.SecureOverlay import OLPROTO_VER_SEVENTH
+from freestream.Core.Utilities.utilities import show_permid_short
 DEBUG = False
 MAX_PAYLOAD_LENGTH = 32768
 CHANNEL_TIMEOUT = 3600

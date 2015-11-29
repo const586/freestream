@@ -1,11 +1,11 @@
-#Embedded file name: ACEStream\Core\Overlay\OverlayThreadingBridge.pyo
+﻿#Embedded file name: freestream\Core\Overlay\OverlayThreadingBridge.pyo
 import sys
 from threading import currentThread
 from traceback import print_exc
-from ACEStream.Core.Overlay.SecureOverlay import CloseException
-from ACEStream.Core.BitTornado.BT1.MessageID import getMessageName
-from ACEStream.Core.Utilities.utilities import show_permid_short
-from ACEStream.Utilities.TimedTaskQueue import TimedTaskQueue
+from freestream.Core.Overlay.SecureOverlay import CloseException
+from freestream.Core.BitTornado.BT1.MessageID import getMessageName
+from freestream.Core.Utilities.utilities import show_permid_short
+from freestream.Utilities.TimedTaskQueue import TimedTaskQueue
 import threading
 DEBUG = False
 

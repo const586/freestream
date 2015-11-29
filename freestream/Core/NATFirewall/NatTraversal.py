@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\NATFirewall\NatTraversal.pyo
+﻿#Embedded file name: freestream\Core\NATFirewall\NatTraversal.pyo
 from time import strftime
 from traceback import print_exc
 import socket

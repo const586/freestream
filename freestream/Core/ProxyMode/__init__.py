@@ -1,2 +1,2 @@
-#Embedded file name: ACEStream\Core\ProxyMode\__init__.pyo
+﻿#Embedded file name: freestream\Core\ProxyMode\__init__.pyo
 pass

@@ -1,8 +1,8 @@
-#Embedded file name: ACEStream\Core\Utilities\EncryptedStorage.pyo
+﻿#Embedded file name: freestream\Core\Utilities\EncryptedStorage.pyo
 import os
 import hashlib
-from ACEStream.Core.Utilities.TSCrypto import block_encrypt, block_decrypt
-from ACEStream.Core.Utilities.logger import log, log_exc
+from freestream.Core.Utilities.TSCrypto import block_encrypt, block_decrypt
+from freestream.Core.Utilities.logger import log, log_exc
 DEBUG = False
 
 class EncryptedStorageStream:

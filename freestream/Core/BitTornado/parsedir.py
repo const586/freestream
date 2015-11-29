@@ -1,12 +1,12 @@
-#Embedded file name: ACEStream\Core\BitTornado\parsedir.pyo
+﻿#Embedded file name: freestream\Core\BitTornado\parsedir.pyo
 import os
 import sys
 from traceback import print_exc
 from bencode import bencode, bdecode
 from BT1.btformats import check_info
-from ACEStream.Core.simpledefs import TRIBLER_TORRENT_EXT
-from ACEStream.Core.TorrentDef import TorrentDef
-from ACEStream.Core.Utilities.TSCrypto import sha
+from freestream.Core.simpledefs import TRIBLER_TORRENT_EXT
+from freestream.Core.TorrentDef import TorrentDef
+from freestream.Core.Utilities.TSCrypto import sha
 try:
     True
 except:

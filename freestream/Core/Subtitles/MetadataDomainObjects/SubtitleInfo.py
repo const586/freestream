@@ -1,6 +1,6 @@
-#Embedded file name: ACEStream\Core\Subtitles\MetadataDomainObjects\SubtitleInfo.pyo
+﻿#Embedded file name: freestream\Core\Subtitles\MetadataDomainObjects\SubtitleInfo.pyo
 from __future__ import with_statement
-from ACEStream.Core.Subtitles.MetadataDomainObjects.Languages import LanguagesProvider
+from freestream.Core.Subtitles.MetadataDomainObjects.Languages import LanguagesProvider
 import base64
 import codecs
 import hashlib

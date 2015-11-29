@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Player\common.pyo
+﻿#Embedded file name: freestream\Player\common.pyo
 
 
 def get_status_msgs(ds, videoplayer_mediastate, appname, said_start_playback, decodeprogress, totalhelping, totalspeed):

@@ -1,14 +1,14 @@
-#Embedded file name: ACEStream\Core\Statistics\VideoPlaybackCrawler.pyo
+﻿#Embedded file name: freestream\Core\Statistics\VideoPlaybackCrawler.pyo
 from time import strftime
 import cPickle
 import sys
 import threading
 import zlib
-from ACEStream.Core.BitTornado.BT1.MessageID import CRAWLER_VIDEOPLAYBACK_INFO_QUERY, CRAWLER_VIDEOPLAYBACK_EVENT_QUERY
-from ACEStream.Core.CacheDB.SqliteVideoPlaybackStatsCacheDB import VideoPlaybackDBHandler
-from ACEStream.Core.Overlay.SecureOverlay import OLPROTO_VER_EIGHTH, OLPROTO_VER_TENTH
-from ACEStream.Core.Statistics.Crawler import Crawler
-from ACEStream.Core.Utilities.utilities import show_permid, show_permid_short
+from freestream.Core.BitTornado.BT1.MessageID import CRAWLER_VIDEOPLAYBACK_INFO_QUERY, CRAWLER_VIDEOPLAYBACK_EVENT_QUERY
+from freestream.Core.CacheDB.SqliteVideoPlaybackStatsCacheDB import VideoPlaybackDBHandler
+from freestream.Core.Overlay.SecureOverlay import OLPROTO_VER_EIGHTH, OLPROTO_VER_TENTH
+from freestream.Core.Statistics.Crawler import Crawler
+from freestream.Core.Utilities.utilities import show_permid, show_permid_short
 DEBUG = False
 
 class VideoPlaybackCrawler:

@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\BitTornado\BT1\Filter.pyo
+﻿#Embedded file name: freestream\Core\BitTornado\BT1\Filter.pyo
 
 
 class Filter:

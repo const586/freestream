@@ -1,2 +1,2 @@
-#Embedded file name: ACEStream\Lang\__init__.pyo
+﻿#Embedded file name: freestream\Lang\__init__.pyo
 pass

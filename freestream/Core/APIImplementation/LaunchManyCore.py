@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\APIImplementation\LaunchManyCore.pyo
+﻿#Embedded file name: freestream\Core\APIImplementation\LaunchManyCore.pyo
 import sys
 import os
 import pickle
@@ -9,28 +9,28 @@ import time
 import traceback
 from threading import Event, Thread, enumerate, currentThread
 from traceback import print_stack, print_exc
-from ACEStream.Core.BitTornado.RawServer import RawServer
-from ACEStream.Core.BitTornado.ServerPortHandler import MultiHandler
-from ACEStream.Core.BitTornado.BT1.track import Tracker
-from ACEStream.Core.BitTornado.HTTPHandler import HTTPHandler, DummyHTTPHandler
-from ACEStream.Core.simpledefs import *
-from ACEStream.Core.exceptions import *
-from ACEStream.Core.Download import Download
-from ACEStream.Core.DownloadConfig import DownloadStartupConfig
-from ACEStream.Core.TorrentDef import TorrentDef
-from ACEStream.Core.NATFirewall.guessip import get_my_wan_ip
-from ACEStream.Core.NATFirewall.UPnPThread import UPnPThread
-from ACEStream.Core.NATFirewall.UDPPuncture import UDPHandler
-from ACEStream.Core.DecentralizedTracking import mainlineDHT
-from ACEStream.Core.DecentralizedTracking.MagnetLink.MagnetLink import MagnetHandler
-from ACEStream.Core.Utilities.logger import log, log_exc
-import ACEStream.Core.CacheDB.cachedb as cachedb
-from ACEStream.Core.CacheDB.sqlitecachedb import SQLiteCacheDB
-from ACEStream.Core.CacheDB.SqliteCacheDBHandler import MyDBHandler, TorrentDBHandler, Url2TorrentDBHandler, AdID2InfohashDBHandler, TsPlayersDBHandler, TsMetadataDBHandler, UserProfileDBHandler
-from ACEStream.Category.Category import Category
-from ACEStream.Core.NATFirewall.DialbackMsgHandler import DialbackMsgHandler
-from ACEStream.Core.BitTornado.BT1.Encrypter import incompletecounter
-from ACEStream.Core.Utilities.TSCrypto import m2_AES_encrypt, m2_AES_decrypt
+from freestream.Core.BitTornado.RawServer import RawServer
+from freestream.Core.BitTornado.ServerPortHandler import MultiHandler
+from freestream.Core.BitTornado.BT1.track import Tracker
+from freestream.Core.BitTornado.HTTPHandler import HTTPHandler, DummyHTTPHandler
+from freestream.Core.simpledefs import *
+from freestream.Core.exceptions import *
+from freestream.Core.Download import Download
+from freestream.Core.DownloadConfig import DownloadStartupConfig
+from freestream.Core.TorrentDef import TorrentDef
+from freestream.Core.NATFirewall.guessip import get_my_wan_ip
+from freestream.Core.NATFirewall.UPnPThread import UPnPThread
+from freestream.Core.NATFirewall.UDPPuncture import UDPHandler
+from freestream.Core.DecentralizedTracking import mainlineDHT
+from freestream.Core.DecentralizedTracking.MagnetLink.MagnetLink import MagnetHandler
+from freestream.Core.Utilities.logger import log, log_exc
+import freestream.Core.CacheDB.cachedb as cachedb
+from freestream.Core.CacheDB.sqlitecachedb import SQLiteCacheDB
+from freestream.Core.CacheDB.SqliteCacheDBHandler import MyDBHandler, TorrentDBHandler, Url2TorrentDBHandler, AdID2InfohashDBHandler, TsPlayersDBHandler, TsMetadataDBHandler, UserProfileDBHandler
+from freestream.Category.Category import Category
+from freestream.Core.NATFirewall.DialbackMsgHandler import DialbackMsgHandler
+from freestream.Core.BitTornado.BT1.Encrypter import incompletecounter
+from freestream.Core.Utilities.TSCrypto import m2_AES_encrypt, m2_AES_decrypt
 if sys.platform == 'win32':
     SOCKET_BLOCK_ERRORCODE = 10035
 else:
@@ -40,7 +40,7 @@ SPECIAL_VALUE = 481
 DEBUG = False
 PROFILE = False
 
-class ACEStreamLaunchMany(Thread):
+class FreeStreamLaunchMany(Thread):
 
     def __init__(self, network_thread_daemon = True):
         Thread.__init__(self)
@@ -118,10 +118,10 @@ class ACEStreamLaunchMany(Thread):
             self.url2torrent_db = None
         if config['overlay']:
             raise RuntimeError, 'Overlay should not be enabled'
-            from ACEStream.Core.Overlay.SecureOverlay import SecureOverlay
-            from ACEStream.Core.Overlay.OverlayThreadingBridge import OverlayThreadingBridge
-            from ACEStream.Core.Overlay.OverlayApps import OverlayApps
-            from ACEStream.Core.RequestPolicy import FriendsCoopDLOtherRQueryQuotumCrawlerAllowAllRequestPolicy
+            from freestream.Core.Overlay.SecureOverlay import SecureOverlay
+            from freestream.Core.Overlay.OverlayThreadingBridge import OverlayThreadingBridge
+            from freestream.Core.Overlay.OverlayApps import OverlayApps
+            from freestream.Core.RequestPolicy import FriendsCoopDLOtherRQueryQuotumCrawlerAllowAllRequestPolicy
             self.secure_overlay = SecureOverlay.getInstance()
             self.secure_overlay.register(self, config['overlay_max_message_length'])
             self.overlay_apps = OverlayApps.getInstance()
@@ -165,7 +165,7 @@ class ACEStreamLaunchMany(Thread):
             mainlineDHT.init(('127.0.0.1', self.listen_port), config['state_dir'])
         if config['torrent_checking']:
             if config['mainline_dht']:
-                from ACEStream.Core.DecentralizedTracking.mainlineDHTChecker import mainlineDHTChecker
+                from freestream.Core.DecentralizedTracking.mainlineDHTChecker import mainlineDHTChecker
                 c = mainlineDHTChecker.getInstance()
                 c.register(mainlineDHT.dht)
             self.torrent_checking_period = config['torrent_checking_period']
@@ -218,10 +218,10 @@ class ACEStreamLaunchMany(Thread):
             os.makedirs(sqlite_db_path)
         self.dispersy = Dispersy.get_instance(self.dispersy_rawserver, sqlite_db_path)
         self.dispersy.socket = DispersySocket(self.rawserver, self.dispersy, config['dispersy_port'])
-        from ACEStream.Core.Overlay.permid import read_keypair
+        from freestream.Core.Overlay.permid import read_keypair
         keypair = read_keypair(self.session.get_permid_keypair_filename())
-        from ACEStream.Core.dispersy.crypto import ec_to_public_bin, ec_to_private_bin
-        from ACEStream.Core.dispersy.member import MyMember
+        from freestream.Core.dispersy.crypto import ec_to_public_bin, ec_to_private_bin
+        from freestream.Core.dispersy.member import MyMember
         self.session.dispersy_member = MyMember(ec_to_public_bin(keypair), ec_to_private_bin(keypair))
         AllChannelCommunity.load_communities(self.session.dispersy_member)
         communities = ChannelCommunity.load_communities()
@@ -283,7 +283,7 @@ class ACEStreamLaunchMany(Thread):
                         dlhash, pstate = download.network_checkpoint()
                         self.save_download_pstate(dltype, dlhash, pstate)
                 else:
-                    raise ACEStreamException('lm: network_engine_wrapper_created_callback: download_engine is None!')
+                    raise FreeStreamException('lm: network_engine_wrapper_created_callback: download_engine is None!')
             except Exception as e:
                 log_exc()
                 download.set_error(e)
@@ -697,7 +697,7 @@ class ACEStreamLaunchMany(Thread):
         self.update_torrent_checking_period()
         self.rawserver.add_task(self.run_torrent_check, self.torrent_checking_period)
         try:
-            from ACEStream.TrackerChecking.TorrentChecking import TorrentChecking
+            from freestream.TrackerChecking.TorrentChecking import TorrentChecking
             t = TorrentChecking()
             t.start()
         except Exception as e:
@@ -733,8 +733,8 @@ class ACEStreamLaunchMany(Thread):
          'multicast_ipv4_enabled': True,
          'multicast_ipv6_enabled': False,
          'multicast_announce': True}
-        from ACEStream.Core.Overlay.SecureOverlay import OLPROTO_VER_CURRENT
-        from ACEStream.Core.Multicast import Multicast
+        from freestream.Core.Overlay.SecureOverlay import OLPROTO_VER_CURRENT
+        from freestream.Core.Multicast import Multicast
         self.mc_channel = Multicast(mc_config, self.overlay_bridge, self.listen_port, OLPROTO_VER_CURRENT, self.peer_db)
         self.mc_channel.addAnnounceHandler(self.mc_channel.handleOVERLAYSWARMAnnounce)
         self.mc_sock = self.mc_channel.getSocket()

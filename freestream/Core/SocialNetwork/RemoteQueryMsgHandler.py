@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\SocialNetwork\RemoteQueryMsgHandler.pyo
+﻿#Embedded file name: freestream\Core\SocialNetwork\RemoteQueryMsgHandler.pyo
 import os
 import sys
 import re
@@ -8,18 +8,18 @@ from traceback import print_stack, print_exc
 import datetime
 import time as T
 from M2Crypto import Rand
-from ACEStream.Core.simpledefs import *
-from ACEStream.Core.BitTornado.bencode import bencode, bdecode
-from ACEStream.Core.CacheDB.sqlitecachedb import bin2str, str2bin
-from ACEStream.Core.CacheDB.CacheDBHandler import ChannelCastDBHandler, PeerDBHandler
-from ACEStream.Core.BitTornado.BT1.MessageID import *
-from ACEStream.Core.BuddyCast.moderationcast_util import *
-from ACEStream.Core.TorrentDef import TorrentDef
-from ACEStream.Core.Overlay.SecureOverlay import OLPROTO_VER_SIXTH, OLPROTO_VER_NINETH, OLPROTO_VER_ELEVENTH, OLPROTO_VER_TWELFTH, OLPROTO_VER_THIRTEENTH, OLPROTO_VER_FOURTEENTH
-from ACEStream.Core.Utilities.utilities import show_permid_short, show_permid
-from ACEStream.Core.Statistics.Logger import OverlayLogger
-from ACEStream.Core.Utilities.unicode import dunno2unicode
-from ACEStream.Core.Search.SearchManager import split_into_keywords
+from freestream.Core.simpledefs import *
+from freestream.Core.BitTornado.bencode import bencode, bdecode
+from freestream.Core.CacheDB.sqlitecachedb import bin2str, str2bin
+from freestream.Core.CacheDB.CacheDBHandler import ChannelCastDBHandler, PeerDBHandler
+from freestream.Core.BitTornado.BT1.MessageID import *
+from freestream.Core.BuddyCast.moderationcast_util import *
+from freestream.Core.TorrentDef import TorrentDef
+from freestream.Core.Overlay.SecureOverlay import OLPROTO_VER_SIXTH, OLPROTO_VER_NINETH, OLPROTO_VER_ELEVENTH, OLPROTO_VER_TWELFTH, OLPROTO_VER_THIRTEENTH, OLPROTO_VER_FOURTEENTH
+from freestream.Core.Utilities.utilities import show_permid_short, show_permid
+from freestream.Core.Statistics.Logger import OverlayLogger
+from freestream.Core.Utilities.unicode import dunno2unicode
+from freestream.Core.Search.SearchManager import split_into_keywords
 MAX_RESULTS = 20
 QUERY_ID_SIZE = 20
 MAX_QUERY_REPLY_LEN = 100 * 1024

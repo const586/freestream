@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\BuddyCast\similarity.pyo
+﻿#Embedded file name: freestream\Core\BuddyCast\similarity.pyo
 __fool_epydoc = 481
 from sets import Set
 

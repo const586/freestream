@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\dispersy\dispersydatabase.pyo
+﻿#Embedded file name: freestream\Core\dispersy\dispersydatabase.pyo
 from socket import gethostbyname
 from hashlib import sha1
 from os import path

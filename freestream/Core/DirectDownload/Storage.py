@@ -1,10 +1,10 @@
-#Embedded file name: ACEStream\Core\DirectDownload\Storage.pyo
+﻿#Embedded file name: freestream\Core\DirectDownload\Storage.pyo
 import os
 import time
 import binascii
 from threading import Thread, Lock
 from traceback import print_exc
-from ACEStream.Core.Utilities.logger import log, log_exc
+from freestream.Core.Utilities.logger import log, log_exc
 DEBUG = False
 MAXLOCKSIZE = 1000000000L
 MAXLOCKRANGE = 3999999999L

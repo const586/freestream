@@ -1,9 +1,9 @@
-#Embedded file name: ACEStream/Plugin/EngineConsole.py
+﻿#Embedded file name: freestream/Plugin/EngineConsole.py
 import time
-from ACEStream.GlobalConfig import globalConfig
-from ACEStream.version import VERSION
-from ACEStream.Plugin.BackgroundProcess import run_bgapp, stop_bgapp
-from ACEStream.Core.Utilities.logger import log, log_exc
+from freestream.GlobalConfig import globalConfig
+from freestream.version import VERSION
+from freestream.Plugin.BackgroundProcess import run_bgapp, stop_bgapp
+from freestream.Core.Utilities.logger import log, log_exc
 
 class AppWrapper:
 
@@ -31,12 +31,6 @@ class AppWrapper:
 
 
 def start(apptype, exec_dir):
-    if apptype == 'torrentstream':
-        appname = 'Torrent Stream'
-    elif apptype == 'acestream':
-        appname = 'ACE Stream HD'
-    else:
-        raise Exception, 'Bad app type'
     globalConfig.set_value('apptype', apptype)
     globalConfig.set_mode('client_console')
     wrapper = AppWrapper()

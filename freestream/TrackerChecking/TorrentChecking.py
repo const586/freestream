@@ -1,14 +1,14 @@
-#Embedded file name: ACEStream\TrackerChecking\TorrentChecking.pyo
+﻿#Embedded file name: freestream\TrackerChecking\TorrentChecking.pyo
 import sys
 import threading
 from threading import Thread
 from random import sample
 from time import time
-from ACEStream.Core.BitTornado.bencode import bdecode
-from ACEStream.TrackerChecking.TrackerChecking import trackerChecking
-from ACEStream.Core.CacheDB.sqlitecachedb import safe_dict
-from ACEStream.Core.CacheDB.CacheDBHandler import TorrentDBHandler
-from ACEStream.Core.DecentralizedTracking.mainlineDHTChecker import mainlineDHTChecker
+from freestream.Core.BitTornado.bencode import bdecode
+from freestream.TrackerChecking.TrackerChecking import trackerChecking
+from freestream.Core.CacheDB.sqlitecachedb import safe_dict
+from freestream.Core.CacheDB.CacheDBHandler import TorrentDBHandler
+from freestream.Core.DecentralizedTracking.mainlineDHTChecker import mainlineDHTChecker
 DEBUG = False
 
 class TorrentChecking(Thread):
@@ -124,7 +124,7 @@ class TorrentChecking(Thread):
 
 
 if __name__ == '__main__':
-    from ACEStream.Core.CacheDB.sqlitecachedb import init as init_db, str2bin
+    from freestream.Core.CacheDB.sqlitecachedb import init as init_db, str2bin
     configure_dir = sys.argv[1]
     config = {}
     config['state_dir'] = configure_dir

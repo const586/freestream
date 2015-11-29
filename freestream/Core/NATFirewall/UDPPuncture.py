@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\NATFirewall\UDPPuncture.pyo
+﻿#Embedded file name: freestream\Core\NATFirewall\UDPPuncture.pyo
 import guessip
 import time
 import socket
@@ -41,7 +41,7 @@ class UDPHandler():
     def __init__(self, rawserver, check_crawler, port = 0):
         self.connections = {}
         if check_crawler:
-            from ACEStream.Core.Statistics.Crawler import Crawler
+            from freestream.Core.Statistics.Crawler import Crawler
             crawler = Crawler.get_instance()
             if crawler.am_crawler():
                 return
@@ -81,7 +81,7 @@ class UDPHandler():
             TimeoutFinder.TimeoutFinder(rawserver, True, self.timeout_report)
             if not DEBUG:
                 if check_crawler:
-                    from ACEStream.Core.Statistics.PunctureCrawler import get_reporter_instance
+                    from freestream.Core.Statistics.PunctureCrawler import get_reporter_instance
                 self.reporter = get_reporter_instance()
         if self.reporter:
             my_wan_ip = guessip.get_my_wan_ip()
@@ -810,7 +810,7 @@ def compare_natfw_version(a, b):
 
 
 if __name__ == '__main__':
-    import ACEStream.Core.BitTornado.RawServer as RawServer
+    import freestream.Core.BitTornado.RawServer as RawServer
     from threading import Event
     import thread
     from traceback import print_exc

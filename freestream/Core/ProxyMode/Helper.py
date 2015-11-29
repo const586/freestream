@@ -1,14 +1,14 @@
-#Embedded file name: ACEStream\Core\ProxyMode\Helper.pyo
+﻿#Embedded file name: freestream\Core\ProxyMode\Helper.pyo
 import sys
 from traceback import print_exc
 from time import time
 from collections import deque
 from threading import Lock
-from ACEStream.Core.BitTornado.bencode import bencode
-from ACEStream.Core.BitTornado.BT1.MessageID import ASK_FOR_HELP, STOP_HELPING, REQUEST_PIECES, CANCEL_PIECE, JOIN_HELPERS, RESIGN_AS_HELPER, DROPPED_PIECE, PROXY_HAVE, PROXY_UNHAVE
-from ACEStream.Core.Overlay.OverlayThreadingBridge import OverlayThreadingBridge
-from ACEStream.Core.CacheDB.CacheDBHandler import PeerDBHandler, TorrentDBHandler
-from ACEStream.Core.Utilities.utilities import show_permid_short
+from freestream.Core.BitTornado.bencode import bencode
+from freestream.Core.BitTornado.BT1.MessageID import ASK_FOR_HELP, STOP_HELPING, REQUEST_PIECES, CANCEL_PIECE, JOIN_HELPERS, RESIGN_AS_HELPER, DROPPED_PIECE, PROXY_HAVE, PROXY_UNHAVE
+from freestream.Core.Overlay.OverlayThreadingBridge import OverlayThreadingBridge
+from freestream.Core.CacheDB.CacheDBHandler import PeerDBHandler, TorrentDBHandler
+from freestream.Core.Utilities.utilities import show_permid_short
 MAX_ROUNDS = 200
 DEBUG = False
 

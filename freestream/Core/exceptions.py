@@ -1,7 +1,7 @@
-#Embedded file name: ACEStream\Core\exceptions.pyo
+﻿#Embedded file name: freestream\Core\exceptions.pyo
 
 
-class ACEStreamException(Exception):
+class FreeStreamException(Exception):
 
     def __init__(self, msg = None):
         Exception.__init__(self, msg)
@@ -10,55 +10,55 @@ class ACEStreamException(Exception):
         return str(self.__class__) + ': ' + Exception.__str__(self)
 
 
-class OperationNotPossibleAtRuntimeException(ACEStreamException):
+class OperationNotPossibleAtRuntimeException(FreeStreamException):
 
     def __init__(self, msg = None):
-        ACEStreamException.__init__(self, msg)
+        FreeStreamException.__init__(self, msg)
 
 
-class OperationNotPossibleWhenStoppedException(ACEStreamException):
-
-    def __init__(self, msg = None):
-        ACEStreamException.__init__(self, msg)
-
-
-class OperationNotEnabledByConfigurationException(ACEStreamException):
+class OperationNotPossibleWhenStoppedException(FreeStreamException):
 
     def __init__(self, msg = None):
-        ACEStreamException.__init__(self, msg)
+        FreeStreamException.__init__(self, msg)
 
 
-class NotYetImplementedException(ACEStreamException):
-
-    def __init__(self, msg = None):
-        ACEStreamException.__init__(self, msg)
-
-
-class DuplicateDownloadException(ACEStreamException):
+class OperationNotEnabledByConfigurationException(FreeStreamException):
 
     def __init__(self, msg = None):
-        ACEStreamException.__init__(self, msg)
+        FreeStreamException.__init__(self, msg)
 
 
-class VODNoFileSelectedInMultifileTorrentException(ACEStreamException):
-
-    def __init__(self, msg = None):
-        ACEStreamException.__init__(self, msg)
-
-
-class LiveTorrentRequiresUsercallbackException(ACEStreamException):
+class NotYetImplementedException(FreeStreamException):
 
     def __init__(self, msg = None):
-        ACEStreamException.__init__(self, msg)
+        FreeStreamException.__init__(self, msg)
 
 
-class TorrentDefNotFinalizedException(ACEStreamException):
-
-    def __init__(self, msg = None):
-        ACEStreamException.__init__(self, msg)
-
-
-class ACEStreamLegacyException(ACEStreamException):
+class DuplicateDownloadException(FreeStreamException):
 
     def __init__(self, msg = None):
-        ACEStreamException.__init__(self, msg)
+        FreeStreamException.__init__(self, msg)
+
+
+class VODNoFileSelectedInMultifileTorrentException(FreeStreamException):
+
+    def __init__(self, msg = None):
+        FreeStreamException.__init__(self, msg)
+
+
+class LiveTorrentRequiresUsercallbackException(FreeStreamException):
+
+    def __init__(self, msg = None):
+        FreeStreamException.__init__(self, msg)
+
+
+class TorrentDefNotFinalizedException(FreeStreamException):
+
+    def __init__(self, msg = None):
+        FreeStreamException.__init__(self, msg)
+
+
+class FreeStreamLegacyException(FreeStreamException):
+
+    def __init__(self, msg = None):
+        FreeStreamException.__init__(self, msg)

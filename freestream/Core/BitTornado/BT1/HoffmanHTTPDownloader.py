@@ -1,16 +1,16 @@
-#Embedded file name: ACEStream\Core\BitTornado\BT1\HoffmanHTTPDownloader.pyo
+﻿#Embedded file name: freestream\Core\BitTornado\BT1\HoffmanHTTPDownloader.pyo
 import sys
 from random import randint
 from urlparse import urlparse
 from httplib import HTTPConnection
 import urllib
 from threading import Thread
-from ACEStream.Core.BitTornado.__init__ import product_name, version_short
-from ACEStream.Core.BitTornado.CurrentRateMeasure import Measure
-from ACEStream.Core.Utilities.timeouturlopen import find_proxy
-from ACEStream.Core.Utilities.logger import log, log_exc
+from freestream.Core.BitTornado.__init__ import product_name, version_short
+from freestream.Core.BitTornado.CurrentRateMeasure import Measure
+from freestream.Core.Utilities.timeouturlopen import find_proxy
+from freestream.Core.Utilities.logger import log, log_exc
 try:
-    from ACEStream.Core.ProxyMode.Helper import SingleDownloadHelperInterface
+    from freestream.Core.ProxyMode.Helper import SingleDownloadHelperInterface
 except ImportError:
 
     class SingleDownloadHelperInterface:

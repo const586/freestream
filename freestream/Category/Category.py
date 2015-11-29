@@ -1,6 +1,6 @@
-#Embedded file name: ACEStream\Category\Category.pyo
+﻿#Embedded file name: freestream\Category\Category.pyo
 import os, re
-from ACEStream.Category.init_category import getCategoryInfo
+from freestream.Category.init_category import getCategoryInfo
 from FamilyFilter import XXXFilter
 from traceback import print_exc
 import sys

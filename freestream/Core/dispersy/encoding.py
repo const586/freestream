@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\dispersy\encoding.pyo
+﻿#Embedded file name: freestream\Core\dispersy\encoding.pyo
 
 
 def _a_encode_int(value, mapping):

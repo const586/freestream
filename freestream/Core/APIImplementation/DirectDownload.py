@@ -1,15 +1,15 @@
-#Embedded file name: ACEStream\Core\APIImplementation\DirectDownload.pyo
+﻿#Embedded file name: freestream\Core\APIImplementation\DirectDownload.pyo
 import os
 import binascii
 import time
 import random
 from threading import Event
 from traceback import print_exc
-from ACEStream.Core.simpledefs import *
-from ACEStream.Core.DirectDownload.Storage import Storage
-from ACEStream.Core.DirectDownload.Downloader import Downloader
-from ACEStream.Core.DirectDownload.VODTransporter import VODTransporter
-from ACEStream.Core.Utilities.logger import log, log_exc
+from freestream.Core.simpledefs import *
+from freestream.Core.DirectDownload.Storage import Storage
+from freestream.Core.DirectDownload.Downloader import Downloader
+from freestream.Core.DirectDownload.VODTransporter import VODTransporter
+from freestream.Core.Utilities.logger import log, log_exc
 DEBUG = False
 
 class Statistics_Response:

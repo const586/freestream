@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Video\defs.pyo
+﻿#Embedded file name: freestream\Video\defs.pyo
 PLAYBACKMODE_INTERNAL = 0
 PLAYBACKMODE_EXTERNAL_DEFAULT = 1
 PLAYBACKMODE_EXTERNAL_MIME = 2

@@ -1,24 +1,24 @@
-#Embedded file name: ACEStream\Core\Overlay\MetadataHandler.pyo
+﻿#Embedded file name: freestream\Core\Overlay\MetadataHandler.pyo
 import sys
 import os
 import stat
 import random
 import itertools
-from ACEStream.Core.Utilities.TSCrypto import sha
+from freestream.Core.Utilities.TSCrypto import sha
 from time import time, ctime
 from traceback import print_exc, print_stack
 from sets import Set
 from threading import currentThread
-from ACEStream.Core.simpledefs import *
-from ACEStream.Core.BitTornado.bencode import bencode, bdecode
-from ACEStream.Core.BitTornado.BT1.MessageID import *
-from ACEStream.Core.Utilities.utilities import isValidInfohash, show_permid_short, sort_dictlist, bin2str, get_collected_torrent_filename
-from ACEStream.Core.Overlay.SecureOverlay import OLPROTO_VER_FOURTH, OLPROTO_VER_ELEVENTH
-from ACEStream.TrackerChecking.TorrentChecking import TorrentChecking
-from ACEStream.Core.osutils import getfreespace, get_readable_torrent_name
-from ACEStream.Core.CacheDB.CacheDBHandler import BarterCastDBHandler
-from ACEStream.Core.CacheDB.SqliteCacheDBHandler import PopularityDBHandler
-from ACEStream.Core.TorrentDef import TorrentDef
+from freestream.Core.simpledefs import *
+from freestream.Core.BitTornado.bencode import bencode, bdecode
+from freestream.Core.BitTornado.BT1.MessageID import *
+from freestream.Core.Utilities.utilities import isValidInfohash, show_permid_short, sort_dictlist, bin2str, get_collected_torrent_filename
+from freestream.Core.Overlay.SecureOverlay import OLPROTO_VER_FOURTH, OLPROTO_VER_ELEVENTH
+from freestream.TrackerChecking.TorrentChecking import TorrentChecking
+from freestream.Core.osutils import getfreespace, get_readable_torrent_name
+from freestream.Core.CacheDB.CacheDBHandler import BarterCastDBHandler
+from freestream.Core.CacheDB.SqliteCacheDBHandler import PopularityDBHandler
+from freestream.Core.TorrentDef import TorrentDef
 DEBUG = False
 BARTERCAST_TORRENTS = False
 overlay_infohash = '\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'

@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\Utilities\odict.pyo
+﻿#Embedded file name: freestream\Core\Utilities\odict.pyo
 from itertools import izip, imap
 from copy import deepcopy
 missing = object()

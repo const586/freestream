@@ -1,12 +1,12 @@
-#Embedded file name: ACEStream\Core\DownloadState.pyo
+﻿#Embedded file name: freestream\Core\DownloadState.pyo
 import time
 import sys
 from traceback import print_exc, print_stack
-from ACEStream.Core.simpledefs import *
-from ACEStream.Core.defaults import *
-from ACEStream.Core.exceptions import *
-from ACEStream.Core.Base import *
-from ACEStream.Core.DecentralizedTracking.repex import REPEX_SWARMCACHE_SIZE
+from freestream.Core.simpledefs import *
+from freestream.Core.defaults import *
+from freestream.Core.exceptions import *
+from freestream.Core.Base import *
+from freestream.Core.DecentralizedTracking.repex import REPEX_SWARMCACHE_SIZE
 DEBUG = False
 
 class DownloadState(Serializable):

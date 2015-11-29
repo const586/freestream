@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Plugin\EngineWx.pyo
+﻿#Embedded file name: freestream\Plugin\EngineWx.pyo
 import os
 import sys
 from traceback import print_exc
@@ -14,11 +14,11 @@ except:
     print 'wx is not installed'
     os._exit(1)
 
-import ACEStream
-from ACEStream.GlobalConfig import globalConfig
-from ACEStream.Plugin.BackgroundProcess import run_bgapp, stop_bgapp, send_startup_event, get_default_api_version
-from ACEStream.Player.systray import PlayerTaskBarIcon
-from ACEStream.version import VERSION
+import freestream
+from freestream.GlobalConfig import globalConfig
+from freestream.Plugin.BackgroundProcess import run_bgapp, stop_bgapp, send_startup_event, get_default_api_version
+from freestream.Player.systray import PlayerTaskBarIcon
+from freestream.version import VERSION
 ALLOW_MULTIPLE = False
 
 class AppWrapper(wx.App):
@@ -57,12 +57,7 @@ class AppWrapper(wx.App):
 
 
 def start(apptype, exec_dir):
-    if apptype == 'torrentstream':
-        appname = 'Torrent Stream'
-    elif apptype == 'acestream':
-        appname = 'ACE Stream HD'
-    else:
-        raise Exception, 'Bad app type'
+    appname = "freestream"
     single_instance_checker = wx.SingleInstanceChecker(appname + '-' + wx.GetUserId())
     if single_instance_checker.IsAnotherRunning():
         print >> sys.stderr, 'appwrapper: already running, exit'
@@ -81,11 +76,11 @@ def start(apptype, exec_dir):
 
     wrapper.set_bgapp(bgapp)
     bgapp.debug_systray = bgapp.debug_level & 1024 != 0
-    ACEStream.Player.systray.DEBUG = bgapp.debug_systray
-    ACEStream.Player.systray.SHOW_DEBUG_LEVEL = bgapp.debug_systray
-    ACEStream.Player.systray.DEBUG_PIECES = bgapp.debug_level & 128 != 0
-    ACEStream.Player.systray.DEBUG_VIDEOSTATUS = bgapp.debug_level & 2048 != 0
-    ACEStream.Player.systray.DEBUG_PROXY_BUF = bgapp.debug_level & 4096 != 0
+    freestream.Player.systray.DEBUG = bgapp.debug_systray
+    freestream.Player.systray.SHOW_DEBUG_LEVEL = bgapp.debug_systray
+    freestream.Player.systray.DEBUG_PIECES = bgapp.debug_level & 128 != 0
+    freestream.Player.systray.DEBUG_VIDEOSTATUS = bgapp.debug_level & 2048 != 0
+    freestream.Player.systray.DEBUG_PROXY_BUF = bgapp.debug_level & 4096 != 0
     wrapper.MainLoop()
     if not ALLOW_MULTIPLE:
         del single_instance_checker

@@ -1,7 +1,7 @@
-#Embedded file name: ACEStream\Core\Video\MediaInfo.pyo
+﻿#Embedded file name: freestream\Core\Video\MediaInfo.pyo
 import os
 from ctypes import *
-from ACEStream.Core.Utilities.logger import log, log_exc
+from freestream.Core.Utilities.logger import log, log_exc
 if os.name == 'nt' or os.name == 'dos' or os.name == 'os2' or os.name == 'ce':
     MediaInfoDLL_Handler = windll.MediaInfo
     MustUseAnsi = 0

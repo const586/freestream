@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\BitTornado\BT1\Statistics.pyo
+﻿#Embedded file name: freestream\Core\BitTornado\BT1\Statistics.pyo
 from threading import Event
 try:
     True

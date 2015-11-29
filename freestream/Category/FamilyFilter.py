@@ -1,7 +1,7 @@
-#Embedded file name: ACEStream\Category\FamilyFilter.pyo
+﻿#Embedded file name: freestream\Category\FamilyFilter.pyo
 import re, sys, os
 from traceback import print_exc
-from ACEStream.__init__ import LIBRARYNAME
+from freestream.__init__ import LIBRARYNAME
 WORDS_REGEXP = re.compile('[a-zA-Z0-9]+')
 DEBUG = False
 

@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\dispersy\member.pyo
+﻿#Embedded file name: freestream\Core\dispersy\member.pyo
 from __future__ import with_statement
 from hashlib import sha1
 from singleton import Parameterized1Singleton

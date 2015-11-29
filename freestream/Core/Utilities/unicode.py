@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\Utilities\unicode.pyo
+﻿#Embedded file name: freestream\Core\Utilities\unicode.pyo
 import sys
 
 def bin2unicode(bin, possible_encoding = 'utf_8'):

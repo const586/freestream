@@ -1,12 +1,12 @@
-#Embedded file name: ACEStream\Utilities\Instance2Instance.pyo
+﻿#Embedded file name: freestream\Utilities\Instance2Instance.pyo
 import sys
 import socket
 import os
 from traceback import print_exc, print_stack
 from threading import Thread, Event
-from ACEStream.GlobalConfig import globalConfig
-from ACEStream.Core.BitTornado.RawServer import RawServer
-from ACEStream.Core.Utilities.logger import log, log_exc
+from freestream.GlobalConfig import globalConfig
+from freestream.Core.BitTornado.RawServer import RawServer
+from freestream.Core.Utilities.logger import log, log_exc
 DEBUG = False
 
 class Instance2InstanceServer(Thread):

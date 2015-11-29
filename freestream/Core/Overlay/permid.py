@@ -1,12 +1,12 @@
-#Embedded file name: ACEStream\Core\Overlay\permid.pyo
+﻿#Embedded file name: freestream\Core\Overlay\permid.pyo
 import sys
-from ACEStream.Core.Utilities.TSCrypto import sha
+from freestream.Core.Utilities.TSCrypto import sha
 from base64 import encodestring
 from copy import deepcopy
 import traceback, os
 from M2Crypto import Rand, EC
-from ACEStream.Core.BitTornado.bencode import bencode, bdecode
-from ACEStream.Core.BitTornado.BT1.MessageID import *
+from freestream.Core.BitTornado.bencode import bencode, bdecode
+from freestream.Core.BitTornado.BT1.MessageID import *
 DEBUG = False
 keypair_ecc_curve = EC.NID_sect233k1
 num_random_bits = 8192

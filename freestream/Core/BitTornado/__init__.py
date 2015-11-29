@@ -1,9 +1,9 @@
-#Embedded file name: ACEStream\Core\BitTornado\__init__.pyo
-from ACEStream.__init__ import LIBRARYNAME
+﻿#Embedded file name: freestream\Core\BitTornado\__init__.pyo
+from freestream.__init__ import LIBRARYNAME
 version_id = '2.0'
-product_name = 'ACEStream'
-version_short = 'ACEStream-' + version_id
-report_email = 'info@acestream.net'
+product_name = 'freestream'
+version_short = 'freestream-' + version_id
+report_email = 'info@freestream.net'
 TRIBLER_PEERID_LETTER = 'R'
 version = version_short + ' (' + product_name + ')'
 _idprefix = TRIBLER_PEERID_LETTER

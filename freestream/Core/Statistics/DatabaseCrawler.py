@@ -1,12 +1,12 @@
-#Embedded file name: ACEStream\Core\Statistics\DatabaseCrawler.pyo
+﻿#Embedded file name: freestream\Core\Statistics\DatabaseCrawler.pyo
 import sys
 import cPickle
 from time import strftime
-from ACEStream.Core.Overlay.SecureOverlay import OLPROTO_VER_SEVENTH, OLPROTO_VER_EIGHTH, OLPROTO_VER_ELEVENTH
-from ACEStream.Core.BitTornado.BT1.MessageID import CRAWLER_DATABASE_QUERY
-from ACEStream.Core.CacheDB.sqlitecachedb import SQLiteCacheDB
-from ACEStream.Core.Utilities.utilities import show_permid, show_permid_short
-from ACEStream.Core.Statistics.Crawler import Crawler
+from freestream.Core.Overlay.SecureOverlay import OLPROTO_VER_SEVENTH, OLPROTO_VER_EIGHTH, OLPROTO_VER_ELEVENTH
+from freestream.Core.BitTornado.BT1.MessageID import CRAWLER_DATABASE_QUERY
+from freestream.Core.CacheDB.sqlitecachedb import SQLiteCacheDB
+from freestream.Core.Utilities.utilities import show_permid, show_permid_short
+from freestream.Core.Statistics.Crawler import Crawler
 DEBUG = False
 
 class DatabaseCrawler:

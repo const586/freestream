@@ -1,2 +1,2 @@
-#Embedded file name: ACEStream\Core\Overlay\__init__.pyo
+﻿#Embedded file name: freestream\Core\Overlay\__init__.pyo
 pass

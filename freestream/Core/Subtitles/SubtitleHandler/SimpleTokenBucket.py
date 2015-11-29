@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\Subtitles\SubtitleHandler\SimpleTokenBucket.pyo
+﻿#Embedded file name: freestream\Core\Subtitles\SubtitleHandler\SimpleTokenBucket.pyo
 from time import time
 
 class SimpleTokenBucket(object):

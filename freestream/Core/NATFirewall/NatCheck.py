@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\NATFirewall\NatCheck.pyo
+﻿#Embedded file name: freestream\Core\NATFirewall\NatCheck.pyo
 import socket
 import sys
 DEBUG = False

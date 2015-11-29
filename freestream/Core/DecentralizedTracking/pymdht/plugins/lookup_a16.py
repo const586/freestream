@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\DecentralizedTracking\pymdht\plugins\lookup_a16.pyo
+﻿#Embedded file name: freestream\Core\DecentralizedTracking\pymdht\plugins\lookup_a16.pyo
 import sys
 import threading
 import logging
@@ -8,10 +8,10 @@ try:
     import core.identifier as identifier
     import core.message as message
 except ImportError:
-    import ACEStream.Core.DecentralizedTracking.pymdht.core.ptime as time
-    from ACEStream.Core.DecentralizedTracking.pymdht.core.querier import Query
-    import ACEStream.Core.DecentralizedTracking.pymdht.core.identifier as identifier
-    import ACEStream.Core.DecentralizedTracking.pymdht.core.message as message
+    import freestream.Core.DecentralizedTracking.pymdht.core.ptime as time
+    from freestream.Core.DecentralizedTracking.pymdht.core.querier import Query
+    import freestream.Core.DecentralizedTracking.pymdht.core.identifier as identifier
+    import freestream.Core.DecentralizedTracking.pymdht.core.message as message
 
 logger = logging.getLogger('dht')
 MARK_INDEX = 2

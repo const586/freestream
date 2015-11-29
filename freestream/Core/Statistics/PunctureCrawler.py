@@ -1,8 +1,8 @@
-#Embedded file name: ACEStream\Core\Statistics\PunctureCrawler.pyo
-from ACEStream.Core.Session import Session
-from ACEStream.Core.Statistics.Crawler import Crawler
-from ACEStream.Core.BitTornado.BT1.MessageID import CRAWLER_PUNCTURE_QUERY
-from ACEStream.Core.Utilities.utilities import show_permid, show_permid_short
+﻿#Embedded file name: freestream\Core\Statistics\PunctureCrawler.pyo
+from freestream.Core.Session import Session
+from freestream.Core.Statistics.Crawler import Crawler
+from freestream.Core.BitTornado.BT1.MessageID import CRAWLER_PUNCTURE_QUERY
+from freestream.Core.Utilities.utilities import show_permid, show_permid_short
 import os
 import time
 import sys

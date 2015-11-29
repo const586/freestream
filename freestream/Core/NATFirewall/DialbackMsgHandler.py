@@ -1,15 +1,15 @@
-#Embedded file name: ACEStream\Core\NATFirewall\DialbackMsgHandler.pyo
+﻿#Embedded file name: freestream\Core\NATFirewall\DialbackMsgHandler.pyo
 import sys
 from time import time
 from random import shuffle
 from traceback import print_exc, print_stack
 from threading import currentThread
-from ACEStream.Core.BitTornado.BT1.MessageID import *
-from ACEStream.Core.BitTornado.bencode import bencode, bdecode
-from ACEStream.Core.NATFirewall.ReturnConnHandler import ReturnConnHandler
-from ACEStream.Core.Overlay.SecureOverlay import OLPROTO_VER_THIRD
-from ACEStream.Core.Utilities.utilities import *
-from ACEStream.Core.simpledefs import *
+from freestream.Core.BitTornado.BT1.MessageID import *
+from freestream.Core.BitTornado.bencode import bencode, bdecode
+from freestream.Core.NATFirewall.ReturnConnHandler import ReturnConnHandler
+from freestream.Core.Overlay.SecureOverlay import OLPROTO_VER_THIRD
+from freestream.Core.Utilities.utilities import *
+from freestream.Core.simpledefs import *
 DEBUG = False
 REPLY_WAIT = 60
 REPLY_VALIDITY = 2 * 24 * 3600.0

@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\BuddyCast\buddycast.pyo
+﻿#Embedded file name: freestream\Core\BuddyCast\buddycast.pyo
 __fool_epydoc = 481
 import sys
 from random import sample, randint, shuffle
@@ -9,20 +9,20 @@ from bisect import insort
 from copy import deepcopy
 import gc
 import socket
-from ACEStream.Core.simpledefs import BCCOLPOLICY_SIMPLE
-from ACEStream.Core.BitTornado.bencode import bencode, bdecode
-from ACEStream.Core.BitTornado.BT1.MessageID import BUDDYCAST, BARTERCAST, KEEP_ALIVE, VOTECAST, CHANNELCAST
-from ACEStream.Core.Utilities.utilities import show_permid_short, show_permid, validPermid, validIP, validPort, validInfohash, readableBuddyCastMsg, hostname_or_ip2ip
-from ACEStream.Core.Utilities.unicode import dunno2unicode
-from ACEStream.Core.simpledefs import NTFY_ACT_MEET, NTFY_ACT_RECOMMEND, NTFY_MYPREFERENCES, NTFY_INSERT, NTFY_DELETE
-from ACEStream.Core.NATFirewall.DialbackMsgHandler import DialbackMsgHandler
-from ACEStream.Core.Overlay.SecureOverlay import OLPROTO_VER_FIRST, OLPROTO_VER_SECOND, OLPROTO_VER_THIRD, OLPROTO_VER_FOURTH, OLPROTO_VER_FIFTH, OLPROTO_VER_SIXTH, OLPROTO_VER_SEVENTH, OLPROTO_VER_EIGHTH, OLPROTO_VER_ELEVENTH, OLPROTO_VER_FIFTEENTH, OLPROTO_VER_CURRENT, OLPROTO_VER_LOWEST
-from ACEStream.Core.CacheDB.sqlitecachedb import bin2str, str2bin
+from freestream.Core.simpledefs import BCCOLPOLICY_SIMPLE
+from freestream.Core.BitTornado.bencode import bencode, bdecode
+from freestream.Core.BitTornado.BT1.MessageID import BUDDYCAST, BARTERCAST, KEEP_ALIVE, VOTECAST, CHANNELCAST
+from freestream.Core.Utilities.utilities import show_permid_short, show_permid, validPermid, validIP, validPort, validInfohash, readableBuddyCastMsg, hostname_or_ip2ip
+from freestream.Core.Utilities.unicode import dunno2unicode
+from freestream.Core.simpledefs import NTFY_ACT_MEET, NTFY_ACT_RECOMMEND, NTFY_MYPREFERENCES, NTFY_INSERT, NTFY_DELETE
+from freestream.Core.NATFirewall.DialbackMsgHandler import DialbackMsgHandler
+from freestream.Core.Overlay.SecureOverlay import OLPROTO_VER_FIRST, OLPROTO_VER_SECOND, OLPROTO_VER_THIRD, OLPROTO_VER_FOURTH, OLPROTO_VER_FIFTH, OLPROTO_VER_SIXTH, OLPROTO_VER_SEVENTH, OLPROTO_VER_EIGHTH, OLPROTO_VER_ELEVENTH, OLPROTO_VER_FIFTEENTH, OLPROTO_VER_CURRENT, OLPROTO_VER_LOWEST
+from freestream.Core.CacheDB.sqlitecachedb import bin2str, str2bin
 from similarity import P2PSim_Single, P2PSim_Full, P2PSimColdStart
 from TorrentCollecting import SimpleTorrentCollecting
-from ACEStream.Core.Statistics.Logger import OverlayLogger
-from ACEStream.Core.Statistics.Crawler import Crawler
-from ACEStream.Core.Session import Session
+from freestream.Core.Statistics.Logger import OverlayLogger
+from freestream.Core.Statistics.Crawler import Crawler
+from freestream.Core.Session import Session
 from threading import currentThread
 from bartercast import BarterCastCore
 from votecast import VoteCastCore

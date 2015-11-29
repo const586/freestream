@@ -1,18 +1,18 @@
-#Embedded file name: ACEStream\Core\BitTornado\BT1\Downloader.pyo
+﻿#Embedded file name: freestream\Core\BitTornado\BT1\Downloader.pyo
 import sys
 import time
 from traceback import print_exc, print_stack
 from threading import currentThread
-from ACEStream.Core.BitTornado.CurrentRateMeasure import Measure
-from ACEStream.Core.BitTornado.bitfield import Bitfield
+from freestream.Core.BitTornado.CurrentRateMeasure import Measure
+from freestream.Core.BitTornado.bitfield import Bitfield
 from random import shuffle
 from base64 import b64encode
-from ACEStream.Core.BitTornado.clock import clock
-from ACEStream.Core.DecentralizedTracking.repex import REPEX_LISTEN_TIME
-from ACEStream.Core.Utilities.logger import log, log_exc
-from ACEStream.GlobalConfig import globalConfig
+from freestream.Core.BitTornado.clock import clock
+from freestream.Core.DecentralizedTracking.repex import REPEX_LISTEN_TIME
+from freestream.Core.Utilities.logger import log, log_exc
+from freestream.GlobalConfig import globalConfig
 try:
-    from ACEStream.Core.ProxyService.Helper import SingleDownloadHelperInterface
+    from freestream.Core.ProxyService.Helper import SingleDownloadHelperInterface
 except ImportError:
 
     class SingleDownloadHelperInterface():

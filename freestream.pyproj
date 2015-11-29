@@ -25,8 +25,6 @@
     <Compile Include="freestream\Category\FamilyFilter.py" />
     <Compile Include="freestream\Category\init_category.py" />
     <Compile Include="freestream\Category\__init__.py" />
-    <Compile Include="freestream\Core\Ads\Manager.py" />
-    <Compile Include="freestream\Core\Ads\__init__.py" />
     <Compile Include="freestream\Core\API.py" />
     <Compile Include="freestream\Core\APIImplementation\DirectDownload.py" />
     <Compile Include="freestream\Core\APIImplementation\DownloadImpl.py" />
@@ -296,16 +294,10 @@
     <Compile Include="start.py" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="data\images\engine.ico" />
-    <Content Include="data\images\stream.ico" />
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="data\" />
-    <Folder Include="data\images" />
     <Folder Include="freestream" />
     <Folder Include="freestream\Category" />
     <Folder Include="freestream\Core" />
-    <Folder Include="freestream\Core\Ads" />
     <Folder Include="freestream\Core\APIImplementation" />
     <Folder Include="freestream\Core\BitTornado" />
     <Folder Include="freestream\Core\BitTornado\BT1" />

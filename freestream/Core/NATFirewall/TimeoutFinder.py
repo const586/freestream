@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\NATFirewall\TimeoutFinder.pyo
+﻿#Embedded file name: freestream\Core\NATFirewall\TimeoutFinder.pyo
 import struct
 import time
 import sys
@@ -64,7 +64,7 @@ class TimeoutFinder:
 
 
 if __name__ == '__main__':
-    import ACEStream.Core.BitTornado.RawServer as RawServer
+    import freestream.Core.BitTornado.RawServer as RawServer
     from threading import Event
     import thread
     from traceback import print_exc

@@ -1,15 +1,15 @@
-#Embedded file name: ACEStream\Player\systray.pyo
+﻿#Embedded file name: freestream\Player\systray.pyo
 import sys
 import os
 import textwrap
 import time
 import wx
-from ACEStream.version import VERSION
-from ACEStream.Core.BitTornado.clock import clock
-from ACEStream.Core.API import *
-from ACEStream.Plugin.defs import *
-from ACEStream.Core.debug import DebugState
-from ACEStream.Core.Utilities.logger import log, log_exc
+from freestream.version import VERSION
+from freestream.Core.BitTornado.clock import clock
+from freestream.Core.API import *
+from freestream.Plugin.defs import *
+from freestream.Core.debug import DebugState
+from freestream.Core.Utilities.logger import log, log_exc
 BUTTON_ID_CLEAR_CACHE = 348
 DEBUG = False
 DEBUG_PIECES = False
@@ -586,7 +586,7 @@ class PlayerOptionsDialog(wx.Dialog):
         grid.Add(label, pos=(row, 0))
         grid.Add(self.uploadratectrl, pos=(row, 1), flag=wx.EXPAND)
         row += 1
-        if self.bgapp.apptype == 'acestream' and sys.platform == 'win32':
+        if self.bgapp.apptype == 'freestream' and sys.platform == 'win32':
             label = wx.StaticText(self, wx.ID_ANY, self.bgapp.utility.lang.get('cache_drive'))
             drive_info = []
             drive_list = self.bgapp.get_drive_list()
@@ -695,7 +695,7 @@ class PlayerOptionsDialog(wx.Dialog):
 
         destdir = self.destdirctrl.GetValue()
         print >> sys.stderr, 'systray::options:onapply: destdir', destdir, type(destdir)
-        if self.bgapp.apptype == 'acestream' and sys.platform == 'win32':
+        if self.bgapp.apptype == 'freestream' and sys.platform == 'win32':
             destdir = self.bgapp.format_drive_name(destdir)
             print >> sys.stderr, 'systray::options:onapply: dest drive', destdir
         elif not self.bgapp.check_dest_dir(destdir, make_hidden=False):

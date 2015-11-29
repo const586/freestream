@@ -1,11 +1,11 @@
-#Embedded file name: ACEStream\Core\DecentralizedTracking\pymdht\core\logging_conf.pyo
+﻿#Embedded file name: freestream\Core\DecentralizedTracking\pymdht\core\logging_conf.pyo
 import logging
 import os
 FORMAT = '%(asctime)s %(levelname)s %(filename)s:%(lineno)s - %(funcName)s()\n%(message)s\n'
 try:
     devnullstream = open('/dev/null', 'w')
 except:
-    from ACEStream.Utilities.NullFile import *
+    from freestream.Utilities.NullFile import *
     devnullstream = NullFile()
 
 logging.basicConfig(level=logging.CRITICAL, format='%(asctime)s %(levelname)-8s %(message)s', datefmt='%a, %d %b %Y %H:%M:%S', stream=devnullstream)

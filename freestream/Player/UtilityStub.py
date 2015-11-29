@@ -1,9 +1,9 @@
-#Embedded file name: ACEStream\Player\UtilityStub.pyo
+﻿#Embedded file name: freestream\Player\UtilityStub.pyo
 import sys
 import os
 import locale
 from traceback import print_exc
-from ACEStream.Lang.lang import Lang
+from freestream.Lang.lang import Lang
 
 class UtilityStub:
 

@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\Search\KeywordSearch.pyo
+﻿#Embedded file name: freestream\Core\Search\KeywordSearch.pyo
 import re
 import sys
 DEBUG = False

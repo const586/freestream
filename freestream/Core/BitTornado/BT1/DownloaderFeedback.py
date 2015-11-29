@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\BitTornado\BT1\DownloaderFeedback.pyo
+﻿#Embedded file name: freestream\Core\BitTornado\BT1\DownloaderFeedback.pyo
 import sys
 from threading import Event
 try:

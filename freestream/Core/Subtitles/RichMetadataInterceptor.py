@@ -1,11 +1,11 @@
-#Embedded file name: ACEStream\Core\Subtitles\RichMetadataInterceptor.pyo
+﻿#Embedded file name: freestream\Core\Subtitles\RichMetadataInterceptor.pyo
 import sys
-from ACEStream.Core.Subtitles.MetadataDomainObjects.MetadataDTO import deserialize
-from ACEStream.Core.Subtitles.MetadataDomainObjects.MetadataExceptions import SerializationException, RichMetadataException
-from ACEStream.Core.Utilities.utilities import isValidPermid, bin2str, show_permid_short
+from freestream.Core.Subtitles.MetadataDomainObjects.MetadataDTO import deserialize
+from freestream.Core.Subtitles.MetadataDomainObjects.MetadataExceptions import SerializationException, RichMetadataException
+from freestream.Core.Utilities.utilities import isValidPermid, bin2str, show_permid_short
 from copy import copy
 from struct import pack, unpack
-from ACEStream.Core.simpledefs import NTFY_RICH_METADATA, NTFY_UPDATE, NTFY_INSERT
+from freestream.Core.simpledefs import NTFY_RICH_METADATA, NTFY_UPDATE, NTFY_INSERT
 DEBUG = False
 
 class RichMetadataInterceptor(object):
@@ -76,7 +76,7 @@ class RichMetadataInterceptor(object):
                 self._getAllSubtitles(md)
 
     def _computeSize(self, msg):
-        import ACEStream.Core.BitTornado.bencode as bencode
+        import freestream.Core.BitTornado.bencode as bencode
         bencoded = bencode.bencode(msg)
         return len(bencoded)
 

@@ -1,11 +1,11 @@
-#Embedded file name: ACEStream\Core\Statistics\GoogleAnalytics.pyo
+﻿#Embedded file name: freestream\Core\Statistics\GoogleAnalytics.pyo
 import sys
 import urllib
 import random
 import time
 import hashlib
-from ACEStream.Core.Session import Session
-from ACEStream.Core.Utilities.logger import log, log_exc
+from freestream.Core.Session import Session
+from freestream.Core.Utilities.logger import log, log_exc
 DEBUG = False
 
 class GoogleAnalytics:

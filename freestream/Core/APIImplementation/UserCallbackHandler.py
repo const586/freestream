@@ -1,14 +1,14 @@
-#Embedded file name: ACEStream\Core\APIImplementation\UserCallbackHandler.pyo
+﻿#Embedded file name: freestream\Core\APIImplementation\UserCallbackHandler.pyo
 import sys
 import os
 import shutil
 import binascii
 from threading import currentThread
 from traceback import print_exc
-from ACEStream.Core.simpledefs import *
-from ACEStream.Core.APIImplementation.ThreadPool import ThreadPool
-from ACEStream.Core.CacheDB.Notifier import Notifier
-from ACEStream.GlobalConfig import globalConfig
+from freestream.Core.simpledefs import *
+from freestream.Core.APIImplementation.ThreadPool import ThreadPool
+from freestream.Core.CacheDB.Notifier import Notifier
+from freestream.GlobalConfig import globalConfig
 DEBUG = False
 
 class UserCallbackHandler:

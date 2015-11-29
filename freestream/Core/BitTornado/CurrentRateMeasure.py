@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\BitTornado\CurrentRateMeasure.pyo
+﻿#Embedded file name: freestream\Core\BitTornado\CurrentRateMeasure.pyo
 from clock import clock
 
 class Measure:

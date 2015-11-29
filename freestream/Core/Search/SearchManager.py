@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\Search\SearchManager.pyo
+﻿#Embedded file name: freestream\Core\Search\SearchManager.pyo
 import re
 import sys
 DEBUG = False

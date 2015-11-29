@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\BitTornado\RateLimiter.pyo
+﻿#Embedded file name: freestream\Core\BitTornado\RateLimiter.pyo
 from clock import clock
 from CurrentRateMeasure import Measure
 from math import sqrt

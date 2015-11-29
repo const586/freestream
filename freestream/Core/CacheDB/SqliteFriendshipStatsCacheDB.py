@@ -1,10 +1,10 @@
-#Embedded file name: ACEStream\Core\CacheDB\SqliteFriendshipStatsCacheDB.pyo
+﻿#Embedded file name: freestream\Core\CacheDB\SqliteFriendshipStatsCacheDB.pyo
 import sys
 import os
 import threading
-from ACEStream.__init__ import LIBRARYNAME
-from ACEStream.Core.CacheDB.sqlitecachedb import *
-from ACEStream.Core.CacheDB.SqliteCacheDBHandler import BasicDBHandler
+from freestream.__init__ import LIBRARYNAME
+from freestream.Core.CacheDB.sqlitecachedb import *
+from freestream.Core.CacheDB.SqliteCacheDBHandler import BasicDBHandler
 CREATE_FRIENDSHIP_STATS_SQL_FILE = None
 CREATE_FRIENDSHIP_STATS_SQL_FILE_POSTFIX = os.path.join(LIBRARYNAME, 'Core', 'Statistics', 'tribler_friendship_stats_sdb.sql')
 DB_FILE_NAME = 'tribler_friendship_stats.sdb'

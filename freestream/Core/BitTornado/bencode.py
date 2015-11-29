@@ -1,6 +1,6 @@
-#Embedded file name: ACEStream\Core\BitTornado\bencode.pyo
+﻿#Embedded file name: freestream\Core\BitTornado\bencode.pyo
 from types import IntType, LongType, StringType, ListType, TupleType, DictType
-from ACEStream.Core.Utilities.odict import odict
+from freestream.Core.Utilities.odict import odict
 try:
     from types import BooleanType
 except ImportError:

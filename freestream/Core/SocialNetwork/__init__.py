@@ -1,2 +1,2 @@
-#Embedded file name: ACEStream\Core\SocialNetwork\__init__.pyo
+﻿#Embedded file name: freestream\Core\SocialNetwork\__init__.pyo
 pass

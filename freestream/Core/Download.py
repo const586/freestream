@@ -1,14 +1,14 @@
-#Embedded file name: ACEStream\Core\Download.pyo
+﻿#Embedded file name: freestream\Core\Download.pyo
 import sys
 from traceback import print_exc, print_stack
-from ACEStream.Core.simpledefs import *
-from ACEStream.Core.defaults import *
-from ACEStream.Core.exceptions import *
-from ACEStream.Core.Base import *
-from ACEStream.Core.APIImplementation.DownloadRuntimeConfig import DownloadRuntimeConfig
-from ACEStream.Core.APIImplementation.DownloadImpl import DownloadImpl
-from ACEStream.Core.APIImplementation.miscutils import *
-from ACEStream.Core.osutils import *
+from freestream.Core.simpledefs import *
+from freestream.Core.defaults import *
+from freestream.Core.exceptions import *
+from freestream.Core.Base import *
+from freestream.Core.APIImplementation.DownloadRuntimeConfig import DownloadRuntimeConfig
+from freestream.Core.APIImplementation.DownloadImpl import DownloadImpl
+from freestream.Core.APIImplementation.miscutils import *
+from freestream.Core.osutils import *
 
 class Download(DownloadRuntimeConfig, DownloadImpl):
 

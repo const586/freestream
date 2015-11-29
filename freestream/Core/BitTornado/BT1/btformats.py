@@ -1,7 +1,7 @@
-#Embedded file name: ACEStream\Core\BitTornado\BT1\btformats.pyo
+﻿#Embedded file name: freestream\Core\BitTornado\BT1\btformats.pyo
 import sys
 from types import UnicodeType, StringType, LongType, IntType, ListType, DictType
-from ACEStream.Core.Utilities.odict import odict
+from freestream.Core.Utilities.odict import odict
 from re import compile
 ints = (LongType, IntType)
 

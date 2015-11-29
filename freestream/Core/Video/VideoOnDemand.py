@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\Video\VideoOnDemand.pyo
+﻿#Embedded file name: freestream\Core\Video\VideoOnDemand.pyo
 import sys
 import random
 import ctypes
@@ -13,13 +13,13 @@ from math import ceil
 from threading import Event, Condition, currentThread, Lock
 from traceback import print_exc, print_stack
 from tempfile import mkstemp
-from ACEStream.GlobalConfig import globalConfig
-from ACEStream.Core.BitTornado.CurrentRateMeasure import Measure
-from ACEStream.Core.Video.MovieTransport import MovieTransport, MovieTransportStreamWrapper
-from ACEStream.Core.simpledefs import *
-from ACEStream.Core.osutils import *
-from ACEStream.Core.Utilities.logger import log, log_exc
-from ACEStream.Core.Video.LiveSourceAuth import ECDSAAuthenticator, RSAAuthenticator, AuthStreamWrapper, VariableReadAuthStreamWrapper
+from freestream.GlobalConfig import globalConfig
+from freestream.Core.BitTornado.CurrentRateMeasure import Measure
+from freestream.Core.Video.MovieTransport import MovieTransport, MovieTransportStreamWrapper
+from freestream.Core.simpledefs import *
+from freestream.Core.osutils import *
+from freestream.Core.Utilities.logger import log, log_exc
+from freestream.Core.Video.LiveSourceAuth import ECDSAAuthenticator, RSAAuthenticator, AuthStreamWrapper, VariableReadAuthStreamWrapper
 DEBUG = False
 DEBUG_EXTENDED = False
 DEBUG_HOOKIN = False
@@ -87,7 +87,7 @@ class MovieOnDemandTransporter(MovieTransport):
     MAX_POP_TIME = 10
 
     def __init__(self, bt1download, videostatus, videoinfo, videoanalyserpath, vodeventfunc, httpsupport = None):
-        from ACEStream.Core.Session import Session
+        from freestream.Core.Session import Session
         session = Session.get_instance()
         self.app_mode = globalConfig.get_mode()
         self.MAX_POP_TIME = globalConfig.get_value('vod_live_max_pop_time', 10)
@@ -593,7 +593,7 @@ class MovieOnDemandTransporter(MovieTransport):
         vs = self.videostatus
         if self.mediainfo is None:
             try:
-                from ACEStream.Core.Video.MediaInfo import MediaInfo
+                from freestream.Core.Video.MediaInfo import MediaInfo
                 self.mediainfo = MediaInfo()
                 self.mediainfo_next_piece = vs.first_piece
                 self.mediainfo_pos = 0
@@ -749,7 +749,7 @@ class MovieOnDemandTransporter(MovieTransport):
         vs = self.videostatus
         if self.mediainfo is None:
             try:
-                from ACEStream.Core.Video.MediaInfo import MediaInfo
+                from freestream.Core.Video.MediaInfo import MediaInfo
                 self.mediainfo = MediaInfo()
                 self.mediainfo_next_piece = vs.first_piece
                 self.videostatus.add_missing_piece(self.mediainfo_next_piece, True)

@@ -1,9 +1,9 @@
-#Embedded file name: ACEStream\Utilities\TimedTaskQueue.pyo
+﻿#Embedded file name: freestream\Utilities\TimedTaskQueue.pyo
 import sys
 from threading import Thread, Condition
 from traceback import print_exc, print_stack, format_stack
 from time import time
-from ACEStream.Core.Utilities.logger import log, log_exc
+from freestream.Core.Utilities.logger import log, log_exc
 DEBUG = False
 DEBUG_STACK = False
 

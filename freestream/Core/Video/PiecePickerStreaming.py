@@ -1,12 +1,12 @@
-#Embedded file name: ACEStream\Core\Video\PiecePickerStreaming.pyo
+﻿#Embedded file name: freestream\Core\Video\PiecePickerStreaming.pyo
 import sys
 import time
 import random
 from traceback import print_stack
-from ACEStream.Core.BitTornado.BT1.PiecePicker import PiecePicker
-from ACEStream.Core.Utilities.logger import log, log_exc
-from ACEStream.Core.Utilities.odict import odict
-from ACEStream.GlobalConfig import globalConfig
+from freestream.Core.BitTornado.BT1.PiecePicker import PiecePicker
+from freestream.Core.Utilities.logger import log, log_exc
+from freestream.Core.Utilities.odict import odict
+from freestream.GlobalConfig import globalConfig
 TEST_VOD_OVERRIDE = False
 DEBUG = False
 DEBUG_CHUNKS = False

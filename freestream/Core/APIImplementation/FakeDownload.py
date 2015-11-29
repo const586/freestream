@@ -1,7 +1,7 @@
-#Embedded file name: ACEStream\Core\APIImplementation\FakeDownload.pyo
-from ACEStream.Core.API import *
-from ACEStream.Core.Utilities.EncryptedStorage import EncryptedStorageStream
-from ACEStream.Core.Utilities.logger import log, log_exc
+﻿#Embedded file name: freestream\Core\APIImplementation\FakeDownload.pyo
+from freestream.Core.API import *
+from freestream.Core.Utilities.EncryptedStorage import EncryptedStorageStream
+from freestream.Core.Utilities.logger import log, log_exc
 
 class FakeDownload:
 

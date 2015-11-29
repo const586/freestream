@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\BitTornado\BT1\Storage.pyo
+﻿#Embedded file name: freestream\Core\BitTornado\BT1\Storage.pyo
 import sys
 import os
 import binascii
@@ -13,10 +13,10 @@ try:
 except ImportError:
     fsync = lambda x: None
 
-from ACEStream.Core.BitTornado.piecebuffer import BufferPool
-from ACEStream.Core.Utilities.logger import log, log_exc
-from ACEStream.Core.Utilities.TSCrypto import m2_AES_encrypt, m2_AES_decrypt
-from ACEStream.GlobalConfig import globalConfig
+from freestream.Core.BitTornado.piecebuffer import BufferPool
+from freestream.Core.Utilities.logger import log, log_exc
+from freestream.Core.Utilities.TSCrypto import m2_AES_encrypt, m2_AES_decrypt
+from freestream.GlobalConfig import globalConfig
 try:
     True
 except:

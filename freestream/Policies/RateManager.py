@@ -1,9 +1,9 @@
-#Embedded file name: ACEStream\Policies\RateManager.pyo
+﻿#Embedded file name: freestream\Policies\RateManager.pyo
 import sys
 from sets import Set
 from threading import RLock
 from traceback import print_exc
-from ACEStream.Core.simpledefs import *
+from freestream.Core.simpledefs import *
 DEBUG = False
 
 class RateManager:

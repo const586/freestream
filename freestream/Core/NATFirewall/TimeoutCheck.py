@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\NATFirewall\TimeoutCheck.pyo
+﻿#Embedded file name: freestream\Core\NATFirewall\TimeoutCheck.pyo
 from socket import *
 import sys
 import thread

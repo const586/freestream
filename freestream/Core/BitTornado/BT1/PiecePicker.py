@@ -1,12 +1,12 @@
-#Embedded file name: ACEStream\Core\BitTornado\BT1\PiecePicker.pyo
+﻿#Embedded file name: freestream\Core\BitTornado\BT1\PiecePicker.pyo
 import sys
 import time
 from threading import Lock
 from random import randrange, shuffle
 from traceback import extract_tb, print_stack, print_exc
-from ACEStream.Core.BitTornado.clock import clock
-from ACEStream.Core.BitTornado.bitfield import Bitfield
-from ACEStream.Core.Utilities.logger import log, log_exc
+from freestream.Core.BitTornado.clock import clock
+from freestream.Core.BitTornado.bitfield import Bitfield
+from freestream.Core.Utilities.logger import log, log_exc
 try:
     True
 except:

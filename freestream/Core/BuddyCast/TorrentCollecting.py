@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\BuddyCast\TorrentCollecting.pyo
+﻿#Embedded file name: freestream\Core\BuddyCast\TorrentCollecting.pyo
 DEBUG = False
 
 class SimpleTorrentCollecting:

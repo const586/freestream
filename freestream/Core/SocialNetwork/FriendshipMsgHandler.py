@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\SocialNetwork\FriendshipMsgHandler.pyo
+﻿#Embedded file name: freestream\Core\SocialNetwork\FriendshipMsgHandler.pyo
 import threading
 import sys
 import os
@@ -8,14 +8,14 @@ from time import time
 from types import DictType
 from traceback import print_exc
 from sets import Set
-from ACEStream.Core.simpledefs import *
-from ACEStream.Core.BitTornado.bencode import bencode, bdecode
-from ACEStream.Core.BitTornado.BT1.MessageID import *
-from ACEStream.Core.CacheDB.CacheDBHandler import PeerDBHandler, FriendDBHandler
-from ACEStream.Core.CacheDB.SqliteFriendshipStatsCacheDB import FriendshipStatisticsDBHandler
-from ACEStream.Core.CacheDB.sqlitecachedb import bin2str
-from ACEStream.Core.Utilities.utilities import *
-from ACEStream.Core.Overlay.SecureOverlay import OLPROTO_VER_SEVENTH
+from freestream.Core.simpledefs import *
+from freestream.Core.BitTornado.bencode import bencode, bdecode
+from freestream.Core.BitTornado.BT1.MessageID import *
+from freestream.Core.CacheDB.CacheDBHandler import PeerDBHandler, FriendDBHandler
+from freestream.Core.CacheDB.SqliteFriendshipStatsCacheDB import FriendshipStatisticsDBHandler
+from freestream.Core.CacheDB.sqlitecachedb import bin2str
+from freestream.Core.Utilities.utilities import *
+from freestream.Core.Overlay.SecureOverlay import OLPROTO_VER_SEVENTH
 DEBUG = False
 RESCHEDULE_INTERVAL = 60
 RESEND_INTERVAL = 5 * 60

@@ -1,11 +1,11 @@
-#Embedded file name: ACEStream\Core\ClosedSwarm\ClosedSwarm.pyo
+﻿#Embedded file name: freestream\Core\ClosedSwarm\ClosedSwarm.pyo
 import time
 import os.path
 from base64 import encodestring, decodestring
 from M2Crypto.EC import pub_key_from_der
-from ACEStream.Core.Overlay import permid
-from ACEStream.Core.BitTornado.bencode import bencode, bdecode
-from ACEStream.Core.BitTornado.BT1.MessageID import *
+from freestream.Core.Overlay import permid
+from freestream.Core.BitTornado.bencode import bencode, bdecode
+from freestream.Core.BitTornado.BT1.MessageID import *
 
 class ClosedSwarmException(Exception):
     pass

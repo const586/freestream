@@ -1,19 +1,19 @@
-#Embedded file name: ACEStream\Core\BuddyCast\votecast.pyo
+﻿#Embedded file name: freestream\Core\BuddyCast\votecast.pyo
 import sys
 from time import time
 from sets import Set
-from ACEStream.Core.BitTornado.bencode import bencode, bdecode
-from ACEStream.Core.Statistics.Logger import OverlayLogger
-from ACEStream.Core.BitTornado.BT1.MessageID import VOTECAST
-from ACEStream.Core.CacheDB.CacheDBHandler import VoteCastDBHandler
-from ACEStream.Core.Utilities.utilities import *
-from ACEStream.Core.Overlay.permid import permid_for_user
-from ACEStream.Core.CacheDB.sqlitecachedb import bin2str, str2bin
-from ACEStream.Core.BuddyCast.moderationcast_util import *
-from ACEStream.Core.Overlay.SecureOverlay import OLPROTO_VER_THIRTEENTH
-from ACEStream.Core.CacheDB.Notifier import Notifier
-from ACEStream.Core.simpledefs import NTFY_VOTECAST, NTFY_UPDATE
-from ACEStream.Core.CacheDB.SqliteCacheDBHandler import PeerDBHandler
+from freestream.Core.BitTornado.bencode import bencode, bdecode
+from freestream.Core.Statistics.Logger import OverlayLogger
+from freestream.Core.BitTornado.BT1.MessageID import VOTECAST
+from freestream.Core.CacheDB.CacheDBHandler import VoteCastDBHandler
+from freestream.Core.Utilities.utilities import *
+from freestream.Core.Overlay.permid import permid_for_user
+from freestream.Core.CacheDB.sqlitecachedb import bin2str, str2bin
+from freestream.Core.BuddyCast.moderationcast_util import *
+from freestream.Core.Overlay.SecureOverlay import OLPROTO_VER_THIRTEENTH
+from freestream.Core.CacheDB.Notifier import Notifier
+from freestream.Core.simpledefs import NTFY_VOTECAST, NTFY_UPDATE
+from freestream.Core.CacheDB.SqliteCacheDBHandler import PeerDBHandler
 DEBUG_UI = False
 DEBUG = False
 debug = False

@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\dispersy\dprint.pyo
+﻿#Embedded file name: freestream\Core\dispersy\dprint.pyo
 from pickle import dumps
 from os.path import dirname, basename, expanduser, isfile, join
 from sys import stdout, stderr, exc_info

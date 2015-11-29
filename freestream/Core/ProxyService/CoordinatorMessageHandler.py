@@ -1,9 +1,9 @@
-#Embedded file name: ACEStream\Core\ProxyService\CoordinatorMessageHandler.pyo
+﻿#Embedded file name: freestream\Core\ProxyService\CoordinatorMessageHandler.pyo
 import sys
-from ACEStream.Core.BitTornado.bencode import bdecode
-from ACEStream.Core.BitTornado.BT1.MessageID import *
-from ACEStream.Core.Utilities.utilities import show_permid_short
-from ACEStream.Core.simpledefs import *
+from freestream.Core.BitTornado.bencode import bdecode
+from freestream.Core.BitTornado.BT1.MessageID import *
+from freestream.Core.Utilities.utilities import show_permid_short
+from freestream.Core.simpledefs import *
 DEBUG = False
 
 class CoordinatorMessageHandler:

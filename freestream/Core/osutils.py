@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\osutils.pyo
+﻿#Embedded file name: freestream\Core\osutils.pyo
 import sys
 import os
 import time

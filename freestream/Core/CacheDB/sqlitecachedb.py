@@ -1,12 +1,12 @@
-#Embedded file name: ACEStream\Core\CacheDB\sqlitecachedb.pyo
+﻿#Embedded file name: freestream\Core\CacheDB\sqlitecachedb.pyo
 import sys
 import os
 from time import sleep, time
 from base64 import encodestring, decodestring
 import threading
 from traceback import print_exc, print_stack
-from ACEStream.Core.simpledefs import INFOHASH_LENGTH, CHECKSUM_LENGTH, NTFY_DISPERSY, NTFY_STARTED
-from ACEStream.Core.Utilities.unicode import dunno2unicode
+from freestream.Core.simpledefs import INFOHASH_LENGTH, CHECKSUM_LENGTH, NTFY_DISPERSY, NTFY_STARTED
+from freestream.Core.Utilities.unicode import dunno2unicode
 try:
     import apsw
 except:
@@ -224,7 +224,7 @@ class SQLiteCacheDBBase():
                 raise Exception, 'You must specify the path of database file when open it at the first time'
             else:
                 if class_db_path is None:
-                    self.safelyOpenACEStreamDB(sqlite_filepath, create_sql_filename, busytimeout, check_version=check_version, current_db_version=current_db_version)
+                    self.safelyOpenFreeStreamDB(sqlite_filepath, create_sql_filename, busytimeout, check_version=check_version, current_db_version=current_db_version)
                     self.class_variables = {'db_path': sqlite_filepath,
                      'busytimeout': int(busytimeout)}
                     return self.openDB()
@@ -233,7 +233,7 @@ class SQLiteCacheDBBase():
         finally:
             self.lock.release()
 
-    def safelyOpenACEStreamDB(self, dbfile_path, sql_create, busytimeout = DEFAULT_BUSY_TIMEOUT, check_version = False, current_db_version = None):
+    def safelyOpenFreeStreamDB(self, dbfile_path, sql_create, busytimeout = DEFAULT_BUSY_TIMEOUT, check_version = False, current_db_version = None):
         try:
             if not os.path.isfile(dbfile_path):
                 raise Warning('No existing database found. Attempting to creating a new database %s' % repr(dbfile_path))

@@ -1,14 +1,14 @@
-#Embedded file name: ACEStream\Core\SessionConfig.pyo
+﻿#Embedded file name: freestream\Core\SessionConfig.pyo
 import sys
 import copy
 import pickle
-from ACEStream.env import TS_ENV_PLATFORM
-from ACEStream.Core.simpledefs import *
-from ACEStream.Core.defaults import sessdefaults
-from ACEStream.Core.Base import *
-from ACEStream.Core.BitTornado.RawServer import autodetect_socket_style
-from ACEStream.Core.Utilities.utilities import find_prog_in_PATH
-from ACEStream.Core.Utilities.TSCrypto import AES_encrypt, AES_decrypt, m2_AES_encrypt, m2_AES_decrypt
+from freestream.env import TS_ENV_PLATFORM
+from freestream.Core.simpledefs import *
+from freestream.Core.defaults import sessdefaults
+from freestream.Core.Base import *
+from freestream.Core.BitTornado.RawServer import autodetect_socket_style
+from freestream.Core.Utilities.utilities import find_prog_in_PATH
+from freestream.Core.Utilities.TSCrypto import AES_encrypt, AES_decrypt, m2_AES_encrypt, m2_AES_decrypt
 
 class SessionConfigInterface():
 
@@ -530,7 +530,7 @@ class SessionConfigInterface():
         if dlconfig is None:
             return
         else:
-            from ACEStream.Core.DownloadConfig import DownloadStartupConfig
+            from freestream.Core.DownloadConfig import DownloadStartupConfig
             return DownloadStartupConfig(dlconfig)
 
     def set_nat_detect(self, value):

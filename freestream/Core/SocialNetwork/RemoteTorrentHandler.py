@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\SocialNetwork\RemoteTorrentHandler.pyo
+﻿#Embedded file name: freestream\Core\SocialNetwork\RemoteTorrentHandler.pyo
 import sys
 import Queue
 import threading
@@ -7,11 +7,11 @@ from traceback import print_exc
 from time import sleep, time
 from random import choice
 from binascii import hexlify
-from ACEStream.Core.simpledefs import INFOHASH_LENGTH
-from ACEStream.Core.CacheDB.CacheDBHandler import TorrentDBHandler
-from ACEStream.Core.CacheDB.sqlitecachedb import bin2str
-from ACEStream.Core.Utilities.utilities import get_collected_torrent_filename
-from ACEStream.Core.TorrentDef import TorrentDef
+from freestream.Core.simpledefs import INFOHASH_LENGTH
+from freestream.Core.CacheDB.CacheDBHandler import TorrentDBHandler
+from freestream.Core.CacheDB.sqlitecachedb import bin2str
+from freestream.Core.Utilities.utilities import get_collected_torrent_filename
+from freestream.Core.TorrentDef import TorrentDef
 DEBUG = False
 
 class RemoteTorrentHandler:

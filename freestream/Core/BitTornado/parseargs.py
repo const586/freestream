@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\BitTornado\parseargs.pyo
+﻿#Embedded file name: freestream\Core\BitTornado\parseargs.pyo
 from types import *
 from cStringIO import StringIO
 

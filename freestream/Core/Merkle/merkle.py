@@ -1,6 +1,6 @@
-#Embedded file name: ACEStream\Core\Merkle\merkle.pyo
+﻿#Embedded file name: freestream\Core\Merkle\merkle.pyo
 from math import log, pow, floor
-from ACEStream.Core.Utilities.TSCrypto import sha
+from freestream.Core.Utilities.TSCrypto import sha
 import sys
 DEBUG = False
 

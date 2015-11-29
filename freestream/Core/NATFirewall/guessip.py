@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\NATFirewall\guessip.pyo
+﻿#Embedded file name: freestream\Core\NATFirewall\guessip.pyo
 import os
 import sys
 import socket

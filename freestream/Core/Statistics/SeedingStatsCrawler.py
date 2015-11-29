@@ -1,8 +1,8 @@
-#Embedded file name: ACEStream\Core\Statistics\SeedingStatsCrawler.pyo
+﻿#Embedded file name: freestream\Core\Statistics\SeedingStatsCrawler.pyo
 import sys
 import cPickle
-from ACEStream.Core.BitTornado.BT1.MessageID import CRAWLER_SEEDINGSTATS_QUERY
-from ACEStream.Core.CacheDB.SqliteSeedingStatsCacheDB import *
+from freestream.Core.BitTornado.BT1.MessageID import CRAWLER_SEEDINGSTATS_QUERY
+from freestream.Core.CacheDB.SqliteSeedingStatsCacheDB import *
 DEBUG = False
 
 class SeedingStatsCrawler:

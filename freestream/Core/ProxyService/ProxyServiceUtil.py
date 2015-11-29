@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\ProxyService\ProxyServiceUtil.pyo
+﻿#Embedded file name: freestream\Core\ProxyService\ProxyServiceUtil.pyo
 import string
 import random
 

@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\BitTornado\natpunch.pyo
+﻿#Embedded file name: freestream\Core\BitTornado\natpunch.pyo
 import sys
 import socket
 import time
@@ -6,8 +6,8 @@ from traceback import print_exc
 from subnetparse import IP_List
 from clock import clock
 from __init__ import createPeerID
-from ACEStream.Core.NATFirewall.upnp import UPnPPlatformIndependent, UPnPError
-from ACEStream.Core.NATFirewall.guessip import get_my_wan_ip
+from freestream.Core.NATFirewall.upnp import UPnPPlatformIndependent, UPnPError
+from freestream.Core.NATFirewall.guessip import get_my_wan_ip
 try:
     True
 except:

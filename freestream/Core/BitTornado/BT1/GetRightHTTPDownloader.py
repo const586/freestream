@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\BitTornado\BT1\GetRightHTTPDownloader.pyo
+﻿#Embedded file name: freestream\Core\BitTornado\BT1\GetRightHTTPDownloader.pyo
 import sys
 import time
 from random import randint
@@ -7,10 +7,10 @@ from httplib import HTTPConnection
 import urllib
 from threading import Thread, currentThread, Lock, Event
 from traceback import print_stack, print_exc
-from ACEStream.version import VERSION
-from ACEStream.Core.BitTornado.CurrentRateMeasure import Measure
-from ACEStream.Core.Utilities.timeouturlopen import find_proxy
-from ACEStream.Core.Utilities.logger import log, log_exc
+from freestream.version import VERSION
+from freestream.Core.BitTornado.CurrentRateMeasure import Measure
+from freestream.Core.Utilities.timeouturlopen import find_proxy
+from freestream.Core.Utilities.logger import log, log_exc
 DEBUG = False
 
 class SingleDownloadHelperInterface():
@@ -21,7 +21,7 @@ class SingleDownloadHelperInterface():
 
 EXPIRE_TIME = 60 * 60
 MAX_REDIRECTS = 5
-USER_AGENT = 'ACEStream/' + VERSION
+USER_AGENT = 'freestream/' + VERSION
 SEED_UNKNOWN = 0
 SEED_GOOD = 1
 SEED_BAD = 2
@@ -175,7 +175,7 @@ class SingleDownload(SingleDownloadHelperInterface):
             log('ghttp::start_proxy: run _start_proxy in a separate thread: pos', pos, 'speed', speed, 'respect_reserved_pieces', respect_reserved_pieces)
         self.is_proxy = True
         self.proxy_respect_reserved_pieces = respect_reserved_pieces
-        from ACEStream.Core.Session import Session
+        from freestream.Core.Session import Session
         session = Session.get_instance()
         f = lambda : self._start_proxy(pos, callback_failed, speed)
         session.uch.perform_usercallback(f)
@@ -603,7 +603,7 @@ class SingleDownload(SingleDownloadHelperInterface):
         self.vodmode = self.downloader.voddownload is not None
         if DEBUG:
             log('ghttp::download: set vodmode', self.vodmode)
-        from ACEStream.Core.Session import Session
+        from freestream.Core.Session import Session
         session = Session.get_instance()
         session.uch.perform_usercallback(self._download)
 

@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\BitTornado\clock.pyo
+﻿#Embedded file name: freestream\Core\BitTornado\clock.pyo
 import sys
 from time import time
 _MAXFORWARD = 100

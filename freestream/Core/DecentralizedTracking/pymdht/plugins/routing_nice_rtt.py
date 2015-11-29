@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\DecentralizedTracking\pymdht\plugins\routing_nice_rtt.pyo
+﻿#Embedded file name: freestream\Core\DecentralizedTracking\pymdht\plugins\routing_nice_rtt.pyo
 import random
 import heapq
 import logging
@@ -11,13 +11,13 @@ try:
     from core.node import Node, RoutingNode
     from core.routing_table import RoutingTable
 except ImportError:
-    import ACEStream.Core.DecentralizedTracking.pymdht.core.ptime as time
-    import ACEStream.Core.DecentralizedTracking.pymdht.core.identifier as identifier
-    import ACEStream.Core.DecentralizedTracking.pymdht.core.message as message
-    from ACEStream.Core.DecentralizedTracking.pymdht.core.querier import Query
-    import ACEStream.Core.DecentralizedTracking.pymdht.core.node as node
-    from ACEStream.Core.DecentralizedTracking.pymdht.core.node import Node, RoutingNode
-    from ACEStream.Core.DecentralizedTracking.pymdht.core.routing_table import RoutingTable
+    import freestream.Core.DecentralizedTracking.pymdht.core.ptime as time
+    import freestream.Core.DecentralizedTracking.pymdht.core.identifier as identifier
+    import freestream.Core.DecentralizedTracking.pymdht.core.message as message
+    from freestream.Core.DecentralizedTracking.pymdht.core.querier import Query
+    import freestream.Core.DecentralizedTracking.pymdht.core.node as node
+    from freestream.Core.DecentralizedTracking.pymdht.core.node import Node, RoutingNode
+    from freestream.Core.DecentralizedTracking.pymdht.core.routing_table import RoutingTable
 
 logger = logging.getLogger('dht')
 NUM_BUCKETS = identifier.ID_SIZE_BITS

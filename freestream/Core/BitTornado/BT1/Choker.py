@@ -1,10 +1,10 @@
-#Embedded file name: ACEStream\Core\BitTornado\BT1\Choker.pyo
+﻿#Embedded file name: freestream\Core\BitTornado\BT1\Choker.pyo
 from traceback import print_exc, print_stack
 from random import randrange, shuffle
 import sys
-from ACEStream.Core.BitTornado.clock import clock
-from ACEStream.Core.Utilities.logger import log, log_exc
-from ACEStream.GlobalConfig import globalConfig
+from freestream.Core.BitTornado.clock import clock
+from freestream.Core.Utilities.logger import log, log_exc
+from freestream.GlobalConfig import globalConfig
 try:
     True
 except:

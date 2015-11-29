@@ -1,10 +1,10 @@
-#Embedded file name: ACEStream\Core\Video\VideoStatus.pyo
+﻿#Embedded file name: freestream\Core\Video\VideoStatus.pyo
 import sys
 from math import ceil, floor
-from ACEStream.Core.simpledefs import *
+from freestream.Core.simpledefs import *
 from threading import currentThread, Lock
 from traceback import print_exc
-from ACEStream.Core.Utilities.logger import log, log_exc
+from freestream.Core.Utilities.logger import log, log_exc
 LIVE_WRAPAROUND = True
 DEBUG = False
 DEBUG_SKIP_METADATA = False

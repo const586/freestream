@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Video\Ogg.pyo
+﻿#Embedded file name: freestream\Video\Ogg.pyo
 import sys
 import os
 from cStringIO import StringIO

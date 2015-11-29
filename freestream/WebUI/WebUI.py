@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\WebUI\WebUI.pyo
+﻿#Embedded file name: freestream\WebUI\WebUI.pyo
 import sys, os
 import time
 import random
@@ -16,11 +16,11 @@ try:
 except ImportError:
     import json
 
-from ACEStream.Core.API import *
-from ACEStream.Core.BitTornado.bencode import *
-from ACEStream.Video.VideoServer import AbstractPathMapper
-from ACEStream.Core.Utilities.logger import log, log_exc
-from ACEStream.Plugin.defs import *
+from freestream.Core.API import *
+from freestream.Core.BitTornado.bencode import *
+from freestream.Video.VideoServer import AbstractPathMapper
+from freestream.Core.Utilities.logger import log, log_exc
+from freestream.Plugin.defs import *
 DEBUG = False
 
 def streaminfo404():

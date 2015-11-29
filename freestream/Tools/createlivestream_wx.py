@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Tools\createlivestream_wx.pyo
+﻿#Embedded file name: freestream\Tools\createlivestream_wx.pyo
 import sys
 import os
 try:
@@ -23,16 +23,16 @@ from traceback import print_exc
 from threading import Thread
 from base64 import encodestring
 from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
-import ACEStream.Debug.console
-from ACEStream.GlobalConfig import globalConfig
-from ACEStream.Core.API import *
-from ACEStream.Video.Ogg import ogg_grab_page, is_ogg
-import ACEStream.Core.BitTornado.parseargs as parseargs
-from ACEStream.Core.Utilities.timeouturlopen import urlOpenTimeout
-from ACEStream.Core.BitTornado.CurrentRateMeasure import Measure
-from ACEStream.Core.Utilities.logger import log, log_exc
-from ACEStream.Core.TS.Service import TSService
-from ACEStream.Core.Video import VideoSource
+import freestream.Debug.console
+from freestream.GlobalConfig import globalConfig
+from freestream.Core.API import *
+from freestream.Video.Ogg import ogg_grab_page, is_ogg
+import freestream.Core.BitTornado.parseargs as parseargs
+from freestream.Core.Utilities.timeouturlopen import urlOpenTimeout
+from freestream.Core.BitTornado.CurrentRateMeasure import Measure
+from freestream.Core.Utilities.logger import log, log_exc
+from freestream.Core.TS.Service import TSService
+from freestream.Core.Video import VideoSource
 DEBUG = False
 argsdef = [('name', '', 'name of the stream'),
  ('source', '-', 'source to stream (url, file or "-" to indicate stdin)'),
@@ -533,31 +533,31 @@ def start(apptype, current_dir):
         print >> sys.stderr, 'Usage:  ', get_usage(argsdef)
         os._exit(0)
     debug_level = config['debug']
-    ACEStream.Core.BitTornado.SocketHandler.DEBUG = debug_level & 8 != 0
-    ACEStream.Core.BitTornado.BT1.Choker.DEBUG = debug_level & 8 != 0
-    ACEStream.Core.BitTornado.BT1.Connecter.DEBUG = debug_level & 8 != 0
-    ACEStream.Core.BitTornado.BT1.Downloader.DEBUG = debug_level & 8 != 0
-    ACEStream.Core.BitTornado.BT1.Encrypter.DEBUG = debug_level & 8 != 0
-    ACEStream.Core.BitTornado.BT1.Encrypter.DEBUG_CLOSE = debug_level & 8 != 0
-    ACEStream.Core.BitTornado.BT1.Rerequester.DEBUG = debug_level & 8 != 0
-    ACEStream.Core.BitTornado.BT1.Rerequester.DEBUG_DHT = debug_level & 8 != 0
-    ACEStream.Core.BitTornado.BT1.Rerequester.DEBUG_CHECK_NETWORK_CONNECTION = debug_level & 8 != 0
-    ACEStream.Core.BitTornado.BT1.track.DEBUG = debug_level & 8 != 0
-    ACEStream.Core.BitTornado.BT1.StorageWrapper.DEBUG_LIVE = debug_level == -1 or debug_level & 16 != 0
-    ACEStream.Core.Video.VideoSource.DEBUG = debug_level == -1 or debug_level & 16 != 0
-    ACEStream.Core.NATFirewall.NatCheck.DEBUG = debug_level & 64 != 0
-    ACEStream.Core.NATFirewall.UPnPThread.DEBUG = debug_level & 64 != 0
-    ACEStream.Core.NATFirewall.UDPPuncture.DEBUG = debug_level & 64 != 0
-    ACEStream.Core.NATFirewall.upnp.DEBUG = debug_level & 64 != 0
-    ACEStream.Core.NATFirewall.ConnectionCheck.DEBUG = debug_level & 64 != 0
-    ACEStream.Core.BitTornado.RawServer.DEBUG = debug_level & 512 != 0
-    ACEStream.Core.BitTornado.RawServer.DEBUG2 = debug_level & 512 != 0
-    ACEStream.Core.BitTornado.ServerPortHandler.DEBUG = debug_level & 512 != 0
-    ACEStream.Core.BitTornado.ServerPortHandler.DEBUG2 = debug_level & 512 != 0
-    ACEStream.Core.BitTornado.HTTPHandler.DEBUG = debug_level & 512 != 0
-    ACEStream.Core.BitTornado.HTTPHandler.DEBUG2 = debug_level & 512 != 0
-    ACEStream.Core.BitTornado.SocketHandler.DEBUG = debug_level & 512 != 0
-    ACEStream.Core.BitTornado.SocketHandler.DEBUG2 = debug_level & 512 != 0
+    freestream.Core.BitTornado.SocketHandler.DEBUG = debug_level & 8 != 0
+    freestream.Core.BitTornado.BT1.Choker.DEBUG = debug_level & 8 != 0
+    freestream.Core.BitTornado.BT1.Connecter.DEBUG = debug_level & 8 != 0
+    freestream.Core.BitTornado.BT1.Downloader.DEBUG = debug_level & 8 != 0
+    freestream.Core.BitTornado.BT1.Encrypter.DEBUG = debug_level & 8 != 0
+    freestream.Core.BitTornado.BT1.Encrypter.DEBUG_CLOSE = debug_level & 8 != 0
+    freestream.Core.BitTornado.BT1.Rerequester.DEBUG = debug_level & 8 != 0
+    freestream.Core.BitTornado.BT1.Rerequester.DEBUG_DHT = debug_level & 8 != 0
+    freestream.Core.BitTornado.BT1.Rerequester.DEBUG_CHECK_NETWORK_CONNECTION = debug_level & 8 != 0
+    freestream.Core.BitTornado.BT1.track.DEBUG = debug_level & 8 != 0
+    freestream.Core.BitTornado.BT1.StorageWrapper.DEBUG_LIVE = debug_level == -1 or debug_level & 16 != 0
+    freestream.Core.Video.VideoSource.DEBUG = debug_level == -1 or debug_level & 16 != 0
+    freestream.Core.NATFirewall.NatCheck.DEBUG = debug_level & 64 != 0
+    freestream.Core.NATFirewall.UPnPThread.DEBUG = debug_level & 64 != 0
+    freestream.Core.NATFirewall.UDPPuncture.DEBUG = debug_level & 64 != 0
+    freestream.Core.NATFirewall.upnp.DEBUG = debug_level & 64 != 0
+    freestream.Core.NATFirewall.ConnectionCheck.DEBUG = debug_level & 64 != 0
+    freestream.Core.BitTornado.RawServer.DEBUG = debug_level & 512 != 0
+    freestream.Core.BitTornado.RawServer.DEBUG2 = debug_level & 512 != 0
+    freestream.Core.BitTornado.ServerPortHandler.DEBUG = debug_level & 512 != 0
+    freestream.Core.BitTornado.ServerPortHandler.DEBUG2 = debug_level & 512 != 0
+    freestream.Core.BitTornado.HTTPHandler.DEBUG = debug_level & 512 != 0
+    freestream.Core.BitTornado.HTTPHandler.DEBUG2 = debug_level & 512 != 0
+    freestream.Core.BitTornado.SocketHandler.DEBUG = debug_level & 512 != 0
+    freestream.Core.BitTornado.SocketHandler.DEBUG2 = debug_level & 512 != 0
     globalConfig.set_value('apptype', apptype)
     if apptype == 'torrentstream':
         appname = 'Torrent Stream'

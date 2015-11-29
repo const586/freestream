@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\BitTornado\BT1\T2T.pyo
+﻿#Embedded file name: freestream\Core\BitTornado\BT1\T2T.pyo
 from Rerequester import Rerequester
 from urllib import quote
 from threading import Event

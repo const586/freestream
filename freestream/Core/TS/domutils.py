@@ -1,6 +1,6 @@
-#Embedded file name: ACEStream\Core\TS\domutils.pyo
+﻿#Embedded file name: freestream\Core\TS\domutils.pyo
 from traceback import print_exc
-from ACEStream.Core.Utilities.logger import log, log_exc
+from freestream.Core.Utilities.logger import log, log_exc
 DEBUG = False
 
 class domutils:

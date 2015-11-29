@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\APIImplementation\miscutils.pyo
+﻿#Embedded file name: freestream\Core\APIImplementation\miscutils.pyo
 import sys
 import re
 from threading import Timer

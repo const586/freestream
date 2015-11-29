@@ -1,2 +1,2 @@
-#Embedded file name: ACEStream\env.pyo
+﻿#Embedded file name: freestream\env.pyo
 TS_ENV_PLATFORM = 'linux'

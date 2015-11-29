@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\CacheDB\cachedb.pyo
+﻿#Embedded file name: freestream\Core\CacheDB\cachedb.pyo
 from sqlitecachedb import *
 from SqliteSeedingStatsCacheDB import *
 from SqliteFriendshipStatsCacheDB import *

@@ -1,10 +1,10 @@
-#Embedded file name: ACEStream\Core\Subtitles\MetadataDomainObjects\MetadataDTO.pyo
-from ACEStream.Core.BitTornado.bencode import bencode, bdecode
-from ACEStream.Core.Subtitles.MetadataDomainObjects.Languages import LanguagesProvider
-from ACEStream.Core.Subtitles.MetadataDomainObjects.MetadataExceptions import SerializationException
-from ACEStream.Core.Subtitles.MetadataDomainObjects.SubtitleInfo import SubtitleInfo
-from ACEStream.Core.Overlay.permid import sign_data, verify_data
-from ACEStream.Core.Utilities.utilities import isValidInfohash, isValidPermid
+﻿#Embedded file name: freestream\Core\Subtitles\MetadataDomainObjects\MetadataDTO.pyo
+from freestream.Core.BitTornado.bencode import bencode, bdecode
+from freestream.Core.Subtitles.MetadataDomainObjects.Languages import LanguagesProvider
+from freestream.Core.Subtitles.MetadataDomainObjects.MetadataExceptions import SerializationException
+from freestream.Core.Subtitles.MetadataDomainObjects.SubtitleInfo import SubtitleInfo
+from freestream.Core.Overlay.permid import sign_data, verify_data
+from freestream.Core.Utilities.utilities import isValidInfohash, isValidPermid
 from math import floor
 from struct import pack, unpack
 import sys

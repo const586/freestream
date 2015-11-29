@@ -1,14 +1,14 @@
-#Embedded file name: ACEStream\Core\Statistics\TrafficStatistics.pyo
+﻿#Embedded file name: freestream\Core\Statistics\TrafficStatistics.pyo
 import sys
 import random
 import time
 import urllib
 import binascii
 from traceback import print_exc
-from ACEStream.version import VERSION, VERSION_REV
-from ACEStream.Utilities.TimedTaskQueue import TimedTaskQueue
-from ACEStream.Core.Utilities.timeouturlopen import urlOpenTimeout
-from ACEStream.Core.Utilities.logger import log, log_exc
+from freestream.version import VERSION, VERSION_REV
+from freestream.Utilities.TimedTaskQueue import TimedTaskQueue
+from freestream.Core.Utilities.timeouturlopen import urlOpenTimeout
+from freestream.Core.Utilities.logger import log, log_exc
 DEBUG = False
 
 class TrafficStatistics:

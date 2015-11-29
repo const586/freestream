@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\APIImplementation\makeurl.pyo
+﻿#Embedded file name: freestream\Core\APIImplementation\makeurl.pyo
 import sys
 import urlparse
 import urllib
@@ -10,8 +10,8 @@ from struct import pack, unpack
 from base64 import b64encode, b64decode
 from M2Crypto import Rand
 from traceback import print_exc, print_stack
-from ACEStream.Core.simpledefs import *
-from ACEStream.Core.Utilities.TSCrypto import sha
+from freestream.Core.simpledefs import *
+from freestream.Core.Utilities.TSCrypto import sha
 DEBUG = False
 
 def metainfo2p2purl(metainfo):

@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\dispersy\database.pyo
+﻿#Embedded file name: freestream\Core\dispersy\database.pyo
 from __future__ import with_statement
 import thread
 import hashlib

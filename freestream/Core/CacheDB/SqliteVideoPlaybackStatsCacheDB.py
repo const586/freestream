@@ -1,12 +1,12 @@
-#Embedded file name: ACEStream\Core\CacheDB\SqliteVideoPlaybackStatsCacheDB.pyo
+﻿#Embedded file name: freestream\Core\CacheDB\SqliteVideoPlaybackStatsCacheDB.pyo
 import sys
 import os
 import thread
 from base64 import b64encode
 from time import time
-from ACEStream.__init__ import LIBRARYNAME
-from ACEStream.Core.CacheDB.sqlitecachedb import SQLiteCacheDBBase
-from ACEStream.Core.CacheDB.SqliteCacheDBHandler import BasicDBHandler
+from freestream.__init__ import LIBRARYNAME
+from freestream.Core.CacheDB.sqlitecachedb import SQLiteCacheDBBase
+from freestream.Core.CacheDB.SqliteCacheDBHandler import BasicDBHandler
 CREATE_VIDEOPLAYBACK_STATS_SQL_FILE = None
 CREATE_VIDEOPLAYBACK_STATS_SQL_FILE_POSTFIX = os.path.join(LIBRARYNAME, 'Core', 'Statistics', 'tribler_videoplayback_stats.sql')
 DB_FILE_NAME = 'tribler_videoplayback_stats.sdb'

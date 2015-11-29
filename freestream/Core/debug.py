@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\debug.pyo
+﻿#Embedded file name: freestream\Core\debug.pyo
 
 
 class DebugState:

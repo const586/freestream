@@ -1,21 +1,21 @@
-#Embedded file name: ACEStream\Core\APIImplementation\maketorrent.pyo
+﻿#Embedded file name: freestream\Core\APIImplementation\maketorrent.pyo
 import sys
 import os
 from hashlib import md5
 import zlib
-from ACEStream.Core.Utilities.TSCrypto import sha
+from freestream.Core.Utilities.TSCrypto import sha
 from copy import copy
 from time import time
 from types import LongType
-from ACEStream.Core.BitTornado.bencode import bencode
-from ACEStream.Core.BitTornado.BT1.btformats import check_info
-from ACEStream.Core.Merkle.merkle import MerkleTree
-from ACEStream.Core.Utilities.unicode import str2unicode, bin2unicode
-from ACEStream.Core.APIImplementation.miscutils import parse_playtime_to_secs, offset2piece
-from ACEStream.Core.osutils import fix_filebasename
-from ACEStream.Core.defaults import tdefdictdefaults
-from ACEStream.Core.Utilities.logger import log, log_exc
-from ACEStream.Core.Utilities.odict import odict
+from freestream.Core.BitTornado.bencode import bencode
+from freestream.Core.BitTornado.BT1.btformats import check_info
+from freestream.Core.Merkle.merkle import MerkleTree
+from freestream.Core.Utilities.unicode import str2unicode, bin2unicode
+from freestream.Core.APIImplementation.miscutils import parse_playtime_to_secs, offset2piece
+from freestream.Core.osutils import fix_filebasename
+from freestream.Core.defaults import tdefdictdefaults
+from freestream.Core.Utilities.logger import log, log_exc
+from freestream.Core.Utilities.odict import odict
 ignore = []
 DEBUG = False
 
@@ -44,7 +44,7 @@ def make_torrent_file(input, userabortflag = None, userprogresscallback = lambda
                 metainfo['comment.utf-8'] = uniconvert(input['comment'], 'utf-8')
 
     if input['torrentsigkeypairfilename'] is not None:
-        from ACEStream.Core.Overlay.permid import create_torrent_signature
+        from freestream.Core.Overlay.permid import create_torrent_signature
         create_torrent_signature(metainfo, input['torrentsigkeypairfilename'])
     if 'url-compat' in input:
         metainfo['info']['url-compat'] = input['url-compat']

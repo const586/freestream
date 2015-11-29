@@ -1,10 +1,10 @@
-#Embedded file name: ACEStream\Core\APIImplementation\DownloadRuntimeConfig.pyo
+﻿#Embedded file name: freestream\Core\APIImplementation\DownloadRuntimeConfig.pyo
 import sys
 import binascii
-from ACEStream.Core.simpledefs import *
-from ACEStream.Core.DownloadConfig import DownloadConfigInterface
-from ACEStream.Core.exceptions import OperationNotPossibleAtRuntimeException
-from ACEStream.Core.Utilities.logger import log, log_exc
+from freestream.Core.simpledefs import *
+from freestream.Core.DownloadConfig import DownloadConfigInterface
+from freestream.Core.exceptions import OperationNotPossibleAtRuntimeException
+from freestream.Core.Utilities.logger import log, log_exc
 DEBUG = False
 
 class DownloadRuntimeConfig(DownloadConfigInterface):

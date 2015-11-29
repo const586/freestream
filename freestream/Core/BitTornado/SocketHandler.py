@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\BitTornado\SocketHandler.pyo
+﻿#Embedded file name: freestream\Core\BitTornado\SocketHandler.pyo
 import socket
 import errno
 try:
@@ -13,8 +13,8 @@ from clock import clock
 import sys
 from random import shuffle, randrange
 from traceback import print_exc, print_stack
-from ACEStream.GlobalConfig import globalConfig
-from ACEStream.Core.Utilities.logger import log, log_exc
+from freestream.GlobalConfig import globalConfig
+from freestream.Core.Utilities.logger import log, log_exc
 try:
     True
 except:
@@ -471,7 +471,7 @@ class SocketHandler:
                         newsock, addr = s.accept()
                         if not self.btengine_said_reachable:
                             try:
-                                from ACEStream.Core.NATFirewall.DialbackMsgHandler import DialbackMsgHandler
+                                from freestream.Core.NATFirewall.DialbackMsgHandler import DialbackMsgHandler
                                 dmh = DialbackMsgHandler.getInstance()
                                 dmh.network_btengine_reachable_callback()
                             except ImportError:

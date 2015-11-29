@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\BitTornado\subnetparse.pyo
+﻿#Embedded file name: freestream\Core\BitTornado\subnetparse.pyo
 from bisect import bisect, insort
 try:
     True

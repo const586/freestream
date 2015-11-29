@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\TorrentDef.pyo
+﻿#Embedded file name: freestream\Core\TorrentDef.pyo
 import sys
 import os
 import copy
@@ -8,23 +8,23 @@ import urllib2
 from traceback import print_stack
 from types import StringType, ListType, IntType, LongType
 from base64 import b64encode
-import ACEStream
-from ACEStream.Core.simpledefs import *
-from ACEStream.Core.defaults import *
-from ACEStream.Core.exceptions import *
-from ACEStream.Core.Base import *
-from ACEStream.Core.BitTornado.bencode import bencode, bdecode
-import ACEStream.Core.APIImplementation.maketorrent as maketorrent
-import ACEStream.Core.APIImplementation.makeurl as makeurl
-from ACEStream.Core.APIImplementation.miscutils import *
-from ACEStream.Core.Utilities.utilities import validTorrentFile, isValidURL
-from ACEStream.Core.Utilities.unicode import dunno2unicode
-from ACEStream.Core.Utilities.timeouturlopen import urlOpenTimeout
-from ACEStream.Core.osutils import *
-from ACEStream.Core.Utilities.TSCrypto import sha, m2_AES_encrypt, m2_AES_decrypt
-from ACEStream.Core.Utilities.logger import log, log_exc
-from ACEStream.Core.ClosedSwarm import ClosedSwarm
-from ACEStream.Core.DecentralizedTracking.MagnetLink.MagnetLink import MagnetLink
+import freestream
+from freestream.Core.simpledefs import *
+from freestream.Core.defaults import *
+from freestream.Core.exceptions import *
+from freestream.Core.Base import *
+from freestream.Core.BitTornado.bencode import bencode, bdecode
+import freestream.Core.APIImplementation.maketorrent as maketorrent
+import freestream.Core.APIImplementation.makeurl as makeurl
+from freestream.Core.APIImplementation.miscutils import *
+from freestream.Core.Utilities.utilities import validTorrentFile, isValidURL
+from freestream.Core.Utilities.unicode import dunno2unicode
+from freestream.Core.Utilities.timeouturlopen import urlOpenTimeout
+from freestream.Core.osutils import *
+from freestream.Core.Utilities.TSCrypto import sha, m2_AES_encrypt, m2_AES_decrypt
+from freestream.Core.Utilities.logger import log, log_exc
+from freestream.Core.ClosedSwarm import ClosedSwarm
+from freestream.Core.DecentralizedTracking.MagnetLink.MagnetLink import MagnetLink
 DEBUG = False
 DEBUG_PREMIUM = False
 TORRENT_CACHE_EXPIRE = 86400
@@ -818,7 +818,7 @@ class TorrentDef(Serializable, Copyable):
 
     def verify_torrent_signature(self):
         if self.metainfo_valid:
-            return ACEStream.Core.Overlay.permid.verify_torrent_signature(self.metainfo)
+            return freestream.Core.Overlay.permid.verify_torrent_signature(self.metainfo)
         raise TorrentDefNotFinalizedException()
 
     def save(self, filename = None):

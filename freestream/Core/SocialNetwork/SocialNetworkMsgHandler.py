@@ -1,8 +1,8 @@
-#Embedded file name: ACEStream\Core\SocialNetwork\SocialNetworkMsgHandler.pyo
+﻿#Embedded file name: freestream\Core\SocialNetwork\SocialNetworkMsgHandler.pyo
 import sys
-from ACEStream.Core.BitTornado.BT1.MessageID import *
-from ACEStream.Core.Overlay.SecureOverlay import OLPROTO_VER_FIFTH
-from ACEStream.Core.SocialNetwork.OverlapMsgHandler import OverlapMsgHandler
+from freestream.Core.BitTornado.BT1.MessageID import *
+from freestream.Core.Overlay.SecureOverlay import OLPROTO_VER_FIFTH
+from freestream.Core.SocialNetwork.OverlapMsgHandler import OverlapMsgHandler
 DEBUG = False
 
 class SocialNetworkMsgHandler:

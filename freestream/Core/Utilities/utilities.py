@@ -1,13 +1,13 @@
-#Embedded file name: ACEStream\Core\Utilities\utilities.pyo
+﻿#Embedded file name: freestream\Core\Utilities\utilities.pyo
 import socket
 from time import time, strftime, gmtime
 from base64 import encodestring, decodestring
-from ACEStream.Core.Utilities.TSCrypto import sha
+from freestream.Core.Utilities.TSCrypto import sha
 import sys
 import os
 import copy
 from types import UnicodeType, StringType, LongType, IntType, ListType, DictType
-from ACEStream.Core.Utilities.odict import odict
+from freestream.Core.Utilities.odict import odict
 import urlparse
 from traceback import print_exc, print_stack
 import binascii

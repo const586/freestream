@@ -1,7 +1,7 @@
-#Embedded file name: ACEStream\Core\Subtitles\PeerHaveManager.pyo
+﻿#Embedded file name: freestream\Core\Subtitles\PeerHaveManager.pyo
 from __future__ import with_statement
 import time
-from ACEStream.Core.Subtitles.MetadataDomainObjects import Languages
+from freestream.Core.Subtitles.MetadataDomainObjects import Languages
 import threading
 PEERS_RESULT_LIMIT = 5
 HAVE_VALIDITY_TIME = 604800

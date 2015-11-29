@@ -1,10 +1,10 @@
-#Embedded file name: ACEStream\Core\Subtitles\SubtitlesSupport.pyo
-from ACEStream.Core.Subtitles.MetadataDomainObjects.Languages import LanguagesProvider
-from ACEStream.Core.Subtitles.MetadataDomainObjects.MetadataDTO import MetadataDTO
-from ACEStream.Core.Subtitles.MetadataDomainObjects.MetadataExceptions import RichMetadataException
-from ACEStream.Core.Subtitles.MetadataDomainObjects.SubtitleInfo import SubtitleInfo
-from ACEStream.Core.Utilities import utilities
-from ACEStream.Core.Utilities.utilities import isValidPermid, bin2str
+﻿#Embedded file name: freestream\Core\Subtitles\SubtitlesSupport.pyo
+from freestream.Core.Subtitles.MetadataDomainObjects.Languages import LanguagesProvider
+from freestream.Core.Subtitles.MetadataDomainObjects.MetadataDTO import MetadataDTO
+from freestream.Core.Subtitles.MetadataDomainObjects.MetadataExceptions import RichMetadataException
+from freestream.Core.Subtitles.MetadataDomainObjects.SubtitleInfo import SubtitleInfo
+from freestream.Core.Utilities import utilities
+from freestream.Core.Utilities.utilities import isValidPermid, bin2str
 import sys
 import threading
 DEBUG = False

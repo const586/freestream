@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\Subtitles\MetadataDomainObjects\Languages.pyo
+﻿#Embedded file name: freestream\Core\Subtitles\MetadataDomainObjects\Languages.pyo
 from __future__ import with_statement
 import csv
 import codecs

@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\BitTornado\selectpoll.pyo
+﻿#Embedded file name: freestream\Core\BitTornado\selectpoll.pyo
 import sys
 from select import select
 from time import sleep

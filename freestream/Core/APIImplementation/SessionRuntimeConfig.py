@@ -1,10 +1,10 @@
-#Embedded file name: ACEStream\Core\APIImplementation\SessionRuntimeConfig.pyo
+﻿#Embedded file name: freestream\Core\APIImplementation\SessionRuntimeConfig.pyo
 from __future__ import with_statement
 import sys
 from traceback import print_exc
-from ACEStream.Core.exceptions import *
-from ACEStream.Core.SessionConfig import SessionConfigInterface
-from ACEStream.Core.Subtitles.SubtitlesHandler import SubtitlesHandler
+from freestream.Core.exceptions import *
+from freestream.Core.SessionConfig import SessionConfigInterface
+from freestream.Core.Subtitles.SubtitlesHandler import SubtitlesHandler
 
 class SessionRuntimeConfig(SessionConfigInterface):
 
@@ -162,7 +162,7 @@ class SessionRuntimeConfig(SessionConfigInterface):
     def set_start_recommender(self, value):
         self.sesslock.acquire()
         try:
-            from ACEStream.Core.Overlay.OverlayThreadingBridge import OverlayThreadingBridge
+            from freestream.Core.Overlay.OverlayThreadingBridge import OverlayThreadingBridge
             SessionConfigInterface.set_start_recommender(self, value)
             olbridge = OverlayThreadingBridge.getInstance()
             task = lambda : self.olthread_set_start_recommender(value)
@@ -171,7 +171,7 @@ class SessionRuntimeConfig(SessionConfigInterface):
             self.sesslock.release()
 
     def olthread_set_start_recommender(self, value):
-        from ACEStream.Core.BuddyCast.buddycast import BuddyCastFactory
+        from freestream.Core.BuddyCast.buddycast import BuddyCastFactory
         bcfac = BuddyCastFactory.getInstance()
         if value:
             bcfac.restartBuddyCast()
@@ -275,7 +275,7 @@ class SessionRuntimeConfig(SessionConfigInterface):
     def set_torrent_collecting_max_torrents(self, value):
         self.sesslock.acquire()
         try:
-            from ACEStream.Core.Overlay.OverlayThreadingBridge import OverlayThreadingBridge
+            from freestream.Core.Overlay.OverlayThreadingBridge import OverlayThreadingBridge
             SessionConfigInterface.set_torrent_collecting_max_torrents(self, value)
             olbridge = OverlayThreadingBridge.getInstance()
             task = lambda : self.olthread_set_torrent_collecting_max_torrents(value)
@@ -284,7 +284,7 @@ class SessionRuntimeConfig(SessionConfigInterface):
             self.sesslock.release()
 
     def olthread_set_torrent_collecting_max_torrents(self, value):
-        from ACEStream.Core.Overlay.MetadataHandler import MetadataHandler
+        from freestream.Core.Overlay.MetadataHandler import MetadataHandler
         mh = MetadataHandler.getInstance()
         mh.set_overflow(value)
         mh.delayed_check_overflow(2)
@@ -309,7 +309,7 @@ class SessionRuntimeConfig(SessionConfigInterface):
     def set_torrent_collecting_rate(self, value):
         self.sesslock.acquire()
         try:
-            from ACEStream.Core.Overlay.OverlayThreadingBridge import OverlayThreadingBridge
+            from freestream.Core.Overlay.OverlayThreadingBridge import OverlayThreadingBridge
             SessionConfigInterface.set_torrent_collecting_rate(self, value)
             olbridge = OverlayThreadingBridge.getInstance()
             task = lambda : self.olthread_set_torrent_collecting_rate(value)
@@ -318,7 +318,7 @@ class SessionRuntimeConfig(SessionConfigInterface):
             self.sesslock.release()
 
     def olthread_set_torrent_collecting_rate(self, value):
-        from ACEStream.Core.Overlay.MetadataHandler import MetadataHandler
+        from freestream.Core.Overlay.MetadataHandler import MetadataHandler
         mh = MetadataHandler.getInstance()
         mh.set_rate(value)
 
@@ -382,7 +382,7 @@ class SessionRuntimeConfig(SessionConfigInterface):
     def set_stop_collecting_threshold(self, value):
         self.sesslock.acquire()
         try:
-            from ACEStream.Core.Overlay.OverlayThreadingBridge import OverlayThreadingBridge
+            from freestream.Core.Overlay.OverlayThreadingBridge import OverlayThreadingBridge
             SessionConfigInterface.set_stop_collecting_threshold(self, value)
             olbridge = OverlayThreadingBridge.getInstance()
             task = lambda : self.olthread_set_stop_collecting_threshold(value)
@@ -391,7 +391,7 @@ class SessionRuntimeConfig(SessionConfigInterface):
             self.sesslock.release()
 
     def olthread_set_stop_collecting_threshold(self, value):
-        from ACEStream.Core.Overlay.MetadataHandler import MetadataHandler
+        from freestream.Core.Overlay.MetadataHandler import MetadataHandler
         mh = MetadataHandler.getInstance()
         mh.set_min_free_space(value)
         mh.delayed_check_free_space(2)

@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Utilities\LSO.pyo
+﻿#Embedded file name: freestream\Utilities\LSO.pyo
 import os
 import sys
 import random
@@ -9,8 +9,8 @@ try:
 except ImportError:
     GOT_PYAMF = False
 
-from ACEStream.Core.osutils import get_appstate_dir
-from ACEStream.Core.Utilities.logger import log, log_exc
+from freestream.Core.osutils import get_appstate_dir
+from freestream.Core.Utilities.logger import log, log_exc
 DEBUG = False
 
 class LSO:

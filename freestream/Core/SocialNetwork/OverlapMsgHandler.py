@@ -1,11 +1,11 @@
-#Embedded file name: ACEStream\Core\SocialNetwork\OverlapMsgHandler.pyo
+﻿#Embedded file name: freestream\Core\SocialNetwork\OverlapMsgHandler.pyo
 import sys
 from time import time
 from traceback import print_exc
-from ACEStream.Core.BitTornado.bencode import bencode, bdecode
-from ACEStream.Core.BitTornado.BT1.MessageID import *
-from ACEStream.Core.Utilities.utilities import *
-from ACEStream.Core.Utilities.unicode import str2unicode
+from freestream.Core.BitTornado.bencode import bencode, bdecode
+from freestream.Core.BitTornado.BT1.MessageID import *
+from freestream.Core.Utilities.utilities import *
+from freestream.Core.Utilities.unicode import str2unicode
 DEBUG = False
 MIN_OVERLAP_WAIT = 43200.0
 ICON_MAX_SIZE = 10240

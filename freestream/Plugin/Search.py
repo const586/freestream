@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Plugin\Search.pyo
+﻿#Embedded file name: freestream\Plugin\Search.pyo
 import sys
 import time
 import random
@@ -10,12 +10,12 @@ import copy
 from cStringIO import StringIO
 from traceback import print_exc, print_stack
 from threading import RLock
-from ACEStream.Core.API import *
-from ACEStream.Core.BitTornado.bencode import *
-from ACEStream.Core.Utilities.utilities import get_collected_torrent_filename
-from ACEStream.Video.VideoServer import AbstractPathMapper
-from ACEStream.Plugin.defs import *
-from ACEStream.Plugin.AtomFeedParser import *
+from freestream.Core.API import *
+from freestream.Core.BitTornado.bencode import *
+from freestream.Core.Utilities.utilities import get_collected_torrent_filename
+from freestream.Video.VideoServer import AbstractPathMapper
+from freestream.Plugin.defs import *
+from freestream.Plugin.AtomFeedParser import *
 DEBUG = False
 P2PQUERYTYPE = 'SIMPLE'
 
@@ -650,7 +650,7 @@ def hack_make_default_merkletorrent(title):
     info['root hash'] = '********************'
     metainfo['info'] = info
     mdict = {}
-    mdict['Publisher'] = 'ACEStream'
+    mdict['Publisher'] = 'freestream'
     mdict['Description'] = ''
     mdict['Progressive'] = 1
     mdict['Speed Bps'] = str(65536)

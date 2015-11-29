@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\BitTornado\zurllib.pyo
+﻿#Embedded file name: freestream\Core\BitTornado\zurllib.pyo
 import sys
 from httplib import HTTPConnection, HTTPSConnection, HTTPException
 from urlparse import urlparse
@@ -7,7 +7,7 @@ from gzip import GzipFile
 from StringIO import StringIO
 from __init__ import product_name, version_short
 from traceback import print_exc, print_stack
-from ACEStream.Core.Utilities.timeouturlopen import find_proxy
+from freestream.Core.Utilities.timeouturlopen import find_proxy
 VERSION = product_name + '/' + version_short
 MAX_REDIRECTS = 10
 

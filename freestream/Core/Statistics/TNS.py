@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\Statistics\TNS.pyo
+﻿#Embedded file name: freestream\Core\Statistics\TNS.pyo
 import sys
 import random
 import time
@@ -6,10 +6,10 @@ import urllib
 import binascii
 import hashlib
 from traceback import print_exc
-from ACEStream.version import VERSION, VERSION_REV
-from ACEStream.Utilities.TimedTaskQueue import TimedTaskQueue
-from ACEStream.Core.Utilities.timeouturlopen import urlOpenTimeout
-from ACEStream.Core.Utilities.logger import log, log_exc
+from freestream.version import VERSION, VERSION_REV
+from freestream.Utilities.TimedTaskQueue import TimedTaskQueue
+from freestream.Core.Utilities.timeouturlopen import urlOpenTimeout
+from freestream.Core.Utilities.logger import log, log_exc
 DEBUG = False
 
 class TNSNotAllowedException(Exception):
@@ -181,7 +181,7 @@ class TNS:
         params = {'cookie': self.uid,
          'time': str(long(time.time())),
          'state': event,
-         'value': 'http://acestream.org/local',
+         'value': 'http://freestream.org/local',
          'version': self.version,
          'pt': self.content_type,
          'player_id': str(self.player_id),

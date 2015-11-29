@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\NATFirewall\upnp.pyo
+﻿#Embedded file name: freestream\Core\NATFirewall\upnp.pyo
 import sys
 import socket
 from cStringIO import StringIO
@@ -8,8 +8,8 @@ from urlparse import urlparse
 import xml.sax as sax
 from xml.sax.handler import ContentHandler
 from traceback import print_exc
-from ACEStream.Core.BitTornado.subnetparse import IP_List
-from ACEStream.Core.Utilities.logger import log, log_exc
+from freestream.Core.BitTornado.subnetparse import IP_List
+from freestream.Core.Utilities.logger import log, log_exc
 UPNP_WANTED_SERVICETYPES = ['urn:schemas-upnp-org:service:WANIPConnection:1', 'urn:schemas-upnp-org:service:WANPPPConnection:1']
 DEBUG = False
 

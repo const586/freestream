@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\DecentralizedTracking\mainlineDHT.pyo
+﻿#Embedded file name: freestream\Core\DecentralizedTracking\mainlineDHT.pyo
 import sys
 import logging
 from traceback import print_exc
@@ -6,9 +6,9 @@ DEBUG = False
 dht_imported = False
 if sys.version.split()[0] >= '2.5':
     try:
-        import ACEStream.Core.DecentralizedTracking.pymdht.core.pymdht as pymdht
-        import ACEStream.Core.DecentralizedTracking.pymdht.plugins.routing_nice_rtt as routing_mod
-        import ACEStream.Core.DecentralizedTracking.pymdht.plugins.lookup_a16 as lookup_mod
+        import freestream.Core.DecentralizedTracking.pymdht.core.pymdht as pymdht
+        import freestream.Core.DecentralizedTracking.pymdht.plugins.routing_nice_rtt as routing_mod
+        import freestream.Core.DecentralizedTracking.pymdht.plugins.lookup_a16 as lookup_mod
         dht_imported = True
     except ImportError as e:
         print_exc()

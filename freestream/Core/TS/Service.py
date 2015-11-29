@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\TS\Service.pyo
+﻿#Embedded file name: freestream\Core\TS\Service.pyo
 import sys
 import time
 import hashlib
@@ -12,12 +12,12 @@ from traceback import print_exc
 from xml.dom.minidom import parseString, Document
 from xml.dom import expatbuilder
 from cStringIO import StringIO
-from ACEStream.version import VERSION
-from ACEStream.Core.simpledefs import *
-from ACEStream.Core.TorrentDef import *
-from ACEStream.Core.Utilities.timeouturlopen import urlOpenTimeout
-from ACEStream.Core.Utilities.logger import log, log_exc
-from ACEStream.Core.TS.domutils import domutils
+from freestream.version import VERSION
+from freestream.Core.simpledefs import *
+from freestream.Core.TorrentDef import *
+from freestream.Core.Utilities.timeouturlopen import urlOpenTimeout
+from freestream.Core.Utilities.logger import log, log_exc
+from freestream.Core.TS.domutils import domutils
 SERVER_TYPE_PROXY = 1
 SERVER_TYPE_SERVICE = 2
 SERVER_TYPE_AD = 3
@@ -34,28 +34,7 @@ class BadResponseException(Exception):
 class TSService():
     REQUEST_SECRET = 'q\\\'X!;UL0J_<R*z#GBTL(9mCeRJbm/;L.oi9.`\\"iETli9GD]`t&xlT(]MhJ{NVN,Q.)r~(6+9Bt(G,O%2c/g@sPi]<c[i\\\\ga]fkbHgwH:->ok4w8><y]^:Lw465+W4a(:'
     RESPONSE_SECRET = 'hXD.VAgz=QegM4Hq>P~b7t9LA:eB|}t3z~Rt`FV/-P<va|g,i/M~5/>A-.G70H-p!k|s{wL!Tn\\"=%/L\\\\&@C-Bkz`(w\\\'(KF4fU3(KPKC@.L3.zL4-y%gI8/?RVRx?d+a)'
-    SERVICE_SERVERS = ['http://s1.torrentstream.net',
-     'http://s1.torrentstream.org',
-     'http://s1.torrentstream.info',
-     'http://s2.torrentstream.net',
-     'http://s2.torrentstream.org',
-     'http://s2.torrentstream.info',
-     'http://s3.torrentstream.net',
-     'http://s3.torrentstream.org',
-     'http://s3.torrentstream.info']
-    PREMIUM_SERVICE_SERVERS = ['https://p1.acestream.net',
-     'https://p2.acestream.net',
-     'https://p1.acestream.org',
-     'https://p2.acestream.org']
-    PREMIUM_STATISTICS_SERVERS = ['http://ps1.acestream.net',
-     'http://ps2.acestream.net',
-     'http://ps1.acestream.org',
-     'http://ps2.acestream.org']
-    AUTH_SERVERS = ['https://auth1.acestream.net',
-     'https://auth2.acestream.net',
-     'https://auth1.acestream.org',
-     'https://auth2.acestream.org']
-
+    
     def __init__(self, baseapp):
         self.baseapp = baseapp
 

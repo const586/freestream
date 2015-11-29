@@ -1,12 +1,12 @@
-#Embedded file name: ACEStream\Lang\lang.pyo
+﻿#Embedded file name: freestream\Lang\lang.pyo
 import sys
 import os
 from traceback import print_exc, print_stack
 from cStringIO import StringIO
-from ACEStream.GlobalConfig import globalConfig
-from ACEStream.Core.Session import Session
-from ACEStream.Utilities.configreader import ConfigReader
-from ACEStream.Core.BitTornado.__init__ import version_id
+from freestream.GlobalConfig import globalConfig
+from freestream.Core.Session import Session
+from freestream.Utilities.configreader import ConfigReader
+from freestream.Core.BitTornado.__init__ import version_id
 
 class Lang:
 

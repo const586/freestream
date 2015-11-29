@@ -1,12 +1,12 @@
-#Embedded file name: ACEStream\Core\BuddyCast\moderationcast_util.pyo
+﻿#Embedded file name: freestream\Core\BuddyCast\moderationcast_util.pyo
 import sys
-from ACEStream.Core.CacheDB.sqlitecachedb import bin2str, str2bin
+from freestream.Core.CacheDB.sqlitecachedb import bin2str, str2bin
 from types import StringType, ListType, DictType
 from time import time
-from ACEStream.Core.BitTornado.bencode import bencode
-from ACEStream.Core.Overlay.permid import verify_data
+from freestream.Core.BitTornado.bencode import bencode
+from freestream.Core.Overlay.permid import verify_data
 from os.path import exists, isfile
-from ACEStream.Core.Subtitles.RichMetadataInterceptor import validMetadataEntry
+from freestream.Core.Subtitles.RichMetadataInterceptor import validMetadataEntry
 DEBUG = False
 TIMESTAMP_IN_FUTURE = 300
 

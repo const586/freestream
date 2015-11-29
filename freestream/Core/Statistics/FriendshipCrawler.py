@@ -1,11 +1,11 @@
-#Embedded file name: ACEStream\Core\Statistics\FriendshipCrawler.pyo
+﻿#Embedded file name: freestream\Core\Statistics\FriendshipCrawler.pyo
 import sys
 import time
 from traceback import print_exc
-from ACEStream.Core.BitTornado.BT1.MessageID import CRAWLER_FRIENDSHIP_STATS
-from ACEStream.Core.BitTornado.bencode import bencode, bdecode
-from ACEStream.Core.CacheDB.SqliteFriendshipStatsCacheDB import FriendshipStatisticsDBHandler
-from ACEStream.Core.CacheDB.sqlitecachedb import bin2str
+from freestream.Core.BitTornado.BT1.MessageID import CRAWLER_FRIENDSHIP_STATS
+from freestream.Core.BitTornado.bencode import bencode, bdecode
+from freestream.Core.CacheDB.SqliteFriendshipStatsCacheDB import FriendshipStatisticsDBHandler
+from freestream.Core.CacheDB.sqlitecachedb import bin2str
 DEBUG = False
 
 class FriendshipCrawler:

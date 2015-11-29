@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\defaults.pyo
+﻿#Embedded file name: freestream\Core\defaults.pyo
 import sys
 import os
 from simpledefs import *

@@ -1,12 +1,12 @@
-#Embedded file name: ACEStream\Core\CacheDB\SqliteSeedingStatsCacheDB.pyo
+﻿#Embedded file name: freestream\Core\CacheDB\SqliteSeedingStatsCacheDB.pyo
 import os
 from time import time
 import threading
 from traceback import print_exc
-from ACEStream.__init__ import LIBRARYNAME
-from ACEStream.Core.CacheDB.sqlitecachedb import *
-from ACEStream.Core.CacheDB.SqliteCacheDBHandler import BasicDBHandler
-from ACEStream.Core.simpledefs import *
+from freestream.__init__ import LIBRARYNAME
+from freestream.Core.CacheDB.sqlitecachedb import *
+from freestream.Core.CacheDB.SqliteCacheDBHandler import BasicDBHandler
+from freestream.Core.simpledefs import *
 CREATE_SEEDINGSTATS_SQL_FILE = None
 CREATE_SEEDINGSTATS_SQL_FILE_POSTFIX = os.path.join(LIBRARYNAME, 'Core', 'Statistics', 'tribler_seedingstats_sdb.sql')
 DB_FILE_NAME = 'tribler_seedingstats.sdb'

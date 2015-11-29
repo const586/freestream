@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Category\init_category.pyo
+﻿#Embedded file name: freestream\Category\init_category.pyo
 import ConfigParser
 
 def splitList(string):

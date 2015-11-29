@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Plugin\defs.pyo
+﻿#Embedded file name: freestream\Plugin\defs.pyo
 URLPATH_CONTENT_PREFIX = '/content'
 URLPATH_TORRENT_POSTFIX = '.tstream'
 URLPATH_NSMETA_POSTFIX = '.xml'

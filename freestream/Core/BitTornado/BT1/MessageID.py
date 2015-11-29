@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\BitTornado\BT1\MessageID.pyo
+﻿#Embedded file name: freestream\Core\BitTornado\BT1\MessageID.pyo
 protocol_name = 'BitTorrent protocol'
 option_pattern = '\x00\x00\x00\x00\x000\x00\x00'
 CHOKE = chr(0)

@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\dispersy\crypto.pyo
+﻿#Embedded file name: freestream\Core\dispersy\crypto.pyo
 from hashlib import sha1, sha224, sha256, sha512, md5
 from math import ceil
 from random import randint

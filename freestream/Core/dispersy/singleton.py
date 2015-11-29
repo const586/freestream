@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\dispersy\singleton.pyo
+﻿#Embedded file name: freestream\Core\dispersy\singleton.pyo
 from __future__ import with_statement
 from threading import RLock
 

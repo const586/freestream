@@ -1,9 +1,9 @@
-#Embedded file name: ACEStream\Core\DecentralizedTracking\ut_pex.pyo
+﻿#Embedded file name: freestream\Core\DecentralizedTracking\ut_pex.pyo
 __fool_epydoc = 481
 import sys
 from types import DictType, StringType
-from ACEStream.Core.BitTornado.BT1.track import compact_peer_info
-from ACEStream.Core.BitTornado.bencode import bencode
+from freestream.Core.BitTornado.BT1.track import compact_peer_info
+from freestream.Core.BitTornado.bencode import bencode
 EXTEND_MSG_UTORRENT_PEX_ID = chr(1)
 EXTEND_MSG_UTORRENT_PEX = 'ut_pex'
 DEBUG = False

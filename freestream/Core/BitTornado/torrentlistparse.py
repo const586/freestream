@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\BitTornado\torrentlistparse.pyo
+﻿#Embedded file name: freestream\Core\BitTornado\torrentlistparse.pyo
 from binascii import unhexlify
 try:
     True

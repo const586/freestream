@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\simpledefs.pyo
+﻿#Embedded file name: freestream\Core\simpledefs.pyo
 import os
 DLSTATUS_ALLOCATING_DISKSPACE = 0
 DLSTATUS_WAITING4HASHCHECK = 1

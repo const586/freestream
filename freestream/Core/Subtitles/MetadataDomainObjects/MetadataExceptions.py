@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\Subtitles\MetadataDomainObjects\MetadataExceptions.pyo
+﻿#Embedded file name: freestream\Core\Subtitles\MetadataDomainObjects\MetadataExceptions.pyo
 
 
 class RichMetadataException(Exception):

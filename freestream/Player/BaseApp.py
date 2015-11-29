@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Player\BaseApp.pyo
+﻿#Embedded file name: freestream\Player\BaseApp.pyo
 import os
 import sys
 import time
@@ -17,36 +17,36 @@ from types import DictType, StringType
 if sys.platform == 'win32':
     import win32file
     import win32api
-    from ACEStream.Core.Utilities.win32regchecker import Win32RegChecker, HKLM, HKCU
+    from freestream.Core.Utilities.win32regchecker import Win32RegChecker, HKLM, HKCU
 from threading import enumerate, currentThread, Lock, Timer
 from traceback import print_stack, print_exc
-from ACEStream.Video.utils import svcextdefaults
-from ACEStream.Core.Utilities.odict import odict
-from ACEStream.Core.Utilities.timeouturlopen import urlOpenTimeout
+from freestream.Video.utils import svcextdefaults
+from freestream.Core.Utilities.odict import odict
+from freestream.Core.Utilities.timeouturlopen import urlOpenTimeout
 if sys.platform == 'darwin':
     os.chdir(os.path.abspath(os.path.dirname(sys.argv[0])))
-from ACEStream.__init__ import DEFAULT_SESSION_LISTENPORT
-from ACEStream.version import VERSION, VERSION_REV
-from ACEStream.env import TS_ENV_PLATFORM
-from ACEStream.GlobalConfig import globalConfig
-from ACEStream.Core.API import *
-from ACEStream.Policies.RateManager import UserDefinedMaxAlwaysOtherwiseEquallyDividedRateManager
-from ACEStream.Utilities.Instance2Instance import *
-from ACEStream.Utilities.TimedTaskQueue import TimedTaskQueue
-from ACEStream.Core.BitTornado.__init__ import createPeerID
-from ACEStream.Video.utils import videoextdefaults
-from ACEStream.Core.Utilities.logger import log, log_exc
-from ACEStream.Core.Utilities.unicode import unicode2str_safe
-from ACEStream.Core.Ads.Manager import AdManager
-from ACEStream.Core.TS.Service import TSService
-from ACEStream.Core.Utilities.mp4metadata import clear_mp4_metadata_tags_from_file
-from ACEStream.Core.Statistics.GoogleAnalytics import GoogleAnalytics
-from ACEStream.Core.Statistics.TNS import TNS, TNSNotAllowedException
-from ACEStream.Core.Statistics.Settings import RemoteStatisticsSettings
-from ACEStream.Core.Statistics.TrafficStatistics import TrafficStatistics
-from ACEStream.Core.APIImplementation.FakeDownload import FakeDownload
-from ACEStream.Utilities.HardwareIdentity import get_hardware_key
-from ACEStream.Utilities.LSO import LSO
+from freestream.__init__ import DEFAULT_SESSION_LISTENPORT
+from freestream.version import VERSION, VERSION_REV
+from freestream.env import TS_ENV_PLATFORM
+from freestream.GlobalConfig import globalConfig
+from freestream.Core.API import *
+from freestream.Policies.RateManager import UserDefinedMaxAlwaysOtherwiseEquallyDividedRateManager
+from freestream.Utilities.Instance2Instance import *
+from freestream.Utilities.TimedTaskQueue import TimedTaskQueue
+from freestream.Core.BitTornado.__init__ import createPeerID
+from freestream.Video.utils import videoextdefaults
+from freestream.Core.Utilities.logger import log, log_exc
+from freestream.Core.Utilities.unicode import unicode2str_safe
+from freestream.Core.Ads.Manager import AdManager
+from freestream.Core.TS.Service import TSService
+from freestream.Core.Utilities.mp4metadata import clear_mp4_metadata_tags_from_file
+from freestream.Core.Statistics.GoogleAnalytics import GoogleAnalytics
+from freestream.Core.Statistics.TNS import TNS, TNSNotAllowedException
+from freestream.Core.Statistics.Settings import RemoteStatisticsSettings
+from freestream.Core.Statistics.TrafficStatistics import TrafficStatistics
+from freestream.Core.APIImplementation.FakeDownload import FakeDownload
+from freestream.Utilities.HardwareIdentity import get_hardware_key
+from freestream.Utilities.LSO import LSO
 if sys.platform == 'win32':
     TNS_ENABLED = True
 else:
@@ -75,7 +75,7 @@ CHECK_PRELOAD_ADS_INTERVAL = 86400
 CLEANUP_HIDDEN_DOWNLOADS_INTERVAL = 86400
 DEFAULT_PLAYER_BUFFER_TIME = 5
 DEFAULT_LIVE_BUFFER_TIME = 10
-CACHE_DIR_NAME = '_acestream_cache_'
+CACHE_DIR_NAME = '_freestream_cache_'
 DEFAULT_AD_STORAGE_LIMIT = 536870912L
 AD_STORAGE_LIMIT_SMALL = 536870912L
 AD_STORAGE_LIMIT_BIG = 1073741824L
@@ -98,7 +98,7 @@ class BaseApp(InstanceConnectionHandler):
             self.registry_key = 'TorrentStream'
         else:
             encrypted_storage = True
-            self.registry_key = 'ACEStream'
+            self.registry_key = 'freestream'
         ip = None
         vod_live_max_pop_time = None
         piece_picker_buffering_delay = None
@@ -153,9 +153,9 @@ class BaseApp(InstanceConnectionHandler):
                 pass
 
         self.set_debug_level(debug_level)
-        ACEStream.Core.Video.VideoOnDemand.DEBUG_SKIP_METADATA = skip_metadata
-        ACEStream.Core.Video.VideoStatus.DEBUG_SKIP_METADATA = skip_metadata
-        ACEStream.Core.Video.VideoOnDemand.DO_MEDIAINFO_ANALYSIS = not skip_mediainfo
+        freestream.Core.Video.VideoOnDemand.DEBUG_SKIP_METADATA = skip_metadata
+        freestream.Core.Video.VideoStatus.DEBUG_SKIP_METADATA = skip_metadata
+        freestream.Core.Video.VideoOnDemand.DO_MEDIAINFO_ANALYSIS = not skip_mediainfo
         if DEBUG_STATS_TO_FILE:
             self.debug_counter = 0
         self.appname = appname
@@ -197,54 +197,13 @@ class BaseApp(InstanceConnectionHandler):
         self.tqueue = TimedTaskQueue(nameprefix='BGTaskQueue')
         self.OnInitBase()
         if self.i2i_port == 0:
-            port_file = os.path.join(self.installdir, 'acestream.port')
+            port_file = os.path.join(self.installdir, 'freestream.port')
         else:
             port_file = None
         self.i2i_listen_server = Instance2InstanceServer(self.i2i_port, self, timeout=86400.0, port_file=port_file)
         self.i2i_listen_server.start()
         InstanceConnectionHandler.__init__(self, self.i2ithread_readlinecallback)
         self.check_license()
-
-    def check_license(self):
-        try:
-            path = os.path.join(self.installdir, '..', 'LICENSE.txt')
-            if not os.path.isfile(path):
-                return
-            size = os.path.getsize(path)
-            if size < 1024:
-                return
-            import locale
-            lang_code, encoding = locale.getdefaultlocale()
-            lang_code = lang_code.lower()
-            if lang_code.startswith('en'):
-                lang_code = 'en'
-            elif lang_code.startswith('ru'):
-                lang_code = 'ru'
-            else:
-                lang_code = 'en'
-            if lang_code == 'ru':
-                txt = '\xd0\x9b\xd0\xb8\xd1\x86\xd0\xb5\xd0\xbd\xd0\xb7\xd0\xb8\xd0\xbe\xd0\xbd\xd0\xbd\xd0\xbe\xd0\xb5 \xd1\x81\xd0\xbe\xd0\xb3\xd0\xbb\xd0\xb0\xd1\x88\xd0\xb5\xd0\xbd\xd0\xb8\xd0\xb5 \xd0\xbf\xd1\x80\xd0\xb5\xd0\xb4\xd1\x81\xd1\x82\xd0\xb0\xd0\xb2\xd0\xbb\xd0\xb5\xd0\xbd\xd0\xbe \xd0\xbd\xd0\xb0 \xd1\x81\xd0\xb0\xd0\xb9\xd1\x82\xd0\xb5: http://www.acestream.org/license'
-            else:
-                txt = 'License agreement presented on the site: http://www.acestream.org/license'
-            f = open(path, 'w')
-            f.write(txt)
-            f.close()
-        except:
-            pass
-
-    def test_ads(self):
-        affiliate_id = 0
-        zone_id = 0
-        developer_id = 0
-        include_interruptable_ads = False
-        provider_key = None
-        provider_content_id = None
-        content_ext = 'mp4'
-        content_duration = 3600
-        user_login = self.s.get_ts_login()
-        content_id = '1234567890123456789012345678901234567890'
-        ads = self.ad_manager.get_ads(device_id=self.device_id, user_login=user_login, user_level=2, content_type=DLTYPE_TORRENT, content_id=content_id, content_ext=content_ext, content_duration=content_duration, affiliate_id=affiliate_id, zone_id=zone_id, developer_id=developer_id, include_interruptable_ads=include_interruptable_ads, is_live=False, user_profile=self.user_profile, provider_key=provider_key, provider_content_id=provider_content_id)
-        print >> sys.stderr, '>>>test_ads:', ads
 
     def set_debug_level(self, debug_level):
         if not DEVELOPER_MODE:
@@ -253,88 +212,88 @@ class BaseApp(InstanceConnectionHandler):
             return
         self.debug_level = debug_level
         log('set_debug_level:', debug_level)
-        ACEStream.Plugin.BackgroundProcess.DEBUG2 = debug_level == -1 or debug_level & 1 != 0
-        ACEStream.Player.BaseApp.DEBUG = debug_level == -1 or debug_level & 1 != 0
-        ACEStream.Core.Session.DEBUG = debug_level == -1 or debug_level & 1 != 0
-        ACEStream.Player.BaseApp.DEBUG_HIDDEN_DOWNLOADS = debug_level == -1 or debug_level & 1 != 0
-        ACEStream.Player.BaseApp.DEBUG_AD_STORAGE = debug_level == -1 or debug_level & 1 != 0
-        ACEStream.Player.BaseApp.DEBUG_SERVICE_REQUESTS = debug_level == -1 or debug_level & 1 != 0
-        ACEStream.Player.BaseApp.DEBUG_PREMIUM = debug_level == -1 or debug_level & 1 != 0
-        ACEStream.Player.BaseApp.SHOW_HIDDEN_DOWNLOADS_INFO = debug_level == -1 or debug_level & 1 != 0
-        ACEStream.Core.Ads.Manager.DEBUG = debug_level == -1 or debug_level & 1 != 0
-        ACEStream.Core.TS.Service.DEBUG = debug_level == -1 or debug_level & 1 != 0
-        ACEStream.Core.APIImplementation.DirectDownload.DEBUG = debug_level == -1 or debug_level & 2 != 0
-        ACEStream.Core.APIImplementation.DownloadImpl.DEBUG = debug_level == -1 or debug_level & 2 != 0
-        ACEStream.Core.APIImplementation.LaunchManyCore.DEBUG = debug_level == -1 or debug_level & 2 != 0
-        ACEStream.Core.APIImplementation.SingleDownload.DEBUG = debug_level == -1 or debug_level & 2 != 0
-        ACEStream.Core.BitTornado.download_bt1.DEBUG = debug_level == -1 or debug_level & 2 != 0
-        ACEStream.Core.BitTornado.BT1.GetRightHTTPDownloader.DEBUG = debug_level == -1 or debug_level & 2 != 0
-        ACEStream.Core.DirectDownload.Downloader.DEBUG = debug_level == -1 or debug_level & 2 != 0
-        ACEStream.Core.DirectDownload.Storage.DEBUG = debug_level == -1 or debug_level & 2 != 0
-        ACEStream.Core.DirectDownload.VODTransporter.DEBUG = debug_level == -1 or debug_level & 2 != 0
-        ACEStream.Core.Statistics.GoogleAnalytics.DEBUG = debug_level == -1 or debug_level & 2 != 0
-        ACEStream.Core.TorrentDef.DEBUG = False
-        ACEStream.Core.TS.domutils.DEBUG = False
-        ACEStream.Core.Utilities.mp4metadata.DEBUG = debug_level == -1 or debug_level & 2 != 0
-        ACEStream.Video.VideoServer.DEBUGLOCK = debug_level == -1 or debug_level & 2 != 0
-        ACEStream.Core.Video.PiecePickerStreaming.DEBUG = debug_level == -1 or debug_level & 4 != 0
-        ACEStream.Core.Video.PiecePickerStreaming.DEBUGPP = debug_level == -1 or debug_level & 4 != 0
-        ACEStream.Core.BitTornado.SocketHandler.DEBUG = debug_level == -1 or debug_level & 8 != 0
-        ACEStream.Core.BitTornado.BT1.Choker.DEBUG = debug_level == -1 or debug_level & 8 != 0
-        ACEStream.Core.BitTornado.BT1.Connecter.DEBUG = debug_level == -1 or debug_level & 8 != 0
-        ACEStream.Core.BitTornado.BT1.Connecter.DEBUG_UT_PEX = debug_level == -1 or debug_level & 8 != 0
-        ACEStream.Core.BitTornado.BT1.Downloader.DEBUG = debug_level == -1 or debug_level & 8 != 0
-        ACEStream.Core.BitTornado.BT1.Uploader.DEBUG = debug_level == -1 or debug_level & 8 != 0
-        ACEStream.Core.BitTornado.BT1.Encrypter.DEBUG = debug_level == -1 or debug_level & 8 != 0
-        ACEStream.Core.BitTornado.BT1.Encrypter.DEBUG_CLOSE = debug_level == -1 or debug_level & 8 != 0
-        ACEStream.Core.BitTornado.BT1.Rerequester.DEBUG = debug_level == -1 or debug_level & 8 != 0
-        ACEStream.Core.BitTornado.BT1.Rerequester.DEBUG_DHT = debug_level == -1 or debug_level & 8 != 0
-        ACEStream.Core.BitTornado.BT1.Rerequester.DEBUG_CHECK_NETWORK_CONNECTION = debug_level == -1 or debug_level & 8 != 0
-        ACEStream.Core.Video.VideoOnDemand.DEBUG_HOOKIN = debug_level == -1 or debug_level & 16 != 0
-        ACEStream.Core.Video.LiveSourceAuth.DEBUG = debug_level == -1 or debug_level & 16 != 0
-        ACEStream.Core.Video.PiecePickerStreaming.DEBUG_LIVE = debug_level == -1 or debug_level & 16 != 0
-        ACEStream.Core.BitTornado.BT1.StorageWrapper.DEBUG_LIVE = debug_level == -1 or debug_level & 16 != 0
+        freestream.Plugin.BackgroundProcess.DEBUG2 = debug_level == -1 or debug_level & 1 != 0
+        freestream.Player.BaseApp.DEBUG = debug_level == -1 or debug_level & 1 != 0
+        freestream.Core.Session.DEBUG = debug_level == -1 or debug_level & 1 != 0
+        freestream.Player.BaseApp.DEBUG_HIDDEN_DOWNLOADS = debug_level == -1 or debug_level & 1 != 0
+        freestream.Player.BaseApp.DEBUG_AD_STORAGE = debug_level == -1 or debug_level & 1 != 0
+        freestream.Player.BaseApp.DEBUG_SERVICE_REQUESTS = debug_level == -1 or debug_level & 1 != 0
+        freestream.Player.BaseApp.DEBUG_PREMIUM = debug_level == -1 or debug_level & 1 != 0
+        freestream.Player.BaseApp.SHOW_HIDDEN_DOWNLOADS_INFO = debug_level == -1 or debug_level & 1 != 0
+        freestream.Core.Ads.Manager.DEBUG = debug_level == -1 or debug_level & 1 != 0
+        freestream.Core.TS.Service.DEBUG = debug_level == -1 or debug_level & 1 != 0
+        freestream.Core.APIImplementation.DirectDownload.DEBUG = debug_level == -1 or debug_level & 2 != 0
+        freestream.Core.APIImplementation.DownloadImpl.DEBUG = debug_level == -1 or debug_level & 2 != 0
+        freestream.Core.APIImplementation.LaunchManyCore.DEBUG = debug_level == -1 or debug_level & 2 != 0
+        freestream.Core.APIImplementation.SingleDownload.DEBUG = debug_level == -1 or debug_level & 2 != 0
+        freestream.Core.BitTornado.download_bt1.DEBUG = debug_level == -1 or debug_level & 2 != 0
+        freestream.Core.BitTornado.BT1.GetRightHTTPDownloader.DEBUG = debug_level == -1 or debug_level & 2 != 0
+        freestream.Core.DirectDownload.Downloader.DEBUG = debug_level == -1 or debug_level & 2 != 0
+        freestream.Core.DirectDownload.Storage.DEBUG = debug_level == -1 or debug_level & 2 != 0
+        freestream.Core.DirectDownload.VODTransporter.DEBUG = debug_level == -1 or debug_level & 2 != 0
+        freestream.Core.Statistics.GoogleAnalytics.DEBUG = debug_level == -1 or debug_level & 2 != 0
+        freestream.Core.TorrentDef.DEBUG = False
+        freestream.Core.TS.domutils.DEBUG = False
+        freestream.Core.Utilities.mp4metadata.DEBUG = debug_level == -1 or debug_level & 2 != 0
+        freestream.Video.VideoServer.DEBUGLOCK = debug_level == -1 or debug_level & 2 != 0
+        freestream.Core.Video.PiecePickerStreaming.DEBUG = debug_level == -1 or debug_level & 4 != 0
+        freestream.Core.Video.PiecePickerStreaming.DEBUGPP = debug_level == -1 or debug_level & 4 != 0
+        freestream.Core.BitTornado.SocketHandler.DEBUG = debug_level == -1 or debug_level & 8 != 0
+        freestream.Core.BitTornado.BT1.Choker.DEBUG = debug_level == -1 or debug_level & 8 != 0
+        freestream.Core.BitTornado.BT1.Connecter.DEBUG = debug_level == -1 or debug_level & 8 != 0
+        freestream.Core.BitTornado.BT1.Connecter.DEBUG_UT_PEX = debug_level == -1 or debug_level & 8 != 0
+        freestream.Core.BitTornado.BT1.Downloader.DEBUG = debug_level == -1 or debug_level & 8 != 0
+        freestream.Core.BitTornado.BT1.Uploader.DEBUG = debug_level == -1 or debug_level & 8 != 0
+        freestream.Core.BitTornado.BT1.Encrypter.DEBUG = debug_level == -1 or debug_level & 8 != 0
+        freestream.Core.BitTornado.BT1.Encrypter.DEBUG_CLOSE = debug_level == -1 or debug_level & 8 != 0
+        freestream.Core.BitTornado.BT1.Rerequester.DEBUG = debug_level == -1 or debug_level & 8 != 0
+        freestream.Core.BitTornado.BT1.Rerequester.DEBUG_DHT = debug_level == -1 or debug_level & 8 != 0
+        freestream.Core.BitTornado.BT1.Rerequester.DEBUG_CHECK_NETWORK_CONNECTION = debug_level == -1 or debug_level & 8 != 0
+        freestream.Core.Video.VideoOnDemand.DEBUG_HOOKIN = debug_level == -1 or debug_level & 16 != 0
+        freestream.Core.Video.LiveSourceAuth.DEBUG = debug_level == -1 or debug_level & 16 != 0
+        freestream.Core.Video.PiecePickerStreaming.DEBUG_LIVE = debug_level == -1 or debug_level & 16 != 0
+        freestream.Core.BitTornado.BT1.StorageWrapper.DEBUG_LIVE = debug_level == -1 or debug_level & 16 != 0
         try:
-            ACEStream.Core.Video.VideoSource.DEBUG = debug_level == -1 or debug_level & 16 != 0
+            freestream.Core.Video.VideoSource.DEBUG = debug_level == -1 or debug_level & 16 != 0
         except:
             pass
 
-        ACEStream.Core.Video.VideoOnDemand.DEBUG = debug_level == -1 or debug_level & 32 != 0
-        ACEStream.Core.Video.VideoStatus.DEBUG = debug_level == -1 or debug_level & 32 != 0
-        ACEStream.Video.VideoServer.DEBUG = debug_level == -1 or debug_level & 32 != 0
-        ACEStream.Video.VideoServer.DEBUGCONTENT = debug_level == -1 or debug_level & 32 != 0
-        ACEStream.Core.NATFirewall.NatCheck.DEBUG = debug_level == -1 or debug_level & 64 != 0
-        ACEStream.Core.NATFirewall.UPnPThread.DEBUG = debug_level == -1 or debug_level & 64 != 0
-        ACEStream.Core.NATFirewall.UDPPuncture.DEBUG = debug_level == -1 or debug_level & 64 != 0
-        ACEStream.Core.NATFirewall.upnp.DEBUG = debug_level == -1 or debug_level & 64 != 0
-        ACEStream.Core.NATFirewall.ConnectionCheck.DEBUG = debug_level == -1 or debug_level & 64 != 0
-        ACEStream.Core.BitTornado.natpunch.DEBUG = debug_level == -1 or debug_level & 64 != 0
-        ACEStream.Player.BaseApp.DEBUG_STATS_TO_FILE = debug_level == -1 or debug_level & 128 != 0
-        ACEStream.WebUI.WebUI.DEBUG = debug_level == -1 or debug_level & 256 != 0
-        ACEStream.Core.BitTornado.RawServer.DEBUG = debug_level == -1 or debug_level & 512 != 0
-        ACEStream.Core.BitTornado.RawServer.DEBUG2 = debug_level == -1 or debug_level & 512 != 0
-        ACEStream.Core.BitTornado.ServerPortHandler.DEBUG = debug_level == -1 or debug_level & 512 != 0
-        ACEStream.Core.BitTornado.ServerPortHandler.DEBUG2 = debug_level == -1 or debug_level & 512 != 0
-        ACEStream.Core.BitTornado.HTTPHandler.DEBUG = debug_level == -1 or debug_level & 512 != 0
-        ACEStream.Core.BitTornado.HTTPHandler.DEBUG2 = debug_level == -1 or debug_level & 512 != 0
-        ACEStream.Core.BitTornado.SocketHandler.DEBUG = debug_level == -1 or debug_level & 512 != 0
-        ACEStream.Core.BitTornado.SocketHandler.DEBUG2 = debug_level == -1 or debug_level & 512 != 0
-        ACEStream.Core.BitTornado.BT1.StorageWrapper.DEBUG = debug_level == -1 or debug_level & 8192 != 0
-        ACEStream.Core.BitTornado.BT1.StorageWrapper.DEBUG_WRITE = False
-        ACEStream.Core.BitTornado.BT1.StorageWrapper.DEBUG_HASHCHECK = debug_level == -1 or debug_level & 8192 != 0
-        ACEStream.Core.BitTornado.BT1.StorageWrapper.DEBUG_REQUESTS = debug_level == -1 or debug_level & 8192 != 0
-        ACEStream.Core.BitTornado.BT1.FileSelector.DEBUG = debug_level == -1 or debug_level & 8192 != 0
-        ACEStream.Core.BitTornado.download_bt1.DEBUG_ENCRYPTION = debug_level == -1 or debug_level & 8192 != 0
-        ACEStream.Core.BitTornado.BT1.Storage.DEBUG = debug_level == -1 or debug_level & 16384 != 0
-        ACEStream.Core.BitTornado.BT1.Storage.DEBUG_RESTORE = debug_level == -1 or debug_level & 16384 != 0
-        ACEStream.Core.Utilities.EncryptedStorage.DEBUG = debug_level == -1 or debug_level & 32768 != 0
-        ACEStream.Core.BitTornado.BT1.StorageWrapper.DEBUG_ENCRYPTED_STORAGE = debug_level == -1 or debug_level & 32768 != 0
-        ACEStream.Core.BitTornado.download_bt1.DEBUG_ENCRYPTION = debug_level == -1 or debug_level & 32768 != 0
-        ACEStream.Core.CacheDB.SqliteCacheDBHandler.DEBUG = debug_level == -1 or debug_level & 65536 != 0
-        ACEStream.Utilities.LSO.DEBUG = debug_level == -1 or debug_level & 131072 != 0
-        ACEStream.Core.Statistics.Settings.DEBUG = debug_level == -1 or debug_level & 131072 != 0
-        ACEStream.Core.Statistics.TNS.DEBUG = debug_level == -1 or debug_level & 131072 != 0
-        ACEStream.Core.Statistics.TrafficStatistics.DEBUG = debug_level == -1 or debug_level & 131072 != 0
+        freestream.Core.Video.VideoOnDemand.DEBUG = debug_level == -1 or debug_level & 32 != 0
+        freestream.Core.Video.VideoStatus.DEBUG = debug_level == -1 or debug_level & 32 != 0
+        freestream.Video.VideoServer.DEBUG = debug_level == -1 or debug_level & 32 != 0
+        freestream.Video.VideoServer.DEBUGCONTENT = debug_level == -1 or debug_level & 32 != 0
+        freestream.Core.NATFirewall.NatCheck.DEBUG = debug_level == -1 or debug_level & 64 != 0
+        freestream.Core.NATFirewall.UPnPThread.DEBUG = debug_level == -1 or debug_level & 64 != 0
+        freestream.Core.NATFirewall.UDPPuncture.DEBUG = debug_level == -1 or debug_level & 64 != 0
+        freestream.Core.NATFirewall.upnp.DEBUG = debug_level == -1 or debug_level & 64 != 0
+        freestream.Core.NATFirewall.ConnectionCheck.DEBUG = debug_level == -1 or debug_level & 64 != 0
+        freestream.Core.BitTornado.natpunch.DEBUG = debug_level == -1 or debug_level & 64 != 0
+        freestream.Player.BaseApp.DEBUG_STATS_TO_FILE = debug_level == -1 or debug_level & 128 != 0
+        freestream.WebUI.WebUI.DEBUG = debug_level == -1 or debug_level & 256 != 0
+        freestream.Core.BitTornado.RawServer.DEBUG = debug_level == -1 or debug_level & 512 != 0
+        freestream.Core.BitTornado.RawServer.DEBUG2 = debug_level == -1 or debug_level & 512 != 0
+        freestream.Core.BitTornado.ServerPortHandler.DEBUG = debug_level == -1 or debug_level & 512 != 0
+        freestream.Core.BitTornado.ServerPortHandler.DEBUG2 = debug_level == -1 or debug_level & 512 != 0
+        freestream.Core.BitTornado.HTTPHandler.DEBUG = debug_level == -1 or debug_level & 512 != 0
+        freestream.Core.BitTornado.HTTPHandler.DEBUG2 = debug_level == -1 or debug_level & 512 != 0
+        freestream.Core.BitTornado.SocketHandler.DEBUG = debug_level == -1 or debug_level & 512 != 0
+        freestream.Core.BitTornado.SocketHandler.DEBUG2 = debug_level == -1 or debug_level & 512 != 0
+        freestream.Core.BitTornado.BT1.StorageWrapper.DEBUG = debug_level == -1 or debug_level & 8192 != 0
+        freestream.Core.BitTornado.BT1.StorageWrapper.DEBUG_WRITE = False
+        freestream.Core.BitTornado.BT1.StorageWrapper.DEBUG_HASHCHECK = debug_level == -1 or debug_level & 8192 != 0
+        freestream.Core.BitTornado.BT1.StorageWrapper.DEBUG_REQUESTS = debug_level == -1 or debug_level & 8192 != 0
+        freestream.Core.BitTornado.BT1.FileSelector.DEBUG = debug_level == -1 or debug_level & 8192 != 0
+        freestream.Core.BitTornado.download_bt1.DEBUG_ENCRYPTION = debug_level == -1 or debug_level & 8192 != 0
+        freestream.Core.BitTornado.BT1.Storage.DEBUG = debug_level == -1 or debug_level & 16384 != 0
+        freestream.Core.BitTornado.BT1.Storage.DEBUG_RESTORE = debug_level == -1 or debug_level & 16384 != 0
+        freestream.Core.Utilities.EncryptedStorage.DEBUG = debug_level == -1 or debug_level & 32768 != 0
+        freestream.Core.BitTornado.BT1.StorageWrapper.DEBUG_ENCRYPTED_STORAGE = debug_level == -1 or debug_level & 32768 != 0
+        freestream.Core.BitTornado.download_bt1.DEBUG_ENCRYPTION = debug_level == -1 or debug_level & 32768 != 0
+        freestream.Core.CacheDB.SqliteCacheDBHandler.DEBUG = debug_level == -1 or debug_level & 65536 != 0
+        freestream.Utilities.LSO.DEBUG = debug_level == -1 or debug_level & 131072 != 0
+        freestream.Core.Statistics.Settings.DEBUG = debug_level == -1 or debug_level & 131072 != 0
+        freestream.Core.Statistics.TNS.DEBUG = debug_level == -1 or debug_level & 131072 != 0
+        freestream.Core.Statistics.TrafficStatistics.DEBUG = debug_level == -1 or debug_level & 131072 != 0
 
     def OnInitBase(self):
         state_dir = Session.get_default_state_dir()
@@ -342,7 +301,7 @@ class BaseApp(InstanceConnectionHandler):
         if DEBUG:
             log('baseapp::init: state_dir', state_dir)
         if globalConfig.get_mode() != 'client_console':
-            from ACEStream.Player.UtilityStub import UtilityStub
+            from freestream.Player.UtilityStub import UtilityStub
             self.utility = UtilityStub(self.installdir, state_dir)
             self.utility.app = self
         log('build', VERSION_REV)
@@ -768,7 +727,7 @@ class BaseApp(InstanceConnectionHandler):
         self.sconfig.set_subtitles_collecting(False)
 
     def _get_poa(self, tdef):
-        from ACEStream.Core.ClosedSwarm import ClosedSwarm, PaymentIntegration
+        from freestream.Core.ClosedSwarm import ClosedSwarm, PaymentIntegration
         print >> sys.stderr, 'Swarm_id:', encodestring(tdef.infohash).replace('\n', '')
         try:
             poa = ClosedSwarm.trivial_get_poa(self.s.get_state_dir(), self.s.get_permid(), tdef.infohash)
@@ -797,7 +756,7 @@ class BaseApp(InstanceConnectionHandler):
 
     def start_download(self, tdef, dlfile, extra_files_indexes = [], developer_id = 0, affiliate_id = 0, zone_id = 0, poa = None, supportedvodevents = None):
         if poa:
-            from ACEStream.Core.ClosedSwarm import ClosedSwarm
+            from freestream.Core.ClosedSwarm import ClosedSwarm
             if not poa.__class__ == ClosedSwarm.POA:
                 raise InvalidPOAException('Not a POA')
         destdir = self.get_default_destdir()
@@ -1829,11 +1788,11 @@ class BaseApp(InstanceConnectionHandler):
             return True
         inuse = 0L
         timelist = []
-        if self.apptype == 'acestream':
+        if self.apptype == 'freestream':
             known_files = []
         for d in self.s.get_downloads():
             destfiles = d.get_dest_files(exts=videoextdefaults, get_all=True)
-            if self.apptype == 'acestream':
+            if self.apptype == 'freestream':
                 for filename, savepath in destfiles:
                     if os.path.exists(savepath):
                         known_files.append(savepath)
@@ -1865,7 +1824,7 @@ class BaseApp(InstanceConnectionHandler):
                 timerec = (max_ctime, dinuse, d)
                 timelist.append(timerec)
 
-        if self.apptype == 'acestream':
+        if self.apptype == 'freestream':
             try:
                 filelist = os.listdir(content_dir)
             except:
@@ -1967,16 +1926,10 @@ class BaseApp(InstanceConnectionHandler):
                     playing_dslist[d] = ds
                     if all_playing_are_seeding and ds.get_status() != DLSTATUS_SEEDING:
                         all_playing_are_seeding = False
-                if is_vod_download and vod_download_params.get('premium', False):
+                if is_vod_download:
                     playing_premium_content = True
                     provider_key = d.get_def().get_provider()
                     provider_content_id = d.get_def().get_content_id()
-                    if not self.report_premium_download(provider_key, provider_content_id, vod_download_params):
-                        if time.time() > vod_download_params['start'] + PREMIUM_PREVIEW_TIMEOUT and not vod_download_params.has_key('stopped_preview'):
-                            if DEBUG_PREMIUM:
-                                log('baseapp::gui_states_callback: user auth failed for premium content, stop')
-                            vod_download_params['stopped_preview'] = True
-                            self.stop_download(d, 'http://acestream.net/embed/premium', 'This content is available for premium users only')
                 if DEBUG and display_stats:
                     log('baseapp::gui_states_callback: dlinfo: vod=%i type=%d hash=%s hidden=%i priority=%d status=%s paused=%i progress=%.1f%% error=%s' % (is_vod_download,
                      d.get_type(),
@@ -2621,7 +2574,7 @@ class BaseApp(InstanceConnectionHandler):
                     if not d.is_hidden():
                         self.s.remove_download(d, removecontent=True)
 
-            if self.apptype == 'acestream':
+            if self.apptype == 'freestream':
                 time.sleep(3)
                 path = self.get_default_destdir()
                 shutil.rmtree(path, True)
@@ -2647,7 +2600,7 @@ class BaseApp(InstanceConnectionHandler):
                 dest_dir = registry.readKey(HKLM, 'Software\\' + self.registry_key, 'DataDir', ignore_errors=True)
             if DEBUG:
                 print >> sys.stderr, 'get_default_destdir: get from registry:', dest_dir, type(dest_dir)
-        if self.apptype == 'acestream':
+        if self.apptype == 'freestream':
             if sys.platform == 'win32' and dest_dir is not None:
                 if len(dest_dir) < 2:
                     dest_dir = None
@@ -2671,7 +2624,7 @@ class BaseApp(InstanceConnectionHandler):
                 if not self.check_dest_dir(dest_dir, make_hidden=False):
                     dest_dir = None
             if dest_dir is None and sys.platform != 'win32':
-                dest_dir = os.path.join('/tmp', '.ACEStream', 'downloads')
+                dest_dir = os.path.join('/tmp', '.freestream', 'downloads')
                 if not self.check_dest_dir(dest_dir, make_hidden=False):
                     dest_dir = None
         if dest_dir is None:
@@ -2743,7 +2696,7 @@ class BaseApp(InstanceConnectionHandler):
             if self.check_dest_dir(path, True):
                 dest_dir = path
             if dest_dir is None:
-                path = os.path.join('/tmp', '.ACEStream', 'cache')
+                path = os.path.join('/tmp', '.freestream', 'cache')
                 if self.check_dest_dir(path, make_hidden=True):
                     dest_dir = path
         if DEBUG:

@@ -1,14 +1,14 @@
-#Embedded file name: ACEStream\Core\Subtitles\SubtitlesHandler.pyo
+﻿#Embedded file name: freestream\Core\Subtitles\SubtitlesHandler.pyo
 from __future__ import with_statement
-from ACEStream.Core.Subtitles.MetadataDomainObjects.Languages import LanguagesProvider
-from ACEStream.Core.Subtitles.MetadataDomainObjects.MetadataExceptions import MetadataDBException, RichMetadataException
-from ACEStream.Core.CacheDB.Notifier import Notifier
-from ACEStream.Core.Subtitles.SubtitleHandler.SimpleTokenBucket import SimpleTokenBucket
-from ACEStream.Core.Subtitles.SubtitleHandler.SubsMessageHandler import SubsMessageHandler
-from ACEStream.Core.Utilities import utilities
-from ACEStream.Core.Utilities.TSCrypto import sha
-from ACEStream.Core.Utilities.utilities import bin2str, show_permid_short
-from ACEStream.Core.simpledefs import NTFY_ACT_DISK_FULL, NTFY_SUBTITLE_CONTENTS, NTFY_UPDATE
+from freestream.Core.Subtitles.MetadataDomainObjects.Languages import LanguagesProvider
+from freestream.Core.Subtitles.MetadataDomainObjects.MetadataExceptions import MetadataDBException, RichMetadataException
+from freestream.Core.CacheDB.Notifier import Notifier
+from freestream.Core.Subtitles.SubtitleHandler.SimpleTokenBucket import SimpleTokenBucket
+from freestream.Core.Subtitles.SubtitleHandler.SubsMessageHandler import SubsMessageHandler
+from freestream.Core.Utilities import utilities
+from freestream.Core.Utilities.TSCrypto import sha
+from freestream.Core.Utilities.utilities import bin2str, show_permid_short
+from freestream.Core.simpledefs import NTFY_ACT_DISK_FULL, NTFY_SUBTITLE_CONTENTS, NTFY_UPDATE
 import os
 import sys
 from shutil import copyfile

@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Debug\console.pyo
+﻿#Embedded file name: freestream\Debug\console.pyo
 import sys
 
 class SafePrintStream:
@@ -14,7 +14,7 @@ class SafePrintStream:
                 s = u'{%s}' % repr(arg)
                 self._stream.write(s)
             except:
-                self._stream.write('ACEStreamConsole: ERROR printing\n')
+                self._stream.write('freestreamConsole: ERROR printing\n')
                 self._stream.write(repr(e))
                 self._stream.write('\n')
 

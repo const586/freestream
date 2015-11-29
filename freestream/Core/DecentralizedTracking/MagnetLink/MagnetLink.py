@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\DecentralizedTracking\MagnetLink\MagnetLink.pyo
+﻿#Embedded file name: freestream\Core\DecentralizedTracking\MagnetLink\MagnetLink.pyo
 import sys
 from binascii import unhexlify
 from urlparse import urlsplit
@@ -16,9 +16,9 @@ except ImportError:
                 yield part.split('=', 1)
 
 
-from ACEStream.Core.DecentralizedTracking.pymdht.core.identifier import Id, IdError
-from ACEStream.Core.DecentralizedTracking.MagnetLink.MiniBitTorrent import MiniSwarm, MiniTracker
-import ACEStream.Core.DecentralizedTracking.mainlineDHT as mainlineDHT
+from freestream.Core.DecentralizedTracking.pymdht.core.identifier import Id, IdError
+from freestream.Core.DecentralizedTracking.MagnetLink.MiniBitTorrent import MiniSwarm, MiniTracker
+import freestream.Core.DecentralizedTracking.mainlineDHT as mainlineDHT
 DEBUG = False
 
 class Singleton:

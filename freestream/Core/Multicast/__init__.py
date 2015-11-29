@@ -1,2 +1,2 @@
-#Embedded file name: ACEStream\Core\Multicast\__init__.pyo
+﻿#Embedded file name: freestream\Core\Multicast\__init__.pyo
 from Multicast import *

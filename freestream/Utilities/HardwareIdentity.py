@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Utilities\HardwareIdentity.pyo
+﻿#Embedded file name: freestream\Utilities\HardwareIdentity.pyo
 import sys
 if sys.platform == 'win32':
     try:

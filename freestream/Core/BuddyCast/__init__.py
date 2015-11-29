@@ -1,2 +1,2 @@
-#Embedded file name: ACEStream\Core\BuddyCast\__init__.pyo
+﻿#Embedded file name: freestream\Core\BuddyCast\__init__.pyo
 pass

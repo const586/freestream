@@ -1,15 +1,15 @@
-#Embedded file name: ACEStream\Core\BuddyCast\bartercast.pyo
+﻿#Embedded file name: freestream\Core\BuddyCast\bartercast.pyo
 import sys, os
-from ACEStream.Core.BitTornado.bencode import bencode, bdecode
-from ACEStream.Core.Statistics.Logger import OverlayLogger
-from ACEStream.Core.BitTornado.BT1.MessageID import BARTERCAST
-from ACEStream.Core.CacheDB.CacheDBHandler import BarterCastDBHandler
-from ACEStream.Core.Utilities.utilities import *
+from freestream.Core.BitTornado.bencode import bencode, bdecode
+from freestream.Core.Statistics.Logger import OverlayLogger
+from freestream.Core.BitTornado.BT1.MessageID import BARTERCAST
+from freestream.Core.CacheDB.CacheDBHandler import BarterCastDBHandler
+from freestream.Core.Utilities.utilities import *
 from traceback import print_exc
 from types import StringType, ListType, DictType
 from time import time, gmtime, strftime, ctime
-from ACEStream.Core.Overlay.permid import permid_for_user
-from ACEStream.Core.Overlay.SecureOverlay import OLPROTO_VER_FIFTH
+from freestream.Core.Overlay.permid import permid_for_user
+from freestream.Core.Overlay.SecureOverlay import OLPROTO_VER_FIFTH
 MAX_BARTERCAST_LENGTH = 10485760
 NO_PEERS_IN_MSG = 10
 REFRESH_TOPN_INTERVAL = 1800

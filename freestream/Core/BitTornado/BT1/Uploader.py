@@ -1,6 +1,6 @@
-#Embedded file name: ACEStream\Core\BitTornado\BT1\Uploader.pyo
-from ACEStream.Core.BitTornado.CurrentRateMeasure import Measure
-from ACEStream.Core.Utilities.logger import log, log_exc
+﻿#Embedded file name: freestream\Core\BitTornado\BT1\Uploader.pyo
+from freestream.Core.BitTornado.CurrentRateMeasure import Measure
+from freestream.Core.Utilities.logger import log, log_exc
 import sys
 try:
     True

@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\DecentralizedTracking\repex.pyo
+﻿#Embedded file name: freestream\Core\DecentralizedTracking\repex.pyo
 import sys
 import os
 from time import time as ts_now
@@ -6,10 +6,10 @@ from random import shuffle
 from traceback import print_exc, print_stack
 from threading import RLock, Condition, Event, Thread, currentThread
 from binascii import b2a_hex
-from ACEStream.Core.simpledefs import *
-from ACEStream.Core.exceptions import *
-from ACEStream.Core.osutils import *
-from ACEStream.Core.DecentralizedTracking.ut_pex import check_ut_pex_peerlist
+from freestream.Core.simpledefs import *
+from freestream.Core.exceptions import *
+from freestream.Core.osutils import *
+from freestream.Core.DecentralizedTracking.ut_pex import check_ut_pex_peerlist
 DEBUG = False
 REPEX_DISABLE_BOOTSTRAP = False
 REPEX_SWARMCACHE_SIZE = 4
@@ -479,7 +479,7 @@ class RePEXScheduler(RePEXerStatusCallback):
     def __init__(self):
         if self.__single != None:
             raise RuntimeError, 'RePEXScheduler is singleton'
-        from ACEStream.Core.Session import Session
+        from freestream.Core.Session import Session
         self.session = Session.get_instance()
         self.lock = RLock()
         self.active = False
@@ -739,7 +739,7 @@ class RePEXLogDB():
 class RePEXerTester(RePEXerStatusCallback):
 
     def __init__(self):
-        from ACEStream.Core.Session import Session
+        from freestream.Core.Session import Session
         self.session = Session.get_instance()
         self.peerdb = RePEXLogDB.getInstance()
         self.downloads = {}

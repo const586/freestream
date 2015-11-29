@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\DecentralizedTracking\MagnetLink\MiniBitTorrent.pyo
+﻿#Embedded file name: freestream\Core\DecentralizedTracking\MagnetLink\MiniBitTorrent.pyo
 from cStringIO import StringIO
 from random import getrandbits
 from threading import Lock, Event, Thread
@@ -6,12 +6,12 @@ from time import time
 from traceback import print_exc
 from urllib import urlopen, urlencode
 import sys
-from ACEStream.Core.BitTornado.BT1.MessageID import protocol_name, EXTEND
-from ACEStream.Core.BitTornado.BT1.convert import toint, tobinary
-from ACEStream.Core.BitTornado.RawServer import RawServer
-from ACEStream.Core.BitTornado.SocketHandler import SocketHandler
-from ACEStream.Core.BitTornado.bencode import bencode, bdecode
-from ACEStream.Core.Utilities.TSCrypto import sha
+from freestream.Core.BitTornado.BT1.MessageID import protocol_name, EXTEND
+from freestream.Core.BitTornado.BT1.convert import toint, tobinary
+from freestream.Core.BitTornado.RawServer import RawServer
+from freestream.Core.BitTornado.SocketHandler import SocketHandler
+from freestream.Core.BitTornado.bencode import bencode, bdecode
+from freestream.Core.Utilities.TSCrypto import sha
 UT_EXTEND_HANDSHAKE = chr(0)
 UT_PEX_ID = chr(1)
 UT_METADATA_ID = chr(2)

@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\Utilities\logger.pyo
+﻿#Embedded file name: freestream\Core\Utilities\logger.pyo
 import sys
 from traceback import format_exc
 from time import strftime

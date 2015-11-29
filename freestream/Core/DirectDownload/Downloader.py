@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\DirectDownload\Downloader.pyo
+﻿#Embedded file name: freestream\Core\DirectDownload\Downloader.pyo
 import os
 import binascii
 import time
@@ -6,12 +6,12 @@ from threading import Thread, Lock
 from urlparse import urlparse
 from httplib import HTTPConnection
 from traceback import print_exc
-from ACEStream.version import VERSION
-from ACEStream.Core.Utilities.logger import log, log_exc
-from ACEStream.Core.BitTornado.CurrentRateMeasure import Measure
-from ACEStream.Core.Utilities.timeouturlopen import urlOpenTimeout
+from freestream.version import VERSION
+from freestream.Core.Utilities.logger import log, log_exc
+from freestream.Core.BitTornado.CurrentRateMeasure import Measure
+from freestream.Core.Utilities.timeouturlopen import urlOpenTimeout
 DEBUG = False
-USER_AGENT = 'ACEStream/' + VERSION
+USER_AGENT = 'freestream/' + VERSION
 MAX_REDIRECTS = 10
 
 class FatalErrorException(Exception):

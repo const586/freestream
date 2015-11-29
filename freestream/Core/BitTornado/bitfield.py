@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\BitTornado\bitfield.pyo
+﻿#Embedded file name: freestream\Core\BitTornado\bitfield.pyo
 import sys
 try:
     True

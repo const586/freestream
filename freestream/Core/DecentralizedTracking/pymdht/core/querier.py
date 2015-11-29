@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\DecentralizedTracking\pymdht\core\querier.pyo
+﻿#Embedded file name: freestream\Core\DecentralizedTracking\pymdht\core\querier.pyo
 import sys
 import logging
 import message

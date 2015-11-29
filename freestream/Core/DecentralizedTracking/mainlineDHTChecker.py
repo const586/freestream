@@ -1,7 +1,7 @@
-#Embedded file name: ACEStream\Core\DecentralizedTracking\mainlineDHTChecker.pyo
+﻿#Embedded file name: freestream\Core\DecentralizedTracking\mainlineDHTChecker.pyo
 import sys
 from threading import currentThread
-from ACEStream.Core.CacheDB.CacheDBHandler import TorrentDBHandler
+from freestream.Core.CacheDB.CacheDBHandler import TorrentDBHandler
 DEBUG = False
 
 class mainlineDHTChecker:
@@ -30,7 +30,7 @@ class mainlineDHTChecker:
         if DEBUG:
             print >> sys.stderr, 'mainlineDHTChecker: Lookup', `infohash`
         if self.dht is not None:
-            from ACEStream.Core.DecentralizedTracking.pymdht.core.identifier import Id, IdError
+            from freestream.Core.DecentralizedTracking.pymdht.core.identifier import Id, IdError
             try:
                 infohash_id = Id(infohash)
                 self.dht.get_peers(infohash, infohash_id, self.got_peers_callback)

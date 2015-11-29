@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\Utilities\win32regchecker.pyo
+﻿#Embedded file name: freestream\Core\Utilities\win32regchecker.pyo
 import sys
 import os
 from traceback import print_exc, print_stack

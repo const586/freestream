@@ -1,9 +1,9 @@
-#Embedded file name: ACEStream\Video\utils.pyo
+﻿#Embedded file name: freestream\Video\utils.pyo
 import os
 import sys
-from ACEStream.Core.Utilities.unicode import unicode2str
+from freestream.Core.Utilities.unicode import unicode2str
 if sys.platform == 'win32':
-    from ACEStream.Core.Utilities.win32regchecker import Win32RegChecker, HKLM
+    from freestream.Core.Utilities.win32regchecker import Win32RegChecker, HKLM
 videoextdefaults = ['3gp',
  'aac',
  'ape',

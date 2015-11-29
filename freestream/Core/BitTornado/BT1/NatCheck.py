@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\BitTornado\BT1\NatCheck.pyo
+﻿#Embedded file name: freestream\Core\BitTornado\BT1\NatCheck.pyo
 from cStringIO import StringIO
 from socket import error as socketerror
 try:

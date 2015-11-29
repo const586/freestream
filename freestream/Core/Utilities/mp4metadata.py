@@ -1,7 +1,7 @@
-#Embedded file name: ACEStream\Core\Utilities\mp4metadata.pyo
+﻿#Embedded file name: freestream\Core\Utilities\mp4metadata.pyo
 import binascii
 import os
-from ACEStream.Core.Utilities.logger import log, log_exc
+from freestream.Core.Utilities.logger import log, log_exc
 DEBUG = False
 
 def clear_mp4_metadata_tag(tag, data):

@@ -1,10 +1,10 @@
-#Embedded file name: ACEStream\Core\ClosedSwarm\PaymentIntegration.pyo
+﻿#Embedded file name: freestream\Core\ClosedSwarm\PaymentIntegration.pyo
 import sys
 import urllib
 import re
 import xmlrpclib
 from base64 import encodestring, decodestring
-from ACEStream.Core.ClosedSwarm import ClosedSwarm
+from freestream.Core.ClosedSwarm import ClosedSwarm
 
 class PaymentSystem:
 
@@ -195,7 +195,7 @@ if __name__ == '__main__':
     poa_b64 = d.get_poa()
     if poa_b64:
         poa_serialized = decodestring(poa_b64)
-        from ACEStream.Core.ClosedSwarm import ClosedSwarm
+        from freestream.Core.ClosedSwarm import ClosedSwarm
         poa = ClosedSwarm.POA.deserialize(poa_serialized)
         poa.verify()
         print 'Got valid poa'

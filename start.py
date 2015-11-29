@@ -1,8 +1,8 @@
-#!/usr/bin/python2.7
+﻿#!/usr/bin/python2.7
 import os
 import sys
 curdir = os.path.abspath(os.path.dirname(sys.argv[0]))
-from ACEStream.Plugin.EngineConsole import start
-apptype = 'acestream'
+from freestream.Plugin.EngineConsole import start
+apptype = 'freestream'
 start(apptype, curdir)
 

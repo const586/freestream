@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\Statistics\Logger.pyo
+﻿#Embedded file name: freestream\Core\Statistics\Logger.pyo
 import sys
 import os
 import time
@@ -141,7 +141,7 @@ class OverlayLogger:
         self.today = today
         hostname = socket.gethostname()
         logger = Logger(3, self.file_name, self.file_dir, hostname, True)
-        logger.log(3, '# ACEStream Overlay Log Version 3', showtime=False)
+        logger.log(3, '# freestream Overlay Log Version 3', showtime=False)
         logger.log(3, '# BUCA_STA: nRound   nPeer nPref nTorrent   ' + 'nBlockSendList nBlockRecvList   ' + 'nConnectionsInSecureOver nConnectionsInBuddyCast  ' + 'nTasteConnectionList nRandomConnectionList nUnconnectableConnectionList', showtime=False)
         logger.log(3, '# BUCA_STA: Rd  Pr Pf Tr  Bs Br  SO Co  Ct Cr Cu', showtime=False)
         return logger

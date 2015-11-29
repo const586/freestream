@@ -1,7 +1,7 @@
-#Embedded file name: ACEStream\Core\RequestPolicy.pyo
-from ACEStream.Core.simpledefs import *
-from ACEStream.Core.exceptions import *
-from ACEStream.Core.BitTornado.BT1.MessageID import *
+﻿#Embedded file name: freestream\Core\RequestPolicy.pyo
+from freestream.Core.simpledefs import *
+from freestream.Core.exceptions import *
+from freestream.Core.BitTornado.BT1.MessageID import *
 DEBUG = False
 MAX_QUERIES_FROM_RANDOM_PEER = 1000
 

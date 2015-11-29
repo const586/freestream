@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\APIImplementation\SingleDownload.pyo
+﻿#Embedded file name: freestream\Core\APIImplementation\SingleDownload.pyo
 import sys
 import os
 import time
@@ -11,14 +11,14 @@ from base64 import b64encode
 from types import StringType, ListType, IntType
 from traceback import print_stack
 from threading import Event, Lock, currentThread
-from ACEStream.Core.simpledefs import *
-from ACEStream.Core.exceptions import *
-from ACEStream.Core.BitTornado.__init__ import createPeerID
-from ACEStream.Core.BitTornado.download_bt1 import BT1Download
-from ACEStream.Core.BitTornado.bencode import bencode, bdecode
-from ACEStream.Core.Video.VideoStatus import VideoStatus
-from ACEStream.Core.DecentralizedTracking.repex import RePEXer
-from ACEStream.Core.Utilities.logger import log, log_exc
+from freestream.Core.simpledefs import *
+from freestream.Core.exceptions import *
+from freestream.Core.BitTornado.__init__ import createPeerID
+from freestream.Core.BitTornado.download_bt1 import BT1Download
+from freestream.Core.BitTornado.bencode import bencode, bdecode
+from freestream.Core.Video.VideoStatus import VideoStatus
+from freestream.Core.DecentralizedTracking.repex import RePEXer
+from freestream.Core.Utilities.logger import log, log_exc
 SPECIAL_VALUE = 481
 DEBUG = False
 
@@ -460,7 +460,7 @@ class SingleDownload:
         if type(data) == StringType:
             log(self.log_prefix + 'LEGACY CORE FATAL ERROR', data)
             print_stack()
-            self.set_error_func(ACEStreamLegacyException(data))
+            self.set_error_func(FreeStreamLegacyException(data))
         else:
             log_exc()
             self.set_error_func(data)

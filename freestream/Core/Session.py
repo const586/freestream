@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\Session.pyo
+﻿#Embedded file name: freestream\Core\Session.pyo
 import os
 import sys
 import copy
@@ -6,24 +6,24 @@ import hashlib
 import binascii
 import urllib
 from threading import RLock
-from ACEStream.__init__ import LIBRARYNAME
-from ACEStream.GlobalConfig import globalConfig
-from ACEStream.Core.simpledefs import *
-from ACEStream.Core.defaults import sessdefaults
-from ACEStream.Core.Base import *
-from ACEStream.Core.SessionConfig import *
-from ACEStream.Core.DownloadConfig import get_default_dest_dir
-from ACEStream.Core.Utilities.utilities import find_prog_in_PATH
-from ACEStream.Core.APIImplementation.SessionRuntimeConfig import SessionRuntimeConfig
-from ACEStream.Core.APIImplementation.LaunchManyCore import ACEStreamLaunchMany
-from ACEStream.Core.APIImplementation.UserCallbackHandler import UserCallbackHandler
-from ACEStream.Core.osutils import get_appstate_dir
-from ACEStream.Core.Utilities.logger import log, log_exc
-from ACEStream.Core.NATFirewall.ConnectionCheck import ConnectionCheck
+from freestream.__init__ import LIBRARYNAME
+from freestream.GlobalConfig import globalConfig
+from freestream.Core.simpledefs import *
+from freestream.Core.defaults import sessdefaults
+from freestream.Core.Base import *
+from freestream.Core.SessionConfig import *
+from freestream.Core.DownloadConfig import get_default_dest_dir
+from freestream.Core.Utilities.utilities import find_prog_in_PATH
+from freestream.Core.APIImplementation.SessionRuntimeConfig import SessionRuntimeConfig
+from freestream.Core.APIImplementation.LaunchManyCore import FreeStreamLaunchMany
+from freestream.Core.APIImplementation.UserCallbackHandler import UserCallbackHandler
+from freestream.Core.osutils import get_appstate_dir
+from freestream.Core.Utilities.logger import log, log_exc
+from freestream.Core.NATFirewall.ConnectionCheck import ConnectionCheck
 GOTM2CRYPTO = False
 try:
     import M2Crypto
-    import ACEStream.Core.Overlay.permid as permidmod
+    import freestream.Core.Overlay.permid as permidmod
     GOTM2CRYPTO = True
 except ImportError:
     pass
@@ -168,7 +168,7 @@ class Session(SessionRuntimeConfig):
         self.http_seeds = {}
         self.save_pstate_sessconfig()
         self.uch = UserCallbackHandler(self)
-        self.lm = ACEStreamLaunchMany(network_thread_daemon)
+        self.lm = FreeStreamLaunchMany(network_thread_daemon)
         self.lm.register(self, self.sesslock)
         self.lm.start()
 
@@ -183,7 +183,7 @@ class Session(SessionRuntimeConfig):
         if globalConfig.get_value('apptype', '') == 'torrentstream':
             homedirpostfix = '.Torrent Stream'
         else:
-            homedirpostfix = '.ACEStream'
+            homedirpostfix = '.freestream'
         appdir = get_appstate_dir()
         statedir = os.path.join(appdir, homedirpostfix)
         return statedir
@@ -236,7 +236,7 @@ class Session(SessionRuntimeConfig):
         return self.lm.get_ext_ip()
 
     def get_externally_reachable(self):
-        from ACEStream.Core.NATFirewall.DialbackMsgHandler import DialbackMsgHandler
+        from freestream.Core.NATFirewall.DialbackMsgHandler import DialbackMsgHandler
         return DialbackMsgHandler.getInstance().isConnectable()
 
     def get_current_startup_config_copy(self):
@@ -482,7 +482,7 @@ class Session(SessionRuntimeConfig):
             if self.sessconfig['overlay']:
                 if not (query.startswith('SIMPLE ') or query.startswith('SIMPLE+METADATA ')) and not query.startswith('CHANNEL '):
                     raise ValueError('Query does not start with SIMPLE or SIMPLE+METADATA or CHANNEL (%s)' % query)
-                from ACEStream.Core.SocialNetwork.RemoteQueryMsgHandler import RemoteQueryMsgHandler
+                from freestream.Core.SocialNetwork.RemoteQueryMsgHandler import RemoteQueryMsgHandler
                 rqmh = RemoteQueryMsgHandler.getInstance()
                 rqmh.send_query(query, usercallback, max_peers_to_query=max_peers_to_query)
             else:
@@ -496,7 +496,7 @@ class Session(SessionRuntimeConfig):
             if self.sessconfig['overlay']:
                 if not (query.startswith('SIMPLE ') or query.startswith('SIMPLE+METADATA ')) and not query.startswith('CHANNEL '):
                     raise ValueError('Query does not start with SIMPLE or SIMPLE+METADATA or CHANNEL')
-                from ACEStream.Core.SocialNetwork.RemoteQueryMsgHandler import RemoteQueryMsgHandler
+                from freestream.Core.SocialNetwork.RemoteQueryMsgHandler import RemoteQueryMsgHandler
                 rqmh = RemoteQueryMsgHandler.getInstance()
                 rqmh.send_query_to_peers(query, peers, usercallback)
             else:
@@ -508,7 +508,7 @@ class Session(SessionRuntimeConfig):
         self.sesslock.acquire()
         try:
             if self.sessconfig['overlay']:
-                from ACEStream.Core.SocialNetwork.RemoteTorrentHandler import RemoteTorrentHandler
+                from freestream.Core.SocialNetwork.RemoteTorrentHandler import RemoteTorrentHandler
                 rtorrent_handler = RemoteTorrentHandler.getInstance()
                 rtorrent_handler.download_torrent(permid, infohash, usercallback, prio)
             else:
@@ -559,7 +559,7 @@ class Session(SessionRuntimeConfig):
             if self.sessconfig['overlay']:
                 if mtype == F_FORWARD_MSG:
                     raise ValueError('User cannot send FORWARD messages directly')
-                from ACEStream.Core.SocialNetwork.FriendshipMsgHandler import FriendshipMsgHandler
+                from freestream.Core.SocialNetwork.FriendshipMsgHandler import FriendshipMsgHandler
                 fmh = FriendshipMsgHandler.getInstance()
                 params = {}
                 if approved is not None:
@@ -574,7 +574,7 @@ class Session(SessionRuntimeConfig):
         self.sesslock.acquire()
         try:
             if self.sessconfig['overlay']:
-                from ACEStream.Core.SocialNetwork.FriendshipMsgHandler import FriendshipMsgHandler
+                from freestream.Core.SocialNetwork.FriendshipMsgHandler import FriendshipMsgHandler
                 fmh = FriendshipMsgHandler.getInstance()
                 fmh.register_usercallback(usercallback)
             else:

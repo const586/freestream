@@ -1,9 +1,9 @@
-#Embedded file name: ACEStream\Plugin\AtomFeedParser.pyo
+﻿#Embedded file name: freestream\Plugin\AtomFeedParser.pyo
 import sys
 import time
 import xml.etree.ElementTree as etree
-from ACEStream.Core.Search.KeywordSearch import KeywordSearch
-from ACEStream.Core.Utilities.timeouturlopen import urlOpenTimeout
+from freestream.Core.Search.KeywordSearch import KeywordSearch
+from freestream.Core.Utilities.timeouturlopen import urlOpenTimeout
 
 class MetaFeedParser:
 

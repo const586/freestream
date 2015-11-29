@@ -1,8 +1,8 @@
-#Embedded file name: ACEStream\Core\NATFirewall\UPnPThread.pyo
+﻿#Embedded file name: freestream\Core\NATFirewall\UPnPThread.pyo
 import sys
 from threading import Event, Thread
 from traceback import print_exc
-from ACEStream.Core.BitTornado.natpunch import UPnPWrapper, UPnPError
+from freestream.Core.BitTornado.natpunch import UPnPWrapper, UPnPError
 DEBUG = False
 
 class UPnPThread(Thread):

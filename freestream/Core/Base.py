@@ -1,5 +1,5 @@
-#Embedded file name: ACEStream\Core\Base.pyo
-from ACEStream.Core.exceptions import *
+﻿#Embedded file name: freestream\Core\Base.pyo
+from freestream.Core.exceptions import *
 DEBUG = False
 
 class Serializable:

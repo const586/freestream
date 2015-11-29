@@ -1,6 +1,6 @@
-#Embedded file name: ACEStream\Core\ProxyService\RatePredictor.pyo
+﻿#Embedded file name: freestream\Core\ProxyService\RatePredictor.pyo
 import sys
-from ACEStream.Core.BitTornado.clock import clock
+from freestream.Core.BitTornado.clock import clock
 MIN_CAPACITY = 0.75
 DEBUG = False
 

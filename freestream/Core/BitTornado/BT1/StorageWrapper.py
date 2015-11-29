@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\BitTornado\BT1\StorageWrapper.pyo
+﻿#Embedded file name: freestream\Core\BitTornado\BT1\StorageWrapper.pyo
 import sys
 import pickle
 import time
@@ -9,15 +9,15 @@ from random import randrange
 from copy import deepcopy
 from threading import Lock, RLock, currentThread
 from bisect import insort
-from ACEStream.Core.Merkle.merkle import MerkleTree
-from ACEStream.Core.Utilities.TSCrypto import sha
-from ACEStream.Core.BitTornado.bitfield import Bitfield
-from ACEStream.Core.BitTornado.clock import clock
-from ACEStream.Core.BitTornado.bencode import bencode
-from ACEStream.Core.Utilities.logger import log, log_exc
-from ACEStream.Core.Utilities.mp4metadata import clear_mp4_metadata_tag
-from ACEStream.GlobalConfig import globalConfig
-from ACEStream.Core.BitTornado.BT1.Storage import PieceBuffer
+from freestream.Core.Merkle.merkle import MerkleTree
+from freestream.Core.Utilities.TSCrypto import sha
+from freestream.Core.BitTornado.bitfield import Bitfield
+from freestream.Core.BitTornado.clock import clock
+from freestream.Core.BitTornado.bencode import bencode
+from freestream.Core.Utilities.logger import log, log_exc
+from freestream.Core.Utilities.mp4metadata import clear_mp4_metadata_tag
+from freestream.GlobalConfig import globalConfig
+from freestream.Core.BitTornado.BT1.Storage import PieceBuffer
 DEBUG = False
 DEBUG_WRITE = False
 DEBUG_HASHCHECK = False

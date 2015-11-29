@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\NATFirewall\ReturnConnHandler.pyo
+﻿#Embedded file name: freestream\Core\NATFirewall\ReturnConnHandler.pyo
 import sys
 from struct import pack, unpack
 from time import time
@@ -6,9 +6,9 @@ from cStringIO import StringIO
 from threading import currentThread
 from socket import gethostbyname
 from traceback import print_exc, print_stack
-from ACEStream.Core.BitTornado.__init__ import createPeerID
-from ACEStream.Core.BitTornado.BT1.MessageID import protocol_name, option_pattern, getMessageName
-from ACEStream.Core.BitTornado.BT1.convert import tobinary, toint
+from freestream.Core.BitTornado.__init__ import createPeerID
+from freestream.Core.BitTornado.BT1.MessageID import protocol_name, option_pattern, getMessageName
+from freestream.Core.BitTornado.BT1.convert import tobinary, toint
 DEBUG = False
 dialback_infohash = '\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01'
 STATE_INITIAL = 0

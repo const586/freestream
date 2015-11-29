@@ -1,14 +1,14 @@
-#Embedded file name: ACEStream\Core\Video\LiveSourceAuth.pyo
+﻿#Embedded file name: freestream\Core\Video\LiveSourceAuth.pyo
 import sys
 from traceback import print_exc
 from cStringIO import StringIO
 import struct
 import time
 import array
-from ACEStream.Core.Utilities.TSCrypto import sha, RSA_pub_key_from_der
-from ACEStream.Core.osutils import *
+from freestream.Core.Utilities.TSCrypto import sha, RSA_pub_key_from_der
+from freestream.Core.osutils import *
 from M2Crypto import EC
-from ACEStream.Core.osutils import *
+from freestream.Core.osutils import *
 from types import StringType
 DEBUG = False
 

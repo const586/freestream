@@ -1,9 +1,9 @@
-#Embedded file name: ACEStream\Core\CacheDB\SqliteCacheDBHandler.pyo
-from ACEStream.Core.CacheDB.sqlitecachedb import SQLiteCacheDB, bin2str, str2bin, NULL
+﻿#Embedded file name: freestream\Core\CacheDB\SqliteCacheDBHandler.pyo
+from freestream.Core.CacheDB.sqlitecachedb import SQLiteCacheDB, bin2str, str2bin, NULL
 from copy import deepcopy, copy
 from traceback import print_exc
 from time import time
-from ACEStream.Core.TorrentDef import TorrentDef
+from freestream.Core.TorrentDef import TorrentDef
 import sys
 import os
 import socket
@@ -15,12 +15,12 @@ import re
 import hashlib
 from maxflow import Network
 from math import atan, pi
-from ACEStream.Core.BitTornado.bencode import bencode, bdecode
+from freestream.Core.BitTornado.bencode import bencode, bdecode
 from Notifier import Notifier
-from ACEStream.Core.simpledefs import *
-from ACEStream.Core.Utilities.unicode import name2unicode, dunno2unicode
-from ACEStream.Core.defaults import DEFAULTPORT
-from ACEStream.Core.Utilities.logger import log, log_exc
+from freestream.Core.simpledefs import *
+from freestream.Core.Utilities.unicode import name2unicode, dunno2unicode
+from freestream.Core.defaults import DEFAULTPORT
+from freestream.Core.Utilities.logger import log, log_exc
 MAXFLOW_DISTANCE = 2
 ALPHA = float(1) / 30000
 DEBUG = False

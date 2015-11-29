@@ -1,7 +1,7 @@
-#Embedded file name: ACEStream\Core\Video\MovieTransport.pyo
+﻿#Embedded file name: freestream\Core\Video\MovieTransport.pyo
 import os, sys
-from ACEStream.Core.osutils import *
-from ACEStream.Core.Utilities.logger import log, log_exc
+from freestream.Core.osutils import *
+from freestream.Core.Utilities.logger import log, log_exc
 DEBUG = False
 
 class MovieTransport:

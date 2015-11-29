@@ -1,10 +1,10 @@
-#Embedded file name: ACEStream\Core\NATFirewall\ConnectionCheck.pyo
+﻿#Embedded file name: freestream\Core\NATFirewall\ConnectionCheck.pyo
 import sys
 from time import sleep
 import thread
 import random
-from ACEStream.Core.NATFirewall.NatCheck import GetNATType
-from ACEStream.Core.NATFirewall.TimeoutCheck import GetTimeout
+from freestream.Core.NATFirewall.NatCheck import GetNATType
+from freestream.Core.NATFirewall.TimeoutCheck import GetTimeout
 DEBUG = False
 
 class ConnectionCheck:

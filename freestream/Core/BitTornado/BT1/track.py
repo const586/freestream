@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\BitTornado\BT1\track.pyo
+﻿#Embedded file name: freestream\Core\BitTornado\BT1\track.pyo
 import sys, os
 import signal
 import re
@@ -13,24 +13,24 @@ from time import time, gmtime, strftime, localtime
 from random import shuffle, seed
 from types import StringType, IntType, LongType, DictType
 from binascii import unhexlify, b2a_hex
-from ACEStream.Core.simpledefs import *
-from ACEStream.Core.BitTornado.parseargs import parseargs, formatDefinitions
-from ACEStream.Core.BitTornado.RawServer import RawServer
-from ACEStream.Core.BitTornado.HTTPHandler import HTTPHandler, months
-from ACEStream.Core.BitTornado.parsedir import parsedir
+from freestream.Core.simpledefs import *
+from freestream.Core.BitTornado.parseargs import parseargs, formatDefinitions
+from freestream.Core.BitTornado.RawServer import RawServer
+from freestream.Core.BitTornado.HTTPHandler import HTTPHandler, months
+from freestream.Core.BitTornado.parsedir import parsedir
 from NatCheck import NatCheck
 from T2T import T2TList
 from Filter import Filter
-from ACEStream.Core.BitTornado.subnetparse import IP_List, ipv6_to_ipv4, to_ipv4, is_valid_ip, is_ipv4
-from ACEStream.Core.BitTornado.iprangeparse import IP_List as IP_Range_List
-from ACEStream.Core.BitTornado.torrentlistparse import parsetorrentlist
-from ACEStream.Core.BitTornado.bencode import bencode, bdecode, Bencached
-from ACEStream.Core.BitTornado.zurllib import urlopen
-from ACEStream.Core.Utilities.TSCrypto import sha
-from ACEStream.Core.BitTornado.clock import clock
-from ACEStream.Core.BitTornado.__init__ import version_short, createPeerID
-from ACEStream.Core.simpledefs import TRIBLER_TORRENT_EXT
-from ACEStream.Core.Utilities.logger import log, log_exc
+from freestream.Core.BitTornado.subnetparse import IP_List, ipv6_to_ipv4, to_ipv4, is_valid_ip, is_ipv4
+from freestream.Core.BitTornado.iprangeparse import IP_List as IP_Range_List
+from freestream.Core.BitTornado.torrentlistparse import parsetorrentlist
+from freestream.Core.BitTornado.bencode import bencode, bdecode, Bencached
+from freestream.Core.BitTornado.zurllib import urlopen
+from freestream.Core.Utilities.TSCrypto import sha
+from freestream.Core.BitTornado.clock import clock
+from freestream.Core.BitTornado.__init__ import version_short, createPeerID
+from freestream.Core.simpledefs import TRIBLER_TORRENT_EXT
+from freestream.Core.Utilities.logger import log, log_exc
 try:
     True
 except:
@@ -38,7 +38,7 @@ except:
     False = 0
 
 DEBUG = False
-from ACEStream.Core.defaults import trackerdefaults
+from freestream.Core.defaults import trackerdefaults
 defaults = []
 for k, v in trackerdefaults.iteritems():
     defaults.append((k, v, 'See triblerAPI'))
@@ -355,10 +355,10 @@ class Tracker():
                   'Location': red},
                  '<A HREF="' + red + '">Click Here</A>')
             s = StringIO()
-            s.write('<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">\n<html><head><title>ACEStream Tracker Statistics</title>\n')
+            s.write('<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">\n<html><head><title>freestream Tracker Statistics</title>\n')
             if self.favicon is not None:
                 s.write('<link rel="shortcut icon" href="/favicon.ico">\n')
-            s.write('</head>\n<body>\n<h3>ACEStream Tracker Statistics</h3>\n')
+            s.write('</head>\n<body>\n<h3>freestream Tracker Statistics</h3>\n')
             if self.config['tracker_allowed_dir']:
                 if self.show_names:
                     names = [ (self.allowed[hash]['name'], hash) for hash in self.allowed.keys() ]

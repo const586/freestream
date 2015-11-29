@@ -1,2 +1,2 @@
-#Embedded file name: ACEStream\Core\CacheDB\CacheDBHandler.pyo
+﻿#Embedded file name: freestream\Core\CacheDB\CacheDBHandler.pyo
 from SqliteCacheDBHandler import *

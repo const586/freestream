@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\BuddyCast\channelcast.pyo
+﻿#Embedded file name: freestream\Core\BuddyCast\channelcast.pyo
 import sys
 import threading
 from time import time, ctime, sleep
@@ -9,24 +9,24 @@ from types import StringType, ListType, DictType
 from random import randint, sample, seed, random, shuffle
 from sha import sha
 from sets import Set
-from ACEStream.Core.BitTornado.bencode import bencode, bdecode
-from ACEStream.Core.Statistics.Logger import OverlayLogger
-from ACEStream.Core.BitTornado.BT1.MessageID import CHANNELCAST, BUDDYCAST
-from ACEStream.Core.CacheDB.CacheDBHandler import ChannelCastDBHandler, VoteCastDBHandler
-from ACEStream.Core.Utilities.unicode import str2unicode
-from ACEStream.Core.Utilities.utilities import *
-from ACEStream.Core.Overlay.permid import permid_for_user, sign_data, verify_data
-from ACEStream.Core.CacheDB.sqlitecachedb import SQLiteCacheDB, bin2str, str2bin, NULL
-from ACEStream.Core.CacheDB.Notifier import Notifier
-from ACEStream.Core.SocialNetwork.RemoteTorrentHandler import RemoteTorrentHandler
-from ACEStream.Core.SocialNetwork.RemoteQueryMsgHandler import RemoteQueryMsgHandler
-from ACEStream.Core.BuddyCast.moderationcast_util import *
-from ACEStream.Core.Overlay.SecureOverlay import OLPROTO_VER_THIRTEENTH, OLPROTO_VER_FOURTEENTH
-from ACEStream.Core.simpledefs import NTFY_CHANNELCAST, NTFY_UPDATE
-from ACEStream.Core.Subtitles.RichMetadataInterceptor import RichMetadataInterceptor
-from ACEStream.Core.CacheDB.MetadataDBHandler import MetadataDBHandler
-from ACEStream.Core.Subtitles.PeerHaveManager import PeersHaveManager
-from ACEStream.Core.Subtitles.SubtitlesSupport import SubtitlesSupport
+from freestream.Core.BitTornado.bencode import bencode, bdecode
+from freestream.Core.Statistics.Logger import OverlayLogger
+from freestream.Core.BitTornado.BT1.MessageID import CHANNELCAST, BUDDYCAST
+from freestream.Core.CacheDB.CacheDBHandler import ChannelCastDBHandler, VoteCastDBHandler
+from freestream.Core.Utilities.unicode import str2unicode
+from freestream.Core.Utilities.utilities import *
+from freestream.Core.Overlay.permid import permid_for_user, sign_data, verify_data
+from freestream.Core.CacheDB.sqlitecachedb import SQLiteCacheDB, bin2str, str2bin, NULL
+from freestream.Core.CacheDB.Notifier import Notifier
+from freestream.Core.SocialNetwork.RemoteTorrentHandler import RemoteTorrentHandler
+from freestream.Core.SocialNetwork.RemoteQueryMsgHandler import RemoteQueryMsgHandler
+from freestream.Core.BuddyCast.moderationcast_util import *
+from freestream.Core.Overlay.SecureOverlay import OLPROTO_VER_THIRTEENTH, OLPROTO_VER_FOURTEENTH
+from freestream.Core.simpledefs import NTFY_CHANNELCAST, NTFY_UPDATE
+from freestream.Core.Subtitles.RichMetadataInterceptor import RichMetadataInterceptor
+from freestream.Core.CacheDB.MetadataDBHandler import MetadataDBHandler
+from freestream.Core.Subtitles.PeerHaveManager import PeersHaveManager
+from freestream.Core.Subtitles.SubtitlesSupport import SubtitlesSupport
 DEBUG = False
 NUM_OWN_RECENT_TORRENTS = 15
 NUM_OWN_RANDOM_TORRENTS = 10

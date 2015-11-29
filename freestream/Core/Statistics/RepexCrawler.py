@@ -1,12 +1,12 @@
-#Embedded file name: ACEStream\Core\Statistics\RepexCrawler.pyo
+﻿#Embedded file name: freestream\Core\Statistics\RepexCrawler.pyo
 import sys
 import cPickle
 import base64
 from time import strftime
-from ACEStream.Core.BitTornado.BT1.MessageID import CRAWLER_REPEX_QUERY
-from ACEStream.Core.Utilities.utilities import show_permid, show_permid_short
-from ACEStream.Core.Statistics.Crawler import Crawler
-from ACEStream.Core.DecentralizedTracking.repex import RePEXLogDB
+from freestream.Core.BitTornado.BT1.MessageID import CRAWLER_REPEX_QUERY
+from freestream.Core.Utilities.utilities import show_permid, show_permid_short
+from freestream.Core.Statistics.Crawler import Crawler
+from freestream.Core.DecentralizedTracking.repex import RePEXLogDB
 DEBUG = False
 
 class RepexCrawler:

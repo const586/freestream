@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\BitTornado\download_bt1.pyo
+﻿#Embedded file name: freestream\Core\BitTornado\download_bt1.pyo
 import sys
 import os
 import time
@@ -29,8 +29,8 @@ from CurrentRateMeasure import Measure
 from BT1.PiecePicker import PiecePicker
 from BT1.Statistics import Statistics
 from bencode import bencode, bdecode
-from ACEStream.Core.Utilities.TSCrypto import block_encrypt, block_decrypt
-from ACEStream.Core.Utilities.utilities import get_ip
+from freestream.Core.Utilities.TSCrypto import block_encrypt, block_decrypt
+from freestream.Core.Utilities.utilities import get_ip
 from os import path, makedirs, listdir
 from parseargs import parseargs, formatDefinitions, defaultargs
 from socket import error as socketerror
@@ -38,15 +38,15 @@ from random import seed
 from threading import Event
 from clock import clock
 from traceback import print_stack, print_exc
-from ACEStream.Core.simpledefs import *
-from ACEStream.Core.Merkle.merkle import create_fake_hashes
-from ACEStream.Core.Utilities.unicode import bin2unicode, dunno2unicode
-from ACEStream.Core.Video.PiecePickerStreaming import PiecePickerVOD
-from ACEStream.Core.Video.VideoOnDemand import MovieOnDemandTransporter
-from ACEStream.Core.APIImplementation.maketorrent import torrentfilerec2savefilename, savefilenames2finaldest
-from ACEStream.Core.Utilities.logger import log, log_exc
-from ACEStream.Core.Utilities.EncryptedStorage import EncryptedStorageStream
-from ACEStream.GlobalConfig import globalConfig
+from freestream.Core.simpledefs import *
+from freestream.Core.Merkle.merkle import create_fake_hashes
+from freestream.Core.Utilities.unicode import bin2unicode, dunno2unicode
+from freestream.Core.Video.PiecePickerStreaming import PiecePickerVOD
+from freestream.Core.Video.VideoOnDemand import MovieOnDemandTransporter
+from freestream.Core.APIImplementation.maketorrent import torrentfilerec2savefilename, savefilenames2finaldest
+from freestream.Core.Utilities.logger import log, log_exc
+from freestream.Core.Utilities.EncryptedStorage import EncryptedStorageStream
+from freestream.GlobalConfig import globalConfig
 try:
     True
 except:
@@ -131,7 +131,7 @@ class BT1Download:
         self.rate_predictor = None
         try:
             if self.am_video_source:
-                from ACEStream.Core.Video.VideoSource import PiecePickerSource
+                from freestream.Core.Video.VideoSource import PiecePickerSource
                 self.picker = PiecePickerSource(self.len_pieces, config['rarest_first_cutoff'], config['rarest_first_priority_cutoff'], helper=self.helper, coordinator=self.coordinator)
             elif self.play_video:
                 self.picker = PiecePickerVOD(self.len_pieces, config['rarest_first_cutoff'], config['rarest_first_priority_cutoff'], helper=self.helper, coordinator=self.coordinator, piecesize=self.piecesize)
@@ -565,7 +565,7 @@ class BT1Download:
             self.encoder_ban(ip)
 
         if self.helper is not None:
-            from ACEStream.Core.ProxyService.RatePredictor import ExpSmoothRatePredictor
+            from freestream.Core.ProxyService.RatePredictor import ExpSmoothRatePredictor
             self.helper.set_encoder(self.encoder)
             self.encoder.set_helper(self.helper)
             self.rate_predictor = ExpSmoothRatePredictor(self.rawserver, self.downmeasure, self.config['max_download_rate'])
@@ -573,7 +573,7 @@ class BT1Download:
             self.rate_predictor.update()
         if self.coordinator is not None:
             self.coordinator.set_encoder(self.encoder)
-        from ACEStream.Core.Session import Session
+        from freestream.Core.Session import Session
         session = Session.get_instance()
         self.ghttpdownloader = None
         url_list = []
@@ -626,14 +626,14 @@ class BT1Download:
                     log(self.log_prefix + 'startEngine: Going into VOD mode: videoinfo', self.videoinfo)
                 self.voddownload = MovieOnDemandTransporter(self, self.videostatus, self.videoinfo, self.videoanalyserpath, vodeventfunc, self.ghttpdownloader)
                 if self.has_extra_files and not self.config['encrypted_storage']:
-                    from ACEStream.Core.Session import Session
+                    from freestream.Core.Session import Session
                     session = Session.get_instance()
                     preallocate_file = lambda : self.storagewrapper.preallocate_file(self.videostatus.first_piece, self.videostatus.last_piece)
                     session.uch.perform_usercallback(preallocate_file)
         elif DEBUG:
             log(self.log_prefix + 'startEngine: Going into standard mode')
         if self.am_video_source:
-            from ACEStream.Core.Video.VideoSource import VideoSourceTransporter, RateLimitedVideoSourceTransporter
+            from freestream.Core.Video.VideoSource import VideoSourceTransporter, RateLimitedVideoSourceTransporter
             if DEBUG:
                 log(self.log_prefix + 'startEngine: Acting as VideoSource')
             if self.config['video_ratelimit']:

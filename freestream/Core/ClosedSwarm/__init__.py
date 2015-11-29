@@ -1,2 +1,2 @@
-#Embedded file name: ACEStream\Core\ClosedSwarm\__init__.pyo
+﻿#Embedded file name: freestream\Core\ClosedSwarm\__init__.pyo
 pass

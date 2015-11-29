@@ -1,25 +1,25 @@
-#Embedded file name: ACEStream\Core\BitTornado\BT1\Rerequester.pyo
+﻿#Embedded file name: freestream\Core\BitTornado\BT1\Rerequester.pyo
 import sys
 import socket
 import random
 import struct
 import binascii
 import urlparse
-from ACEStream.Core.BitTornado.zurllib import urlopen
+from freestream.Core.BitTornado.zurllib import urlopen
 from urllib import quote
 from btformats import check_peers
-from ACEStream.Core.BitTornado.bencode import bdecode
+from freestream.Core.BitTornado.bencode import bdecode
 from threading import Thread, Lock, currentThread
 from cStringIO import StringIO
 from traceback import print_exc, print_stack
-from ACEStream.Core.Utilities.TSCrypto import sha
-from ACEStream.Core.Utilities.utilities import test_network_connection
+from freestream.Core.Utilities.TSCrypto import sha
+from freestream.Core.Utilities.utilities import test_network_connection
 from time import time
-from ACEStream.Core.simpledefs import *
-from ACEStream.Core.Utilities.logger import log, log_exc
-import ACEStream.Core.DecentralizedTracking.mainlineDHT as mainlineDHT
+from freestream.Core.simpledefs import *
+from freestream.Core.Utilities.logger import log, log_exc
+import freestream.Core.DecentralizedTracking.mainlineDHT as mainlineDHT
 if mainlineDHT.dht_imported:
-    from ACEStream.Core.DecentralizedTracking.pymdht.core.identifier import Id, IdError
+    from freestream.Core.DecentralizedTracking.pymdht.core.identifier import Id, IdError
 try:
     from os import getpid
 except ImportError:

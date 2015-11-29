@@ -1,2 +1,2 @@
-#Embedded file name: ACEStream\WebUI\__init__.pyo
+﻿#Embedded file name: freestream\WebUI\__init__.pyo
 pass

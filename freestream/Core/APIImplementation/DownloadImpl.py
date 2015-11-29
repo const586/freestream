@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\APIImplementation\DownloadImpl.pyo
+﻿#Embedded file name: freestream\Core\APIImplementation\DownloadImpl.pyo
 import sys
 import os
 import copy
@@ -9,18 +9,18 @@ import struct
 import time
 from traceback import print_stack, print_exc
 from threading import RLock, Condition, Event, Thread, currentThread
-from ACEStream.Core.DownloadState import DownloadState
-from ACEStream.Core.DownloadConfig import DownloadStartupConfig
-from ACEStream.Core.simpledefs import *
-from ACEStream.Core.exceptions import *
-from ACEStream.Core.osutils import *
-from ACEStream.Core.APIImplementation.SingleDownload import SingleDownload
-from ACEStream.Core.APIImplementation.DirectDownload import DirectDownload
-import ACEStream.Core.APIImplementation.maketorrent as maketorrent
-from ACEStream.Video.utils import videoextdefaults
-from ACEStream.Core.Utilities.logger import log, log_exc
-from ACEStream.Core.Utilities.EncryptedStorage import EncryptedStorageStream
-from ACEStream.GlobalConfig import globalConfig
+from freestream.Core.DownloadState import DownloadState
+from freestream.Core.DownloadConfig import DownloadStartupConfig
+from freestream.Core.simpledefs import *
+from freestream.Core.exceptions import *
+from freestream.Core.osutils import *
+from freestream.Core.APIImplementation.SingleDownload import SingleDownload
+from freestream.Core.APIImplementation.DirectDownload import DirectDownload
+import freestream.Core.APIImplementation.maketorrent as maketorrent
+from freestream.Video.utils import videoextdefaults
+from freestream.Core.Utilities.logger import log, log_exc
+from freestream.Core.Utilities.EncryptedStorage import EncryptedStorageStream
+from freestream.GlobalConfig import globalConfig
 DEBUG = False
 
 class DownloadImpl:
@@ -911,7 +911,7 @@ class DownloadImpl:
         mimetype = None
         if sys.platform == 'win32':
             try:
-                from ACEStream.Video.utils import win32_retrieve_video_play_command
+                from freestream.Video.utils import win32_retrieve_video_play_command
                 mimetype, playcmd = win32_retrieve_video_play_command(ext, file)
                 if DEBUG:
                     log(self.log_prefix + 'get_mimetype: Win32 reg said MIME type is', mimetype)

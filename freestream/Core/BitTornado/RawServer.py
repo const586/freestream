@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\BitTornado\RawServer.pyo
+﻿#Embedded file name: freestream\Core\BitTornado\RawServer.pyo
 from bisect import insort
 from SocketHandler import SocketHandler
 import socket
@@ -10,7 +10,7 @@ from thread import get_ident
 from clock import clock
 import sys
 import time
-from ACEStream.Core.Utilities.logger import log, log_exc
+from freestream.Core.Utilities.logger import log, log_exc
 try:
     True
 except:

@@ -1,5 +1,5 @@
-#Embedded file name: ACEStream\Plugin\BackgroundProcess.pyo
-import ACEStream.Debug.console
+﻿#Embedded file name: freestream\Plugin\BackgroundProcess.pyo
+import freestream.Debug.console
 import os
 import sys
 import time
@@ -23,30 +23,30 @@ try:
 except:
     import simplejson as json
 
-from ACEStream.__init__ import DEFAULT_I2I_LISTENPORT, DEFAULT_SESSION_LISTENPORT, DEFAULT_HTTP_LISTENPORT
-from ACEStream.version import VERSION
-from ACEStream.Core.API import *
-from ACEStream.Core.osutils import *
-from ACEStream.Core.Utilities.utilities import get_collected_torrent_filename
-from ACEStream.Utilities.LinuxSingleInstanceChecker import *
-from ACEStream.Utilities.Instance2Instance import InstanceConnectionHandler, InstanceConnection
-from ACEStream.Utilities.TimedTaskQueue import TimedTaskQueue
-from ACEStream.Player.BaseApp import BaseApp
-from ACEStream.Player.common import get_status_msgs
-from ACEStream.Plugin.defs import *
-from ACEStream.Plugin.Search import *
-from ACEStream.Plugin.AtomFeedParser import *
-from ACEStream.Video.defs import *
-from ACEStream.Video.utils import videoextdefaults
-from ACEStream.Video.VideoServer import VideoHTTPServer
-from ACEStream.Video.Ogg import is_ogg, OggMagicLiveStream
-from ACEStream.Core.debug import *
-from ACEStream.WebUI.WebUI import WebIFPathMapper
-from ACEStream.Core.ClosedSwarm.ClosedSwarm import InvalidPOAException
-from ACEStream.Core.Utilities.logger import log, log_exc
-from ACEStream.Core.Ads.Manager import AdManager
-from ACEStream.GlobalConfig import globalConfig
-from ACEStream.Core.CacheDB.SqliteCacheDBHandler import UserProfile
+from freestream.__init__ import DEFAULT_I2I_LISTENPORT, DEFAULT_SESSION_LISTENPORT, DEFAULT_HTTP_LISTENPORT
+from freestream.version import VERSION
+from freestream.Core.API import *
+from freestream.Core.osutils import *
+from freestream.Core.Utilities.utilities import get_collected_torrent_filename
+from freestream.Utilities.LinuxSingleInstanceChecker import *
+from freestream.Utilities.Instance2Instance import InstanceConnectionHandler, InstanceConnection
+from freestream.Utilities.TimedTaskQueue import TimedTaskQueue
+from freestream.Player.BaseApp import BaseApp
+from freestream.Player.common import get_status_msgs
+from freestream.Plugin.defs import *
+from freestream.Plugin.Search import *
+from freestream.Plugin.AtomFeedParser import *
+from freestream.Video.defs import *
+from freestream.Video.utils import videoextdefaults
+from freestream.Video.VideoServer import VideoHTTPServer
+from freestream.Video.Ogg import is_ogg, OggMagicLiveStream
+from freestream.Core.debug import *
+from freestream.WebUI.WebUI import WebIFPathMapper
+from freestream.Core.ClosedSwarm.ClosedSwarm import InvalidPOAException
+from freestream.Core.Utilities.logger import log, log_exc
+from freestream.Core.Ads.Manager import AdManager
+from freestream.GlobalConfig import globalConfig
+from freestream.Core.CacheDB.SqliteCacheDBHandler import UserProfile
 DEBUG = True
 DEBUG2 = False
 DEBUG_EVENTS = False
@@ -66,16 +66,7 @@ MSG_STARTED_ADS = 2
 MSG_STARTED_MAIN_CONTENT = 3
 
 def get_default_api_version(apptype, exec_dir):
-    if apptype == 'acestream':
-        default_api_version = 2
-    elif sys.platform != 'win32':
-        default_api_version = 2
-    else:
-        plugin_path = os.path.join(exec_dir, '..', 'player', 'npts_plugin.dll')
-        if os.path.isfile(plugin_path):
-            default_api_version = 2
-        else:
-            default_api_version = 1
+    default_api_version = 2
     log('get_default_api_version:', default_api_version)
     return default_api_version
 

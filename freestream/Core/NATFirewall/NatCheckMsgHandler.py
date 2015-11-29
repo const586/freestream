@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\NATFirewall\NatCheckMsgHandler.pyo
+﻿#Embedded file name: freestream\Core\NATFirewall\NatCheckMsgHandler.pyo
 from time import strftime
 from traceback import print_exc
 import datetime
@@ -6,15 +6,15 @@ import random
 import socket
 import sys
 import thread
-from ACEStream.Core.BitTornado.BT1.MessageID import CRAWLER_NATCHECK, CRAWLER_NATTRAVERSAL
-from ACEStream.Core.BitTornado.bencode import bencode, bdecode
-from ACEStream.Core.NATFirewall.ConnectionCheck import ConnectionCheck
-from ACEStream.Core.NATFirewall.NatTraversal import tryConnect, coordinateHolePunching
-from ACEStream.Core.Overlay.SecureOverlay import OLPROTO_VER_EIGHTH, OLPROTO_VER_NINETH, SecureOverlay
-from ACEStream.Core.Statistics.Crawler import Crawler
-from ACEStream.Core.Utilities.utilities import show_permid, show_permid_short
+from freestream.Core.BitTornado.BT1.MessageID import CRAWLER_NATCHECK, CRAWLER_NATTRAVERSAL
+from freestream.Core.BitTornado.bencode import bencode, bdecode
+from freestream.Core.NATFirewall.ConnectionCheck import ConnectionCheck
+from freestream.Core.NATFirewall.NatTraversal import tryConnect, coordinateHolePunching
+from freestream.Core.Overlay.SecureOverlay import OLPROTO_VER_EIGHTH, OLPROTO_VER_NINETH, SecureOverlay
+from freestream.Core.Statistics.Crawler import Crawler
+from freestream.Core.Utilities.utilities import show_permid, show_permid_short
 from types import IntType, StringType, ListType, TupleType
-from ACEStream.Core.simpledefs import *
+from freestream.Core.simpledefs import *
 DEBUG = False
 PEERLIST_LEN = 100
 
@@ -57,7 +57,7 @@ class NatCheckMsgHandler:
     def doNatCheck(self, target_permid, selversion, request_callback):
         if selversion < OLPROTO_VER_NINETH:
             if DEBUG:
-                print >> sys.stderr, 'NatCheckMsgHandler: ACEStream version too old for NATCHECK: do nothing'
+                print >> sys.stderr, 'NatCheckMsgHandler: freestream version too old for NATCHECK: do nothing'
             return False
         if DEBUG:
             print >> sys.stderr, 'NatCheckMsgHandler: do NATCHECK'
@@ -155,7 +155,7 @@ class NatCheckMsgHandler:
             self._file.flush()
             if selversion < OLPROTO_VER_NINETH:
                 if DEBUG:
-                    print >> sys.stderr, 'NatCheckMsgHandler: ACEStream version too old for NATTRAVERSAL: do nothing'
+                    print >> sys.stderr, 'NatCheckMsgHandler: freestream version too old for NATTRAVERSAL: do nothing'
                 return True
             if DEBUG:
                 print >> sys.stderr, 'NatCheckMsgHandler: do NATTRAVERSAL'

@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\Utilities\timeouturlopen.pyo
+﻿#Embedded file name: freestream\Core\Utilities\timeouturlopen.pyo
 import sys
 import httplib
 import socket
@@ -7,8 +7,8 @@ import urllib
 import urlparse
 from gzip import GzipFile
 from StringIO import StringIO
-from ACEStream.version import VERSION
-USER_AGENT = 'ACEStream/' + VERSION
+from freestream.version import VERSION
+USER_AGENT = 'freestream/' + VERSION
 DEBUG = False
 
 def urlOpenTimeout(url, timeout = 30, content_type = None, cookiejar = None, *data):

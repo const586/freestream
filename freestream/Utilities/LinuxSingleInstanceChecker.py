@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Utilities\LinuxSingleInstanceChecker.pyo
+﻿#Embedded file name: freestream\Utilities\LinuxSingleInstanceChecker.pyo
 import sys
 import commands
 

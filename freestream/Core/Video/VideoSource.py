@@ -1,16 +1,16 @@
-#Embedded file name: ACEStream\Core\Video\VideoSource.pyo
+﻿#Embedded file name: freestream\Core\Video\VideoSource.pyo
 import os
 import sys
 from threading import RLock, Thread
 from traceback import print_exc
 from time import sleep
-from ACEStream.GlobalConfig import globalConfig
-from ACEStream.Core.BitTornado.BT1.PiecePicker import PiecePicker
-from ACEStream.Core.simpledefs import *
-from ACEStream.Core.Video.LiveSourceAuth import NullAuthenticator, ECDSAAuthenticator, RSAAuthenticator
-from ACEStream.Core.Utilities.TSCrypto import sha
-from ACEStream.Core.Utilities.logger import log, log_exc
-from ACEStream.Core.BitTornado.CurrentRateMeasure import Measure
+from freestream.GlobalConfig import globalConfig
+from freestream.Core.BitTornado.BT1.PiecePicker import PiecePicker
+from freestream.Core.simpledefs import *
+from freestream.Core.Video.LiveSourceAuth import NullAuthenticator, ECDSAAuthenticator, RSAAuthenticator
+from freestream.Core.Utilities.TSCrypto import sha
+from freestream.Core.Utilities.logger import log, log_exc
+from freestream.Core.BitTornado.CurrentRateMeasure import Measure
 DEBUG = False
 DEBUG_TRANSPORT = False
 

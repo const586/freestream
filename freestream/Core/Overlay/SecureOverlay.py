@@ -1,17 +1,17 @@
-#Embedded file name: ACEStream\Core\Overlay\SecureOverlay.pyo
+﻿#Embedded file name: freestream\Core\Overlay\SecureOverlay.pyo
 from cStringIO import StringIO
 from struct import pack, unpack
 from threading import currentThread
 from time import time
 from traceback import print_exc, print_stack
 import sys
-from ACEStream.Core.BitTornado.BT1.MessageID import protocol_name, option_pattern, getMessageName
-from ACEStream.Core.BitTornado.BT1.convert import tobinary, toint
-from ACEStream.Core.BitTornado.__init__ import createPeerID
-from ACEStream.Core.CacheDB.sqlitecachedb import safe_dict, bin2str
-from ACEStream.Core.Overlay.permid import ChallengeResponse
-from ACEStream.Core.Utilities.utilities import show_permid_short, hostname_or_ip2ip
-from ACEStream.Core.simpledefs import *
+from freestream.Core.BitTornado.BT1.MessageID import protocol_name, option_pattern, getMessageName
+from freestream.Core.BitTornado.BT1.convert import tobinary, toint
+from freestream.Core.BitTornado.__init__ import createPeerID
+from freestream.Core.CacheDB.sqlitecachedb import safe_dict, bin2str
+from freestream.Core.Overlay.permid import ChallengeResponse
+from freestream.Core.Utilities.utilities import show_permid_short, hostname_or_ip2ip
+from freestream.Core.simpledefs import *
 DEBUG = False
 overlay_infohash = '\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'
 OLPROTO_VER_FIRST = 1

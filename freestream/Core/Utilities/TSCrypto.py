@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\Utilities\TSCrypto.pyo
+﻿#Embedded file name: freestream\Core\Utilities\TSCrypto.pyo
 import sys
 import base64
 import textwrap

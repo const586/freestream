@@ -1,16 +1,16 @@
-#Embedded file name: ACEStream\Core\DownloadConfig.pyo
+﻿#Embedded file name: freestream\Core\DownloadConfig.pyo
 import sys
 import os
 import copy
 import pickle
 from types import StringType
 from traceback import print_exc
-from ACEStream.Core.simpledefs import *
-from ACEStream.Core.defaults import *
-from ACEStream.Core.exceptions import *
-from ACEStream.Core.Base import *
-from ACEStream.Core.APIImplementation.miscutils import *
-from ACEStream.Core.osutils import getfreespace, get_desktop_dir
+from freestream.Core.simpledefs import *
+from freestream.Core.defaults import *
+from freestream.Core.exceptions import *
+from freestream.Core.Base import *
+from freestream.Core.APIImplementation.miscutils import *
+from freestream.Core.osutils import getfreespace, get_desktop_dir
 
 class DownloadConfigInterface():
 
@@ -114,7 +114,7 @@ class DownloadConfigInterface():
     def set_video_source(self, videosource, authconfig = None, restartstatefilename = None):
         self.dlconfig['video_source'] = videosource
         if authconfig is None:
-            from ACEStream.Core.LiveSourceAuthConfig import LiveSourceAuthConfig
+            from freestream.Core.LiveSourceAuthConfig import LiveSourceAuthConfig
             authconfig = LiveSourceAuthConfig(LIVE_AUTHMETHOD_NONE)
         self.dlconfig['video_source_authconfig'] = authconfig
         self.dlconfig['video_source_restartstatefilename'] = restartstatefilename
@@ -465,7 +465,7 @@ class DownloadConfigInterface():
         if 'poa' in self.dlconfig:
             if not self.dlconfig['poa']:
                 raise Exception('No POA specified')
-            from ACEStream.Core.ClosedSwarm import ClosedSwarm
+            from freestream.Core.ClosedSwarm import ClosedSwarm
             from base64 import decodestring
             print >> sys.stderr, 'get_poa:', self.dlconfig['poa']
             poa = ClosedSwarm.POA.deserialize(decodestring(self.dlconfig['poa']))
@@ -510,4 +510,4 @@ class DownloadStartupConfig(DownloadConfigInterface, Serializable, Copyable):
 
 def get_default_dest_dir():
     uhome = get_desktop_dir()
-    return os.path.join(uhome, u'ACEStreamDownloads')
+    return os.path.join(uhome, u'freestreamDownloads')

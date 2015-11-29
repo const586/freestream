@@ -1,8 +1,8 @@
-#Embedded file name: ACEStream\Core\BitTornado\BT1\FileSelector.pyo
+﻿#Embedded file name: freestream\Core\BitTornado\BT1\FileSelector.pyo
 import sys
 from random import shuffle
 from traceback import print_stack
-from ACEStream.Core.Utilities.logger import log, log_exc
+from freestream.Core.Utilities.logger import log, log_exc
 try:
     True
 except:

@@ -1,17 +1,17 @@
-#Embedded file name: ACEStream\Core\ProxyService\HelperMessageHandler.pyo
+﻿#Embedded file name: freestream\Core\ProxyService\HelperMessageHandler.pyo
 import sys, os
 import binascii
 from threading import Lock
 from time import sleep
-from ACEStream.Core.TorrentDef import *
-from ACEStream.Core.Session import *
-from ACEStream.Core.simpledefs import *
-from ACEStream.Core.DownloadConfig import DownloadStartupConfig
-from ACEStream.Core.Utilities.utilities import show_permid_short
-from ACEStream.Core.BitTornado.bencode import bencode, bdecode
-from ACEStream.Core.BitTornado.BT1.MessageID import *
-from ACEStream.Core.CacheDB.CacheDBHandler import PeerDBHandler, TorrentDBHandler
-from ACEStream.Core.Overlay.OverlayThreadingBridge import OverlayThreadingBridge
+from freestream.Core.TorrentDef import *
+from freestream.Core.Session import *
+from freestream.Core.simpledefs import *
+from freestream.Core.DownloadConfig import DownloadStartupConfig
+from freestream.Core.Utilities.utilities import show_permid_short
+from freestream.Core.BitTornado.bencode import bencode, bdecode
+from freestream.Core.BitTornado.BT1.MessageID import *
+from freestream.Core.CacheDB.CacheDBHandler import PeerDBHandler, TorrentDBHandler
+from freestream.Core.Overlay.OverlayThreadingBridge import OverlayThreadingBridge
 DEBUG = False
 
 class HelperMessageHandler:

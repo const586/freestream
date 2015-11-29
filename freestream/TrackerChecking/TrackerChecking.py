@@ -1,10 +1,10 @@
-#Embedded file name: ACEStream\TrackerChecking\TrackerChecking.pyo
+﻿#Embedded file name: freestream\TrackerChecking\TrackerChecking.pyo
 import sys
-from ACEStream.Core.BitTornado.bencode import bdecode
+from freestream.Core.BitTornado.bencode import bdecode
 from random import shuffle
 import urllib
 import socket
-import ACEStream.Core.Utilities.timeouturlopen as timeouturlopen
+import freestream.Core.Utilities.timeouturlopen as timeouturlopen
 from time import time
 from traceback import print_exc
 HTTP_TIMEOUT = 30

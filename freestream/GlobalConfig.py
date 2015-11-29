@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\GlobalConfig.pyo
+﻿#Embedded file name: freestream\GlobalConfig.pyo
 
 
 class GlobalConfig:

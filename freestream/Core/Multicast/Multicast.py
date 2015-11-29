@@ -1,4 +1,4 @@
-#Embedded file name: ACEStream\Core\Multicast\Multicast.pyo
+﻿#Embedded file name: freestream\Core\Multicast\Multicast.pyo
 import socket
 import threading
 import struct
@@ -9,7 +9,7 @@ import time
 import random
 from traceback import print_exc
 import base64
-from ACEStream.Core.BuddyCast.buddycast import BuddyCastFactory
+from freestream.Core.BuddyCast.buddycast import BuddyCastFactory
 DEBUG = False
 
 class MyLogger:
